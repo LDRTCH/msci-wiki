@@ -4,5 +4,11 @@
     "items": [
       "/activity_log/week_1.html"
     ]
+  },
+  {
+    "listing": "/literature_notes/landing.html",
+    "items": [
+      "/literature_notes/run-and-tumble.html"
+    ]
   }
 ]

@@ -1,52 +1,31 @@
 [
   {
-    "objectID": "literature_notes/landing.html",
-    "href": "literature_notes/landing.html",
-    "title": "Literature notes",
+    "objectID": "literature_notes/run-and-tumble.html",
+    "href": "literature_notes/run-and-tumble.html",
+    "title": "Run-and-tumble dynamics in a crowded environment: PEP for swimmers",
     "section": "",
-    "text": "Back to top"
+    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
   },
   {
-    "objectID": "activity_log/landing.html",
-    "href": "activity_log/landing.html",
-    "title": "Activity log",
+    "objectID": "literature_notes/run-and-tumble.html#the-model",
+    "href": "literature_notes/run-and-tumble.html#the-model",
+    "title": "Run-and-tumble dynamics in a crowded environment: PEP for swimmers",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNhat \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
   },
   {
-    "objectID": "shared/deadlines.html",
-    "href": "shared/deadlines.html",
-    "title": "Deadline information",
+    "objectID": "activity_log/week_1.html",
+    "href": "activity_log/week_1.html",
+    "title": "Week 1",
     "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
   },
   {
-    "objectID": "shared/deadlines.html#weekly-meeting",
-    "href": "shared/deadlines.html#weekly-meeting",
-    "title": "Deadline information",
+    "objectID": "activity_log/week_1.html#expected-outcomes",
+    "href": "activity_log/week_1.html#expected-outcomes",
+    "title": "Week 1",
     "section": "",
-    "text": "TB1: Thursday 11:00\nTB2: to be decided"
-  },
-  {
-    "objectID": "shared/deadlines.html#deadlines",
-    "href": "shared/deadlines.html#deadlines",
-    "title": "Deadline information",
-    "section": "Deadlines",
-    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "Deadlines\nRepository information"
-  },
-  {
-    "objectID": "index.html#information",
-    "href": "index.html#information",
-    "title": "Home",
-    "section": "",
-    "text": "Deadlines\nRepository information"
+    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
   },
   {
     "objectID": "shared/repo.html",
@@ -98,17 +77,52 @@
     "text": "Accessing the live website\n\nFor Codeberg, it’s https://username.codeberg.page/msci-wiki (more information).\nFor GitHub, it’s https://username.github.io/msci-wiki (more information)."
   },
   {
-    "objectID": "activity_log/week_1.html",
-    "href": "activity_log/week_1.html",
-    "title": "Week 1",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
     "section": "",
-    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
+    "text": "Deadlines\nRepository information"
   },
   {
-    "objectID": "activity_log/week_1.html#expected-outcomes",
-    "href": "activity_log/week_1.html#expected-outcomes",
-    "title": "Week 1",
+    "objectID": "index.html#information",
+    "href": "index.html#information",
+    "title": "Home",
     "section": "",
-    "text": "Catch up on background reading\nSet up electronic notebook\nSet up git repository for shared knowledge\n\nPersonal logs and files in .gitignore\nHow to resolve conflicts? Avoid editing at the same time?\nWhere to host? Private GitHub repo?\n\nSet up a GitHub organisation (a single repo might not cover the whole project)"
+    "text": "Deadlines\nRepository information"
+  },
+  {
+    "objectID": "shared/deadlines.html",
+    "href": "shared/deadlines.html",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#weekly-meeting",
+    "href": "shared/deadlines.html#weekly-meeting",
+    "title": "Deadline information",
+    "section": "",
+    "text": "TB1: Thursday 11:00\nTB2: to be decided"
+  },
+  {
+    "objectID": "shared/deadlines.html#deadlines",
+    "href": "shared/deadlines.html#deadlines",
+    "title": "Deadline information",
+    "section": "Deadlines",
+    "text": "Deadlines\n\nWeek 9: Interim report submitted\nWeek 11/12: Feedback on progress so far\nWeek 18: Practical work finished\nWeek 19/20: Analysis of results finished. Start of report write up. Results presented\nWeek 22: Final reports submitted\nWeek 24/25: Final interviews"
+  },
+  {
+    "objectID": "activity_log/landing.html",
+    "href": "activity_log/landing.html",
+    "title": "Activity log",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNhat \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "literature_notes/landing.html",
+    "href": "literature_notes/landing.html",
+    "title": "Literature notes",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 29, 2023\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\nSoto, Golestanian\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   }
 ]

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Soto, Golestanian">
-<meta name="dcterms.date" content="2023-09-29">
+<meta name="author" content="Gompper, Winkler">
+<meta name="dcterms.date" content="2023-10-04">
 
-<title>Dissipation Learning in Active Matter - Run-and-tumble dynamics in a crowded environment: PEP for swimmers</title>
+<title>Dissipation Learning in Active Matter - 2020 Motile Active Matter Introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -167,7 +165,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#the-model" id="toc-the-model" class="nav-link active" data-scroll-target="#the-model">The model</a></li>
+  <li><a href="#general-principles-and-methods" id="toc-general-principles-and-methods" class="nav-link active" data-scroll-target="#general-principles-and-methods">General principles and methods</a></li>
+  <li><a href="#micronano-swimmers" id="toc-micronano-swimmers" class="nav-link" data-scroll-target="#micronano-swimmers">Micro/nano swimmers</a></li>
+  <li><a href="#synthetic-micronano-machines" id="toc-synthetic-micronano-machines" class="nav-link" data-scroll-target="#synthetic-micronano-machines">Synthetic micro/nano machines</a></li>
+  <li><a href="#swarming" id="toc-swarming" class="nav-link" data-scroll-target="#swarming">Swarming</a></li>
   </ul>
 </nav>
     </div>
@@ -176,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</h1>
+<h1 class="title">2020 Motile Active Matter Introduction</h1>
 </div>
 
 
@@ -186,14 +187,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Soto, Golestanian </p>
+             <p>Gompper, Winkler </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 29, 2023</p>
+      <p class="date">October 4, 2023</p>
     </div>
   </div>
   
@@ -203,38 +204,35 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="the-model" class="level2">
-<h2 class="anchored" data-anchor-id="the-model">The model</h2>
-<p>The model is asynchronous and stochastic.</p>
-<p>Particles in the <strong>run</strong> phase characterised by <strong>direction</strong>:</p>
+<section id="general-principles-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="general-principles-and-methods">General principles and methods</h2>
+<p>Theories of active matter have to be constructed on the basis of symmetries, conservation laws, and dynamic rules.</p>
+<p>Methods involved simulations, field-theoretical methods, dynamic density-functional theory.</p>
+</section>
+<section id="micronano-swimmers" class="level2">
+<h2 class="anchored" data-anchor-id="micronano-swimmers">Micro/nano swimmers</h2>
+<p>Biological swimmers can employ cilia or flagella or changes in body shape to propel to towards a target.</p>
+<p>Additionally, another point of interest would be search strategies: like <strong>chemotaxis</strong> (orientation/movement away or from stimulus, along a chemical concentration gradien) and <strong>photoaxis</strong> (orientation/movement away or from light).</p>
 <ul>
-<li><code>(left,right)</code> in 1D</li>
-<li><code>(left,right,up,down)</code> in 2D</li>
+<li>How small a swimmer can be to still display directed motion?</li>
 </ul>
-<p>A total number of particles <span class="math inline">\(M = \phi N\)</span> where <span class="math inline">\(\phi\)</span> is the particle concentration and <span class="math inline">\(N\)</span> is the total number of sites.</p>
-<p>Each particle moves in a random direction, with probability <span class="math inline">\(\alpha\)</span> to undergo <strong>tumbling</strong>.</p>
-<p>If the neighbouring site that it’s pointing towards (the value of the <strong>director</strong>) is not fully occupied, it moves into this new position.</p>
-<p>At each step, particles can be chosen more than once, and <span class="math inline">\(M\)</span> particles are chosen on average.</p>
-<p>Non-equilibrium feature (in the limit of infinite dilution): each particle stays in <strong>run</strong> mode for periods of time that are geometrically distributed with an average of <span class="math inline">\(\alpha^{-1}\)</span>, then undergoes a <strong>tumble</strong>.</p>
-<p><strong>Jamming</strong> happens when two particles moving on the same track but in opposite directions. This creates a <strong>cluster seed</strong>.</p>
-<p>Effects at <span class="math inline">\(\alpha = 0\)</span></p>
+</section>
+<section id="synthetic-micronano-machines" class="level2">
+<h2 class="anchored" data-anchor-id="synthetic-micronano-machines">Synthetic micro/nano machines</h2>
+<p><strong>Various strategies for autonomous machines</strong></p>
+<p>Diffusiophoresis - motion of species A in response to the concentration gradient of species B (both in a colloid)</p>
+<p>Thermophoresis - motion in mixture of particles along temperature gradient.</p>
+<p>An important model to study collective motion far from equilibrium: a mixtrue of semiflexible polar filaments and motor proteins.</p>
+<p>Active nematic theory (??) is fruitful in modelling many observed phenomena.</p>
+</section>
+<section id="swarming" class="level2">
+<h2 class="anchored" data-anchor-id="swarming">Swarming</h2>
+<p>Interests in observing reaction of swarms to external signals.</p>
 <ul>
-<li>All particles become jammed.</li>
-<li>Particles cluster together until there are no more isolated particles.</li>
+<li>Reaction of bird flocks to predators</li>
+<li>Algae in gravitational field</li>
 </ul>
-<p>Effects at <span class="math inline">\(\alpha \neq 0\)</span></p>
-<ul>
-<li>The system forms clusters that coexist.</li>
-<li>The clusters stay immobile, so there is no merging or splitting.</li>
-<li>There is now cluster dynamics with the following processes:
-<ol type="1">
-<li>Formation of cluster by two particle colliding</li>
-</ol></li>
-</ul>
-<ol start="2" type="1">
-<li>Absorption of moving particles at cluster boundaries</li>
-<li>Particle evaporation at the boundaries</li>
-</ol>
+<p>Interests in light control of synthetic systems</p>
 
 
 </section>

@@ -4,14 +4,35 @@
     "href": "literature_notes/run-and-tumble.html",
     "title": "Run-and-tumble dynamics in a crowded environment: PEP for swimmers",
     "section": "",
-    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
+    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\n\n\n\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
   },
   {
     "objectID": "literature_notes/run-and-tumble.html#the-model",
     "href": "literature_notes/run-and-tumble.html#the-model",
     "title": "Run-and-tumble dynamics in a crowded environment: PEP for swimmers",
     "section": "",
-    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
+    "text": "The model is asynchronous and stochastic.\nParticles in the run phase characterised by direction:\n\n(left,right) in 1D\n(left,right,up,down) in 2D\n\nA total number of particles \\(M = \\phi N\\) where \\(\\phi\\) is the particle concentration and \\(N\\) is the total number of sites.\nEach particle moves in a random direction, with probability \\(\\alpha\\) to undergo tumbling.\nIf the neighbouring site that it’s pointing towards (the value of the director) is not fully occupied, it moves into this new position.\nAt each step, particles can be chosen more than once, and \\(M\\) particles are chosen on average.\nNon-equilibrium feature (in the limit of infinite dilution): each particle stays in run mode for periods of time that are geometrically distributed with an average of \\(\\alpha^{-1}\\), then undergoes a tumble.\nJamming happens when two particles moving on the same track but in opposite directions. This creates a cluster seed.\nEffects at \\(\\alpha = 0\\)\n\nAll particles become jammed.\nParticles cluster together until there are no more isolated particles.\n\nEffects at \\(\\alpha \\neq 0\\)\n\nThe system forms clusters that coexist.\nThe clusters stay immobile, so there is no merging or splitting.\nThere is now cluster dynamics with the following processes:\n\nFormation of cluster by two particle colliding\n\n\n\nAbsorption of moving particles at cluster boundaries\nParticle evaporation at the boundaries"
+  },
+  {
+    "objectID": "literature_notes/active-brownian-particles.html",
+    "href": "literature_notes/active-brownian-particles.html",
+    "title": "Active Brownian particles: from collective phenomona to fundamental physics",
+    "section": "",
+    "text": "Janus particles\nActive Brownian particles (ABPs)\nColloidal particles\nWhat’s common to both propulsion mechanisms is that they are break detailed balance (irreversible?) by receiving an input of free energy that eventually gets dissipated into the environment."
+  },
+  {
+    "objectID": "literature_notes/active-brownian-particles.html#concepts",
+    "href": "literature_notes/active-brownian-particles.html#concepts",
+    "title": "Active Brownian particles: from collective phenomona to fundamental physics",
+    "section": "",
+    "text": "Janus particles\nActive Brownian particles (ABPs)\nColloidal particles\nWhat’s common to both propulsion mechanisms is that they are break detailed balance (irreversible?) by receiving an input of free energy that eventually gets dissipated into the environment."
+  },
+  {
+    "objectID": "literature_notes/active-brownian-particles.html#mips",
+    "href": "literature_notes/active-brownian-particles.html#mips",
+    "title": "Active Brownian particles: from collective phenomona to fundamental physics",
+    "section": "MIPS",
+    "text": "MIPS\n\nMotility-induced phase separation\nSelf-propelled particles aggregate into clusters even in the absence of cohensive forces.\n\nThe mechanism is dynamic feedback between speed and density\n\nExploiting the directed motion of synthetic active particles to convert chemical free energy (released by hydrogen peroxide) into mechanical work."
   },
   {
     "objectID": "activity_log/week_1.html",
@@ -116,13 +137,48 @@
     "href": "activity_log/landing.html",
     "title": "Activity log",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNhat \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 28, 2023\n\n\nWeek 1\n\n\nNP \n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "literature_notes/motile-active-matter-intro.html",
+    "href": "literature_notes/motile-active-matter-intro.html",
+    "title": "2020 Motile Active Matter Introduction",
+    "section": "",
+    "text": "Theories of active matter have to be constructed on the basis of symmetries, conservation laws, and dynamic rules.\nMethods involved simulations, field-theoretical methods, dynamic density-functional theory."
+  },
+  {
+    "objectID": "literature_notes/motile-active-matter-intro.html#general-principles-and-methods",
+    "href": "literature_notes/motile-active-matter-intro.html#general-principles-and-methods",
+    "title": "2020 Motile Active Matter Introduction",
+    "section": "",
+    "text": "Theories of active matter have to be constructed on the basis of symmetries, conservation laws, and dynamic rules.\nMethods involved simulations, field-theoretical methods, dynamic density-functional theory."
+  },
+  {
+    "objectID": "literature_notes/motile-active-matter-intro.html#micronano-swimmers",
+    "href": "literature_notes/motile-active-matter-intro.html#micronano-swimmers",
+    "title": "2020 Motile Active Matter Introduction",
+    "section": "Micro/nano swimmers",
+    "text": "Micro/nano swimmers\nBiological swimmers can employ cilia or flagella or changes in body shape to propel to towards a target.\nAdditionally, another point of interest would be search strategies: like chemotaxis (orientation/movement away or from stimulus, along a chemical concentration gradien) and photoaxis (orientation/movement away or from light).\n\nHow small a swimmer can be to still display directed motion?"
+  },
+  {
+    "objectID": "literature_notes/motile-active-matter-intro.html#synthetic-micronano-machines",
+    "href": "literature_notes/motile-active-matter-intro.html#synthetic-micronano-machines",
+    "title": "2020 Motile Active Matter Introduction",
+    "section": "Synthetic micro/nano machines",
+    "text": "Synthetic micro/nano machines\nVarious strategies for autonomous machines\nDiffusiophoresis - motion of species A in response to the concentration gradient of species B (both in a colloid)\nThermophoresis - motion in mixture of particles along temperature gradient.\nAn important model to study collective motion far from equilibrium: a mixtrue of semiflexible polar filaments and motor proteins.\nActive nematic theory (??) is fruitful in modelling many observed phenomena."
+  },
+  {
+    "objectID": "literature_notes/motile-active-matter-intro.html#swarming",
+    "href": "literature_notes/motile-active-matter-intro.html#swarming",
+    "title": "2020 Motile Active Matter Introduction",
+    "section": "Swarming",
+    "text": "Swarming\nInterests in observing reaction of swarms to external signals.\n\nReaction of bird flocks to predators\nAlgae in gravitational field\n\nInterests in light control of synthetic systems"
   },
   {
     "objectID": "literature_notes/landing.html",
     "href": "literature_notes/landing.html",
     "title": "Literature notes",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 29, 2023\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\nSoto, Golestanian\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nSep 29, 2023\n\n\nRun-and-tumble dynamics in a crowded environment: PEP for swimmers\n\n\nSoto, Golestanian\n\n\n\n\nOct 4, 2023\n\n\nActive Brownian particles: from collective phenomona to fundamental physics\n\n\nGompper, Winkler\n\n\n\n\nOct 4, 2023\n\n\n2020 Motile Active Matter Introduction\n\n\nGompper, Winkler\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   }
 ]

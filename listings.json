@@ -8,7 +8,9 @@
   {
     "listing": "/literature_notes/landing.html",
     "items": [
-      "/literature_notes/run-and-tumble.html"
+      "/literature_notes/run-and-tumble.html",
+      "/literature_notes/active-brownian-particles.html",
+      "/literature_notes/motile-active-matter-intro.html"
     ]
   }
 ]

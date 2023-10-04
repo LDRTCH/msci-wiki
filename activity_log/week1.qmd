@@ -1,0 +1,131 @@
+# Week 1 Goals
+The main goal of week 1 is to get an introductory grasp of the literature regarding active matter.
+The secondary goal of week 2 is to set up a communication method for sharing files and information easily throughout this project.
+
+Taking information from the following articles:
+I. The 2020 motile active roadmap
+	a. Introduction
+	b.
+
+<h2> I. The 2020 motile active roadmap, Gompper et al. </h2>
+	
+<h4>a. Introduction, Gompper & Roland </h4>
+
+Active matter is a class of nonequilibrium systems composed of a large number of autonomous agents
+
+- persistently out of equilibrium (constituents continuously consume energy)
+
+	- absence of equilibrium concepts
+
+		- detailed balance
+
+		- Gibbs ensemble & free energy
+
+		- time-reversal symmetry
+
+- therefore theories must be constructed on:
+
+	- symmetries:
+
+		- polar shape (regarding polarity of molecules)
+
+		- nematic shape (regarding molecules that are aligned loosely parallel)
+
+		- interactions of agents
+
+	- conservation laws
+
+	- dynamic rules
+
+- examples are agent-based standard models
+
+	- <b>active Brownian particles</b>
+
+	- squirmers
+	(complemented by continuum field theory)
+
+- aim is creation of artificial active matter (synthetic micro/nanomachines)
+
+	- look to biological active matter
+
+		- propulsion mechanisms (rotation, translation and periodic altering of shape)
+
+			- cilia
+
+			- flagella
+
+		- navigation strategies
+
+			- chemotaxis: movement/orientation along chemical concentration gradient (toward or away from stimulus)
+
+			- phototaxis: movement/orientation towards or away from light
+
+		(what is the scale lower limit of such behaviour?)
+
+	- as such, suggested synthetic micro/nanomachines can utilise:
+
+		- phoresis
+
+			- diffusiophoresis: motion of species A in response to concentration gradient in colloidal species B
+
+			- thermophoresis: motion in mixture of particles along temperature gradient (tendency of light molecules to hot and heavy particles to cold)
+
+- swarming: spontaneous self-organisation of active agents in large numbers -> emergent coordinated collective motion on various length scales
+
+	- determined by
+
+		- agent shape
+
+		- steric interactions
+
+		- sensing
+
+		- fluctuations
+
+		- environmentally-mediated interactions
+
+		novel phenomena:
+
+		- motility-induced phase separation
+
+		- active turbulence
+
+<h4>b. Active Brownian particles: from collective phenomena to fundamental physics, Speck</h4>
+
+Active matter makes use of "persistence of motion"; locally broken symmetry, rather than a global preferred direction.
+
+Synthetic active matter employs particle shape, ultrasound, etc. to facilitate movement.
+
+**Janus particles** as important experimental strategy of locomotion: two hemispheres with different surface properties. Example: **colloidal particles**
+
+- solvent containing H2O2
+
+- coat one hemisphere in catalyst for H2O2
+
+- resulting local concentration leads to individual particle propulsion along symmetry axis
+	
+	- axis undergoes rotational diffusion due to fluctuation
+	
+		- single-particle trajectories with a *persistence length* analogous to polymers(?)
+		
+**Active Brownian Particles (ABPs)**
+
+- persistent motion
+
+- particle interactions
+
+	-short range
+	
+	-typically repulsive
+	
+- particles aggregate into clusters (even without cohesive forces)
+
+	- dynamic feedback between speed and density: motility-induced phase separation (MIPS)
+	
+	
+		
+		
+
+	
+
+

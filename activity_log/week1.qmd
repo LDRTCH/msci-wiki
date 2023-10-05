@@ -3,9 +3,14 @@ The main goal of week 1 is to get an introductory grasp of the literature regard
 The secondary goal of week 2 is to set up a communication method for sharing files and information easily throughout this project.
 
 Taking information from the following articles:
+
 I. The 2020 motile active roadmap
-	a. Introduction
-	b.
+
+a. Introduction
+	
+b. Active Brownian particles: from collective phenomena to fundamental physics
+
+II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers
 
 <h2> I. The 2020 motile active roadmap, Gompper et al. </h2>
 	
@@ -114,14 +119,28 @@ Synthetic active matter employs particle shape, ultrasound, etc. to facilitate m
 
 - particle interactions
 
-	-short range
+	- short range
 	
-	-typically repulsive
+	- typically repulsive
 	
 - particles aggregate into clusters (even without cohesive forces)
 
 	- dynamic feedback between speed and density: motility-induced phase separation (MIPS)
 	
+## II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers, Soto & Golestanian
+
+Bacteria biofilms constitute development into multicellular communities through aggregation; exhibit novel properties:
+
+- differentiation
+	
+- delegation of function
+	
+Free bacteria, upon interacting with surfaces, adapt to the new conditions by adopting different motility modes
+
+- by contrast, biofilms can **nucleate** when a number of bacteria settle down near a surface and become <b>completely localised</b>
+		
+	- [nucleation](https://en.wikipedia.org/wiki/Nucleation): first step in formation of a new thermodynamic phase or structure via self-assembly/self-organisation within a substance or mixture
+		
 	
 		
 		

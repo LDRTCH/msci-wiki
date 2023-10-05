@@ -5,7 +5,7 @@ project:
 website:
   back-to-top-navigation: true
   page-footer:
-    center: "Made with Quarto"
+    center: "Made with Quarto (cp branch)"
   sidebar:
     search: true
     style: "docked"
@@ -14,7 +14,6 @@ website:
         icon: person-fill
         contents:
           - activity_log/landing.qmd
-          - literature_notes/landing.qmd
       - section: "Shared"
         icon: diagram-3-fill
       - text: "Zotero library"
@@ -23,10 +22,8 @@ website:
     tools:
       - icon: git
         menu:
-          - text: "Codeberg mirror"
-            href: "https://codeberg.org/lckdscl/msci-wiki"
           - text: "GitHub mirror"
-            href: "https://github.com/mstcl/msci-wiki"
+            href: "https://github.com/ldrtch/msci-wiki"
 
 format:
   html:
@@ -38,6 +35,7 @@ format:
     html-math-method: mathjax
     anchor-sections: true
     smooth-scroll: true
-    theme: zephyr
+    theme: cyborg
     mainfont: sans-serif
+    linkcolor: rgb(220,0,0)
 jupyter: python3

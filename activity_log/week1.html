@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Soto, Golestanian">
-<meta name="dcterms.date" content="2023-09-29">
 
-<title>Dissipation Learning in Active Matter - Run-and-tumble dynamics in a crowded environment: PEP for swimmers</title>
+<title>Dissipation Learning in Active Matter – week1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +61,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -167,76 +163,156 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#the-model" id="toc-the-model" class="nav-link active" data-scroll-target="#the-model">The model</a></li>
+  <li><a href="#week-1-goals" id="toc-week-1-goals" class="nav-link active" data-scroll-target="#week-1-goals">Week 1 Goals</a>
+  <ul class="collapse">
+  <li><a href="#ii.-run-and-tumble-dynamics-in-a-crowded-environment-persistent-exclusion-process-for-swimmers-soto-golestanian" id="toc-ii.-run-and-tumble-dynamics-in-a-crowded-environment-persistent-exclusion-process-for-swimmers-soto-golestanian" class="nav-link" data-scroll-target="#ii.-run-and-tumble-dynamics-in-a-crowded-environment-persistent-exclusion-process-for-swimmers-soto-golestanian">II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers, Soto &amp; Golestanian</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Soto, Golestanian </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 29, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="the-model" class="level2">
-<h2 class="anchored" data-anchor-id="the-model">The model</h2>
-<p>The model is asynchronous and stochastic.</p>
-<p>Particles in the <strong>run</strong> phase characterised by <strong>direction</strong>:</p>
-<ul>
-<li><code>(left,right)</code> in 1D</li>
-<li><code>(left,right,up,down)</code> in 2D</li>
-</ul>
-<p>A total number of particles <span class="math inline">\(M = \phi N\)</span> where <span class="math inline">\(\phi\)</span> is the particle concentration and <span class="math inline">\(N\)</span> is the total number of sites.</p>
-<p>Each particle moves in a random direction, with probability <span class="math inline">\(\alpha\)</span> to undergo <strong>tumbling</strong>.</p>
-<p>If the neighbouring site that it’s pointing towards (the value of the <strong>director</strong>) is not fully occupied, it moves into this new position.</p>
-<p>At each step, particles can be chosen more than once, and <span class="math inline">\(M\)</span> particles are chosen on average.</p>
-<p>Non-equilibrium feature (in the limit of infinite dilution): each particle stays in <strong>run</strong> mode for periods of time that are geometrically distributed with an average of <span class="math inline">\(\alpha^{-1}\)</span>, then undergoes a <strong>tumble</strong>.</p>
-<p><strong>Jamming</strong> happens when two particles moving on the same track but in opposite directions. This creates a <strong>cluster seed</strong>.</p>
-<p>Effects at <span class="math inline">\(\alpha = 0\)</span></p>
-<ul>
-<li>All particles become jammed.</li>
-<li>Particles cluster together until there are no more isolated particles.</li>
-</ul>
-<p>Effects at <span class="math inline">\(\alpha \neq 0\)</span></p>
-<ul>
-<li>The system forms clusters that coexist.</li>
-<li>The clusters stay immobile, so there is no merging or splitting.</li>
-<li>There is now cluster dynamics with the following processes:
-<ol type="1">
-<li>Formation of cluster by two particle colliding</li>
-</ol></li>
-</ul>
-<ol start="2" type="1">
-<li>Absorption of moving particles at cluster boundaries</li>
-<li>Particle evaporation at the boundaries</li>
+<section id="week-1-goals" class="level1">
+<h1>Week 1 Goals</h1>
+<p>The main goal of week 1 is to get an introductory grasp of the literature regarding active matter. The secondary goal of week 2 is to set up a communication method for sharing files and information easily throughout this project.</p>
+<p>Taking information from the following articles:</p>
+<p>I. The 2020 motile active roadmap</p>
+<ol type="a">
+<li><p>Introduction</p></li>
+<li><p>Active Brownian particles: from collective phenomena to fundamental physics</p></li>
 </ol>
+<ol start="2" type="I">
+<li>Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers</li>
+</ol>
+<h2 class="anchored" data-anchor-id="week-1-goals">
+I. The 2020 motile active roadmap, Gompper et al.&nbsp;
+</h2>
+<h4 class="anchored">
+<ol type="a">
+<li>Introduction, Gompper &amp; Roland
+</li></ol></h4>
+
+<p>Active matter is a class of nonequilibrium systems composed of a large number of autonomous agents</p>
+<ul>
+<li><p>persistently out of equilibrium (constituents continuously consume energy)</p>
+<ul>
+<li><p>absence of equilibrium concepts</p>
+<ul>
+<li><p>detailed balance</p></li>
+<li><p>Gibbs ensemble &amp; free energy</p></li>
+<li><p>time-reversal symmetry</p></li>
+</ul></li>
+</ul></li>
+<li><p>therefore theories must be constructed on:</p>
+<ul>
+<li><p>symmetries:</p>
+<ul>
+<li><p>polar shape (regarding polarity of molecules)</p></li>
+<li><p>nematic shape (regarding molecules that are aligned loosely parallel)</p></li>
+<li><p>interactions of agents</p></li>
+</ul></li>
+<li><p>conservation laws</p></li>
+<li><p>dynamic rules</p></li>
+</ul></li>
+<li><p>examples are agent-based standard models</p>
+<ul>
+<li><p><b>active Brownian particles</b></p></li>
+<li><p>squirmers (complemented by continuum field theory)</p></li>
+</ul></li>
+<li><p>aim is creation of artificial active matter (synthetic micro/nanomachines)</p>
+<ul>
+<li><p>look to biological active matter</p>
+<ul>
+<li><p>propulsion mechanisms (rotation, translation and periodic altering of shape)</p>
+<ul>
+<li><p>cilia</p></li>
+<li><p>flagella</p></li>
+</ul></li>
+<li><p>navigation strategies</p>
+<ul>
+<li><p>chemotaxis: movement/orientation along chemical concentration gradient (toward or away from stimulus)</p></li>
+<li><p>phototaxis: movement/orientation towards or away from light</p></li>
+</ul></li>
+</ul>
+<p>(what is the scale lower limit of such behaviour?)</p></li>
+<li><p>as such, suggested synthetic micro/nanomachines can utilise:</p>
+<ul>
+<li><p>phoresis</p>
+<ul>
+<li><p>diffusiophoresis: motion of species A in response to concentration gradient in colloidal species B</p></li>
+<li><p>thermophoresis: motion in mixture of particles along temperature gradient (tendency of light molecules to hot and heavy particles to cold)</p></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>swarming: spontaneous self-organisation of active agents in large numbers -&gt; emergent coordinated collective motion on various length scales</p>
+<ul>
+<li><p>determined by</p>
+<ul>
+<li><p>agent shape</p></li>
+<li><p>steric interactions</p></li>
+<li><p>sensing</p></li>
+<li><p>fluctuations</p></li>
+<li><p>environmentally-mediated interactions</p></li>
+</ul>
+<p>novel phenomena:</p>
+<ul>
+<li><p>motility-induced phase separation</p></li>
+<li><p>active turbulence</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 class="anchored">
+<ol start="2" type="a">
+<li>Active Brownian particles: from collective phenomena to fundamental physics, Speck
+</li></ol></h4>
+
+<p>Active matter makes use of “persistence of motion”; locally broken symmetry, rather than a global preferred direction.</p>
+<p>Synthetic active matter employs particle shape, ultrasound, etc. to facilitate movement.</p>
+<p><strong>Janus particles</strong> as important experimental strategy of locomotion: two hemispheres with different surface properties. Example: <strong>colloidal particles</strong></p>
+<ul>
+<li><p>solvent containing H2O2</p></li>
+<li><p>coat one hemisphere in catalyst for H2O2</p></li>
+<li><p>resulting local concentration leads to individual particle propulsion along symmetry axis</p>
+<ul>
+<li><p>axis undergoes rotational diffusion due to fluctuation</p>
+<ul>
+<li>single-particle trajectories with a <em>persistence length</em> analogous to polymers(?)</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Active Brownian Particles (ABPs)</strong></p>
+<ul>
+<li><p>persistent motion</p></li>
+<li><p>particle interactions</p>
+<ul>
+<li><p>short range</p></li>
+<li><p>typically repulsive</p></li>
+</ul></li>
+<li><p>particles aggregate into clusters (even without cohesive forces)</p>
+<ul>
+<li>dynamic feedback between speed and density: motility-induced phase separation (MIPS)</li>
+</ul></li>
+</ul>
+<section id="ii.-run-and-tumble-dynamics-in-a-crowded-environment-persistent-exclusion-process-for-swimmers-soto-golestanian" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-run-and-tumble-dynamics-in-a-crowded-environment-persistent-exclusion-process-for-swimmers-soto-golestanian">II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers, Soto &amp; Golestanian</h2>
+<p>Bacteria biofilms constitute development into multicellular communities through aggregation; exhibit novel properties:</p>
+<ul>
+<li><p>differentiation</p></li>
+<li><p>delegation of function</p></li>
+</ul>
+<p>Free bacteria, upon interacting with surfaces, adapt to the new conditions by adopting different motility modes</p>
+<ul>
+<li><p>by contrast, biofilms can <strong>nucleate</strong> when a number of bacteria settle down near a surface and become <b>completely localised</b></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Nucleation">nucleation</a>: first step in formation of a new thermodynamic phase or structure via self-assembly/self-organisation within a substance or mixture</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

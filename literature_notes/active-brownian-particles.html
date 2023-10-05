@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Soto, Golestanian">
-<meta name="dcterms.date" content="2023-09-29">
+<meta name="author" content="Gompper, Winkler">
+<meta name="dcterms.date" content="2023-10-04">
 
-<title>Dissipation Learning in Active Matter - Run-and-tumble dynamics in a crowded environment: PEP for swimmers</title>
+<title>Dissipation Learning in Active Matter - Active Brownian particles: from collective phenomona to fundamental physics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -167,7 +165,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#the-model" id="toc-the-model" class="nav-link active" data-scroll-target="#the-model">The model</a></li>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts">Concepts</a></li>
+  <li><a href="#mips" id="toc-mips" class="nav-link" data-scroll-target="#mips">MIPS</a></li>
+  <li><a href="#light-driven-propulsion" id="toc-light-driven-propulsion" class="nav-link" data-scroll-target="#light-driven-propulsion">Light-driven propulsion</a></li>
   </ul>
 </nav>
     </div>
@@ -176,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Run-and-tumble dynamics in a crowded environment: PEP for swimmers</h1>
+<h1 class="title">Active Brownian particles: from collective phenomona to fundamental physics</h1>
 </div>
 
 
@@ -186,14 +186,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Soto, Golestanian </p>
+             <p>Gompper, Winkler </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 29, 2023</p>
+      <p class="date">October 4, 2023</p>
     </div>
   </div>
   
@@ -203,38 +203,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="the-model" class="level2">
-<h2 class="anchored" data-anchor-id="the-model">The model</h2>
-<p>The model is asynchronous and stochastic.</p>
-<p>Particles in the <strong>run</strong> phase characterised by <strong>direction</strong>:</p>
+<section id="concepts" class="level2">
+<h2 class="anchored" data-anchor-id="concepts">Concepts</h2>
 <ul>
-<li><code>(left,right)</code> in 1D</li>
-<li><code>(left,right,up,down)</code> in 2D</li>
+<li>Janus particles</li>
+<li>Active Brownian particles (ABPs)</li>
+<li>Colloidal particles</li>
+<li>What’s common to both propulsion mechanisms is that they are break detailed balance (irreversible?) by receiving an input of free energy that eventually gets dissipated into the environment.</li>
 </ul>
-<p>A total number of particles <span class="math inline">\(M = \phi N\)</span> where <span class="math inline">\(\phi\)</span> is the particle concentration and <span class="math inline">\(N\)</span> is the total number of sites.</p>
-<p>Each particle moves in a random direction, with probability <span class="math inline">\(\alpha\)</span> to undergo <strong>tumbling</strong>.</p>
-<p>If the neighbouring site that it’s pointing towards (the value of the <strong>director</strong>) is not fully occupied, it moves into this new position.</p>
-<p>At each step, particles can be chosen more than once, and <span class="math inline">\(M\)</span> particles are chosen on average.</p>
-<p>Non-equilibrium feature (in the limit of infinite dilution): each particle stays in <strong>run</strong> mode for periods of time that are geometrically distributed with an average of <span class="math inline">\(\alpha^{-1}\)</span>, then undergoes a <strong>tumble</strong>.</p>
-<p><strong>Jamming</strong> happens when two particles moving on the same track but in opposite directions. This creates a <strong>cluster seed</strong>.</p>
-<p>Effects at <span class="math inline">\(\alpha = 0\)</span></p>
+</section>
+<section id="mips" class="level2">
+<h2 class="anchored" data-anchor-id="mips">MIPS</h2>
 <ul>
-<li>All particles become jammed.</li>
-<li>Particles cluster together until there are no more isolated particles.</li>
-</ul>
-<p>Effects at <span class="math inline">\(\alpha \neq 0\)</span></p>
+<li>Motility-induced phase separation</li>
+<li>Self-propelled particles aggregate into clusters even in the absence of cohensive forces.
 <ul>
-<li>The system forms clusters that coexist.</li>
-<li>The clusters stay immobile, so there is no merging or splitting.</li>
-<li>There is now cluster dynamics with the following processes:
-<ol type="1">
-<li>Formation of cluster by two particle colliding</li>
-</ol></li>
+<li>The mechanism is dynamic feedback between speed and density</li>
+</ul></li>
+<li>Exploiting the directed motion of synthetic active particles to convert chemical free energy (released by hydrogen peroxide) into mechanical work.</li>
 </ul>
-<ol start="2" type="1">
-<li>Absorption of moving particles at cluster boundaries</li>
-<li>Particle evaporation at the boundaries</li>
-</ol>
+</section>
+<section id="light-driven-propulsion" class="level1">
+<h1>Light-driven propulsion</h1>
+<ul>
+<li><p>Using illumination patterns to guide particles towards target regions.</p>
+<ul>
+<li>This is faster than passive diffusion.</li>
+</ul></li>
+<li><p>Using quorum sensing (members of population excreting signalling molecules to create non-uniform concentration profile) in synthetic active particles to achieve aggregation at low densities.</p></li>
+<li><p>Main interest is the emergent collective behaviour for a given model</p>
+<ul>
+<li>But the <strong>inverse</strong> problem is also interesting: we can determine rules that lead to a desired target state.</li>
+<li>In passive matter, this is done through coarse-graining.</li>
+<li>In non-equilibrium active systems, this is mainly missing, but the deployment of machine learning concepts is predicted.</li>
+</ul></li>
+</ul>
 
 
 </section>

@@ -1,14 +1,17 @@
 [
   {
-    "listing": "/activity_log/landing.html",
+    "listing": "/literature_notes/landing.html",
     "items": [
-      "/activity_log/week_1.html"
+      "/literature_notes/run-and-tumble.html",
+      "/literature_notes/active-brownian-particles.html",
+      "/literature_notes/motile-active-matter-intro.html"
     ]
   },
   {
-    "listing": "/literature_notes/landing.html",
+    "listing": "/activity_log/landing.html",
     "items": [
-      "/literature_notes/run-and-tumble.html"
+      "/activity_log/week_1.html",
+      "/activity_log/week1.html"
     ]
   }
 ]

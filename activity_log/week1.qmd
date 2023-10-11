@@ -1,6 +1,53 @@
-# Week 1 Goals
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+
+# Week 1
+
+### 0. Table of Contents
+
+0. Table of Contents
+1. Goals
+2. Communication/Recording Method
+3. Information Gathering
+
+### 1. Goals
+
 The main goal of week 1 is to get an introductory grasp of the literature regarding active matter.
-The secondary goal of week 2 is to set up a communication method for sharing files and information easily throughout this project.
+
+The secondary goal of week 1 is to set up a communication and recording method for sharing files and information easily throughout this project.
+
+### 2. Communication/Recording Method
+
+Communication is done through a github repository. Both myself and my lab partner have personal branches: cp and np respectively. I will try to stick to the convention of referencing my contributions in github commits and code comments as "cp". We also have a shared branch, where we upload collective work. Per the demands of this assignment, all progress will be documented individually, despite the collaborative nature of the project. There may therefore be repeats between the activity log and various files in the shared branch; wherever possible, the shared folder will be referenced rather than copied (such as the storing of programs and data).
+
+There is also the individual gh-pages branch, which hosts a github website which should contain both shared and individual work. This may be the cleanest method of accessing the activity log, though presumably an exported pdf will be required for examination. Nonetheless, I link (embedded) all the relevant pages below:
+
+- [github repository](https://github.com/LDRTCH/msci-wiki) (note that this is private, so it requires an access invite)
+
+- [website landing page](https://ldrtch.github.io/msci-wiki/)
+
+	- [personal activity log](https://ldrtch.github.io/msci-wiki/activity_log/landing.html)
+
+There is also the matter of convention. We have set up weekly supervisor meetings on Thursday. As such, the way weeks are kept track of is slightly unconventional, purely for pragmatic reasons. Week 1, for instance, began on the first Thursday of the university year, and ended on the second Thursday of it. It might therefore seem strange to see major edits in the github repository for, say, the Week 2 activity log on Wednesday night in what would normally be called week 3. I will think of ways to make this easier to keep track of, but the system works for now. There will (hopefully) be an addendum to this paragraph if/when I clarify the record-keeping system.
+
+### 3. Information Gathering
 
 Taking information from the following articles:
 
@@ -12,9 +59,9 @@ b. Active Brownian particles: from collective phenomena to fundamental physics
 
 II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers
 
-<h2> I. The 2020 motile active roadmap, Gompper et al. </h2>
+#### I. The 2020 motile active roadmap, Gompper et al.
 	
-<h4>a. Introduction, Gompper & Roland </h4>
+#####a. Introduction, Gompper & Roland
 
 Active matter is a class of nonequilibrium systems composed of a large number of autonomous agents
 
@@ -95,7 +142,7 @@ Active matter is a class of nonequilibrium systems composed of a large number of
 
 		- active turbulence
 
-<h4>b. Active Brownian particles: from collective phenomena to fundamental physics, Speck</h4>
+##### b. Active Brownian particles: from collective phenomena to fundamental physics, Speck
 
 Active matter makes use of "persistence of motion"; locally broken symmetry, rather than a global preferred direction.
 
@@ -127,7 +174,7 @@ Synthetic active matter employs particle shape, ultrasound, etc. to facilitate m
 
 	- dynamic feedback between speed and density: motility-induced phase separation (MIPS)
 	
-## II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers, Soto & Golestanian
+#### II. Run-and-tumble dynamics in a crowded environment: Persistent exclusion process for swimmers, Soto & Golestanian
 
 Bacteria biofilms constitute development into multicellular communities through aggregation; exhibit novel properties:
 

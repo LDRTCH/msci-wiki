@@ -2,7 +2,9 @@
   {
     "listing": "/activity_log/landing.html",
     "items": [
-      "/activity_log/week1.html"
+      "/activity_log/backup/week2.html",
+      "/activity_log/week1.html",
+      "/activity_log/week2.html"
     ]
   }
 ]

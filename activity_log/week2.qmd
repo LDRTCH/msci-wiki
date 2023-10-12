@@ -98,9 +98,11 @@ The feature in active matter of converting stored and homogenously available ene
 
 <br>
 
-502 words.
-<br> 
+499 words.
+<br>
+
 #### References
+
 1. Active matter: quantifying the departure from equilibrium. Flenner & Szamel
 
 2. From Disorder to Order in Marching Locusts. Buhl et al. (2006)

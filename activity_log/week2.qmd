@@ -83,7 +83,7 @@ This is a 2004 paper experimentally confirming a solution to the convection-diff
 
 This is a 2020 paper examining active matter systems as they are moved further away from thermodynamic equilibrium.
 
-- the main motivational point here is that 
+- the main motivational point here is that quantifying departure from equilibrium helps understand the difference between active matter and equilibium systems, and thus can help chart generalised models of how they both work
 
 
 # 4. Motivation Report

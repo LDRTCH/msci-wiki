@@ -73,22 +73,31 @@ Note that this is a (relatively) simple algorithm: every particle has the same c
 Below are some GIF files with varying tumble speeds $P_{tumble}$ applied to the model. Note that the animation runs at 6 frames per second, and computes 50 frames total.
 
 ### $P_{tumble}=0.0005$
+
 [ptumble_0.0005](./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.0005.gif)
 
 The persistence length is so small here that almost all particles form into clusters.
+
 ### $P_{tumble}=0.001$
+
 [ptumble_0.001](./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.001.gif)
 
 The clustering is still noticeable here, but there are many more free particles roaming already (with a persistence length twice as big as the previous one).
+
 ### $P_{tumble}=0.01$
+
 [ptumble_0.01](./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.01.gif)
 
 Clusters are far less frequent, but still noticeable. This is a tenfold increase in persistence length compared to the previous case.
+
 ### $P_{tumble}=0.1$
+
 [ptumble_0.1](./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.1.gif)
 
 Barely any clusters form here, and when they do, it's only for a few frames.
+
 ### $P_{tumble}=0.33$
+
 [ptumble_0.33](./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.33.gif)
 
 There are no noticeable clusters.

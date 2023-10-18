@@ -189,6 +189,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#week-3" id="toc-week-3" class="nav-link active" data-scroll-target="#week-3">Week 3</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
+  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">1. Goals</a></li>
+  <li><a href="#configuring-bluecrystal4" id="toc-configuring-bluecrystal4" class="nav-link" data-scroll-target="#configuring-bluecrystal4">2. Configuring BlueCrystal4</a></li>
   <li><a href="#small-github-digression" id="toc-small-github-digression" class="nav-link" data-scroll-target="#small-github-digression">3. Small Github Digression</a></li>
   <li><a href="#persistent-exclusion-process-code" id="toc-persistent-exclusion-process-code" class="nav-link" data-scroll-target="#persistent-exclusion-process-code">4. Persistent Exclusion Process Code</a></li>
   <li><a href="#code-examination" id="toc-code-examination" class="nav-link" data-scroll-target="#code-examination">5. Code Examination</a></li>
@@ -219,7 +222,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 <section id="week-3" class="level1">
 <h1>Week 3</h1>
-<p>#0. Table of Contents</p>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>0. Table of Contents</h1>
 <ol start="0" type="1">
 <li>Table of Contents</li>
 <li>Goals</li>
@@ -228,11 +233,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Persistent Exclusion Process Code</li>
 <li>Code Examination</li>
 </ol>
-<p>#1. Goals</p>
+</section>
+<section id="goals" class="level1">
+<h1>1. Goals</h1>
 <p>The main aim of this week is to begin reproducing a simple active matter system in code. To this end, a suitable environment to work in must be found and utilised. For now we are primarily sticking to python.</p>
 <p>We have gained access to the Bristol supercomputers BlueCrystal4 and BluePebble (I have access to the former, my lab partner has access to the latter). We will attempt to apply the scripts to the supercomputers.</p>
 <p>In <a href="../activity_log/week2.html">Week 2</a> it was suggested that I would go more in depth in statistical analysis. This has been put aside for now, in the interest of getting a feel for how ABP simulations work in practice.</p>
-<p>#2. Configuring BlueCrystal4</p>
+</section>
+<section id="configuring-bluecrystal4" class="level1">
+<h1>2. Configuring BlueCrystal4</h1>
 <p>I already have access to BlueCrystal4 (BC4) due to one of my other modules. For that particular module, I am programming in C/C++; as such, I have already configured (installed and loaded) modules compatible with it. These modules are generally installed on a user instance, and loaded using the following bash command: <code>module load &lt;path&gt;</code>. For example, for loading the necessary files for Intel’s C/C++ compiler (icc), I use the following: <code>module load languages/intel/2020-u4</code>.</p>
 <p>The issue that arises is that, at least initially, we have decided to work in Python. While I plan to attempt to translate (and speed up) our later codes in C, it is preferable to agree on a shared language while we get our bearings (and Python is easier, for all its faults). I therefore need use both C and python modules; hopefully this will not cause conflicts as long as they are not loaded simultaneously. The loading can easily be done in the <code>.bashrc</code> script on the user home instance, which will keep the module loaded for any and all processes. This is inadvised in the BC4 user manual, however - like I said, conflicts can occur. It is much healthier and safer to instead load modules in the <code>.sh</code> script that will send a request to the job queue. This will be elaborated on later.</p>
 <p>You load/add modules with <code>module load</code> or <code>module add</code>. I have used the former for C and the latter for Python, though strictly to differentiate the two better. Below is a quick list of the different module commands I use:</p>
@@ -259,27 +268,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Below are some GIF files with varying tumble speeds <span class="math inline">\(P_{tumble}\)</span> applied to the model. Note that the animation runs at 6 frames per second, and computes 50 frames total.</p>
 <section id="p_tumble0.0005" class="level3">
 <h3 class="anchored" data-anchor-id="p_tumble0.0005"><span class="math inline">\(P_{tumble}=0.0005\)</span></h3>
-<p><a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.0005.gif">ptumble_0.0005</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.0005.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ptumble_0.0005</figcaption>
+</figure>
+</div>
 <p>The persistence length is so small here that almost all particles form into clusters.</p>
 </section>
 <section id="p_tumble0.001" class="level3">
 <h3 class="anchored" data-anchor-id="p_tumble0.001"><span class="math inline">\(P_{tumble}=0.001\)</span></h3>
-<p><a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.001.gif">ptumble_0.001</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.001.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ptumble_0.001</figcaption>
+</figure>
+</div>
 <p>The clustering is still noticeable here, but there are many more free particles roaming already (with a persistence length twice as big as the previous one).</p>
 </section>
 <section id="p_tumble0.01" class="level3">
 <h3 class="anchored" data-anchor-id="p_tumble0.01"><span class="math inline">\(P_{tumble}=0.01\)</span></h3>
-<p><a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.01.gif">ptumble_0.01</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.01.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ptumble_0.01</figcaption>
+</figure>
+</div>
 <p>Clusters are far less frequent, but still noticeable. This is a tenfold increase in persistence length compared to the previous case.</p>
 </section>
 <section id="p_tumble0.1" class="level3">
 <h3 class="anchored" data-anchor-id="p_tumble0.1"><span class="math inline">\(P_{tumble}=0.1\)</span></h3>
-<p><a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.1.gif">ptumble_0.1</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.1.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ptumble_0.1</figcaption>
+</figure>
+</div>
 <p>Barely any clusters form here, and when they do, it’s only for a few frames.</p>
 </section>
 <section id="p_tumble0.33" class="level3">
 <h3 class="anchored" data-anchor-id="p_tumble0.33"><span class="math inline">\(P_{tumble}=0.33\)</span></h3>
-<p><a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.33.gif">ptumble_0.33</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.33.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ptumble_0.33</figcaption>
+</figure>
+</div>
 <p>There are no noticeable clusters.</p>
 <p>Note that if <span class="math inline">\(P_{tumble}=1\)</span>, there is no autonomous activity within the system. In other words, particles exercise simple inertial movement in frictionless environment.</p>
 </section>
@@ -324,6 +358,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-3-files/2D-to-1D-array.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">2D to 1D array sketch example</figcaption>
+</figure>
+</div>
 
 
 </section>

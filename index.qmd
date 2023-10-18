@@ -6,3 +6,4 @@ title: "Home"
 
 - [Deadlines](./shared/deadlines.qmd)
 - [Repository information](./shared/repo.qmd)
+- [Commands Information](./shared/gitinfo.qmd)

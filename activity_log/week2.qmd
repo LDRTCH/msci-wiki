@@ -39,7 +39,7 @@ Above is a table of contents. Below is a list of a few of the utilised texts, wi
 # 2. Deadline Schedule
 
 - Week 1: Start of project
-- Week 9: Optional interim report submitted. Formative only. Deadline is Thursday 23th November @ 12.30pm.
+- Week 9: Optional interim report submitted. Formative only. Deadline is Thursday 23rd November @ 12.30pm.
 - Week 19: Practical work (experimental or computational/theoretical) must finish by the end of the week. Friday 8th March.
 - Weeks 20/21: Analysis of results obtained. Start write up of report. Results to be presented to supervisor and analysis discussed.
 - Week 22: Final Report submission. Deadline is Thursday 18th April @ 12.30pm.

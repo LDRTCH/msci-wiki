@@ -95,6 +95,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -187,6 +189,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#week-3" id="toc-week-3" class="nav-link active" data-scroll-target="#week-3">Week 3</a></li>
+  <li><a href="#small-github-digression" id="toc-small-github-digression" class="nav-link" data-scroll-target="#small-github-digression">3. Small Github Digression</a></li>
+  <li><a href="#persistent-exclusion-process-code" id="toc-persistent-exclusion-process-code" class="nav-link" data-scroll-target="#persistent-exclusion-process-code">4. Persistent Exclusion Process Code</a></li>
+  <li><a href="#code-examination" id="toc-code-examination" class="nav-link" data-scroll-target="#code-examination">5. Code Examination</a></li>
   </ul>
 </nav>
     </div>
@@ -195,6 +200,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
 <section id="week-3" class="level1">
 <h1>Week 3</h1>
 <p>#0. Table of Contents</p>
@@ -202,11 +224,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Table of Contents</li>
 <li>Goals</li>
 <li>Configuring BlueCrystal4</li>
+<li>Small Github Digression</li>
+<li>Persistent Exclusion Process Code</li>
+<li>Code Examination</li>
 </ol>
 <p>#1. Goals</p>
 <p>The main aim of this week is to begin reproducing a simple active matter system in code. To this end, a suitable environment to work in must be found and utilised. For now we are primarily sticking to python.</p>
 <p>We have gained access to the Bristol supercomputers BlueCrystal4 and BluePebble (I have access to the former, my lab partner has access to the latter). We will attempt to apply the scripts to the supercomputers.</p>
-<p>In <a href="https://ldrtch.github.io/msci-wiki/activity_log/week2.html">Week 2</a> it was suggested that I would go more in depth in statistical analysis. This has been put aside for now, in the interest of getting a feel for how ABP simulations work in practice.</p>
+<p>In <a href="../activity_log/week2.html">Week 2</a> it was suggested that I would go more in depth in statistical analysis. This has been put aside for now, in the interest of getting a feel for how ABP simulations work in practice.</p>
 <p>#2. Configuring BlueCrystal4</p>
 <p>I already have access to BlueCrystal4 (BC4) due to one of my other modules. For that particular module, I am programming in C/C++; as such, I have already configured (installed and loaded) modules compatible with it. These modules are generally installed on a user instance, and loaded using the following bash command: <code>module load &lt;path&gt;</code>. For example, for loading the necessary files for Intel’s C/C++ compiler (icc), I use the following: <code>module load languages/intel/2020-u4</code>.</p>
 <p>The issue that arises is that, at least initially, we have decided to work in Python. While I plan to attempt to translate (and speed up) our later codes in C, it is preferable to agree on a shared language while we get our bearings (and Python is easier, for all its faults). I therefore need use both C and python modules; hopefully this will not cause conflicts as long as they are not loaded simultaneously. The loading can easily be done in the <code>.bashrc</code> script on the user home instance, which will keep the module loaded for any and all processes. This is inadvised in the BC4 user manual, however - like I said, conflicts can occur. It is much healthier and safer to instead load modules in the <code>.sh</code> script that will send a request to the job queue. This will be elaborated on later.</p>
@@ -222,14 +247,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> list <span class="co">#Lists loaded modules</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Tested a quick “Hello, World!” program just to make sure that python runs correctly; it does, at least for now.</p>
-<section id="small-github-digression" class="level3">
-<h3 class="anchored" data-anchor-id="small-github-digression">3. Small Github Digression</h3>
-<p>A few things need to be said about the exact</p>
-<p>For connecting to organisation projects that I clone locally, the following commands are useful:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+<section id="small-github-digression" class="level1">
+<h1>3. Small Github Digression</h1>
+<p>We have added a shared file regarding various commands for Github and Quarto. It can now be found <a href="../shared/gitinfo.html">here</a>, as well as in the <a href="../index.html">landing page</a>, currently under the name ‘Commands Information’.</p>
+</section>
+<section id="persistent-exclusion-process-code" class="level1">
+<h1>4. Persistent Exclusion Process Code</h1>
+<p>The code models particles moving across various lattice sites, with a ‘tumble’ probability. This is the probability that the particle will change its direction at every iteration (or time ‘tick’). This means that the tumble variable is inversely proportional to the <strong>persistence length</strong> of the environment.</p>
+<p>Note that this is a (relatively) simple algorithm: every particle has the same chance to change direction (in a more accurate model they would more likely follow a probability distribution instead).Nonetheless, it’s a good start for getting a feel for one of the core topics of this project: the way <strong>persistence length influences collective behaviour</strong>. In this case, the <strong>clustering</strong> phenomena is heavily affected.</p>
+<p>Below are some GIF files with varying tumble speeds <span class="math inline">\(P_{tumble}\)</span> applied to the model. Note that the animation runs at 6 frames per second, and computes 50 frames total.</p>
+<section id="p_tumble0.0005" class="level3">
+<h3 class="anchored" data-anchor-id="p_tumble0.0005"><span class="math inline">\(P_{tumble}=0.0005\)</span></h3>
+<p><a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.0005.gif">ptumble_0.0005</a></p>
+<p>The persistence length is so small here that almost all particles form into clusters. ### <span class="math inline">\(P_{tumble}=0.001\)</span> <a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.001.gif">ptumble_0.001</a></p>
+<p>The clustering is still noticeable here, but there are many more free particles roaming already (with a persistence length twice as big as the previous one). ### <span class="math inline">\(P_{tumble}=0.01\)</span> <a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.01.gif">ptumble_0.01</a></p>
+<p>Clusters are far less frequent, but still noticeable. This is a tenfold increase in persistence length compared to the previous case. ### <span class="math inline">\(P_{tumble}=0.1\)</span> <a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.1.gif">ptumble_0.1</a></p>
+<p>Barely any clusters form here, and when they do, it’s only for a few frames. ### <span class="math inline">\(P_{tumble}=0.33\)</span> <a href="./week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.33.gif">ptumble_0.33</a></p>
+<p>There are no noticeable clusters.</p>
+<p>Note that if <span class="math inline">\(P_{tumble}=1\)</span>, there is no autonomous activity within the system. In other words, particles exercise simple inertial movement in frictionless environment.</p>
+</section>
+</section>
+<section id="code-examination" class="level1">
+<h1>5. Code Examination</h1>
+<p>We have started looking at the code. It’s hard to standardise everything we have talked about into notes format; most of it is commented on the <a href="https://github.com/dlactivematter/persistent-exclusion-process/tree/main/src">repository</a> (formalised as in-line comments and docstrings). As the status of this repository is unknown at this time (whether it will be included in the final project submissions, that is; it is, after all, an example supplied by the supervisor, which we are analysing to get a better understaning of the topic), I will summarise to the best of my ability. (Note that this will be vastly incomplete, as we have only discussed a few scripts, and only partially!).</p>
+<ul>
+<li><p><code>lattice.py</code></p>
+<ul>
+<li><p>establishes a lattice class</p>
+<ul>
+<li>call each instance that fits within a class an <strong>object</strong></li>
+</ul></li>
+<li><p>establishes various attributes for the class</p>
+<ul>
+<li><p><code>Nsites</code>: the total amount of lattice sites within system</p></li>
+<li><p>‘Nparticles’: the total amount of particles moving around the system (with the stipulation that only one particle can fit in a lattice site at a given time)</p></li>
+<li><p><code>connectivity=4</code>: we are unsure what this is as of yet; operating under the assumption that this is the amount of neighbours a lattice site is connected to (and thus the amount of places a particle occupying a lattice site can jump to, depending on its orientation)</p></li>
+</ul></li>
+<li><p><code>set_square_connectivity</code> subfunction</p>
+<ul>
+<li><p>requires values of <code>Nx</code> and <code>Ny</code> (number of sites along x axis and number of sites along y axis) to rectangularly fit the number of total sites (<code>Nx*Ny==Nsites</code>)</p></li>
+<li><p>creates a ‘neighbor table’ using 2D numpy arrays, with each row being an individual lattice site and each column being an individual neighbour (along collectivity)</p></li>
+<li><p>this is flattened into a one-dimensional array, ran through <code>construct_square_neighbor_table</code> (discussed below), then the result is obtained in both a one-dimensional (flattened) version and in a restored two-dimensional version</p></li>
+</ul></li>
+</ul></li>
+<li><p><code>construct_square_neighbor_table</code></p>
+<ul>
+<li><p>takes the neighbor table from <code>lattice.py</code> as outlined above</p></li>
+<li><p>the fastest way to store data in C is through a one dimensional array called with pointers, as it ensures that all the data is contiguously stored in the same memory address area</p>
+<ul>
+<li><p><strong>the indexing is of note (and may be useful later)</strong></p>
+<ul>
+<li><p>i,j lattice sites</p>
+<ul>
+<li><p>i goes through Nx positions (rows)</p></li>
+<li><p>j goes through Ny positions (columns)</p></li>
+</ul></li>
+<li><p>index: <code>i * Ny + j</code></p></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

@@ -1,0 +1,75 @@
+# Useful Commands and Information for Shared Github Activity
+
+# Table of Contents
+0. Table of Contents
+1. Introduction
+2. Cloning
+3. Basic Git Commands
+4. Basic Quarto Commands
+
+# 1. Introduction
+
+This page is an attempt to take commands that pop up in the course of sharing our activity (whether it's passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.
+
+# 2. Cloning
+
+When cloning a repository, use:
+
+```bash
+git clone git@github.com:<user>/<repo>
+```
+
+If you didn't use `ssh url` while cloning, change remote before pushing:
+```bash
+git remote set-url origin git@github.com:<user>/<repo>
+```
+For instance, cloning the persistent exclusion process example script:
+```bash
+git remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git
+```
+
+If in doubt, use the following to show all the available remotes:
+```bash
+git remote -v
+```
+
+# 3. Basic Git Commands
+
+Check which branch you are on (and also other available branches):
+```bash
+git status
+```
+
+Add new file to current branch
+```bash
+git add <filename>
+```
+
+Commit new file to current branch (prompts adding a commit comment)
+```bash
+git commit <filename> 
+```
+
+Push all changes to branch
+```bash
+git push origin <branch>
+```
+
+# 4. Basic Quarto Commands
+
+Note: only works on .qmd files
+
+Preview `.qmd` document in browser
+```bash
+quarto preview <filename>
+```
+
+Render all `.qmd` files into html (usually not necessary)
+```bash
+quarto render
+```
+
+Render all `.qmd` files into html and publish them to the `gh-pages` branch
+```bash
+quarto publish gh-pages
+```

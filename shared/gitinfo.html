@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dissipation Learning in Active Matter – week3</title>
+<title>Dissipation Learning in Active Matter – gitinfo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -186,7 +186,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#week-3" id="toc-week-3" class="nav-link active" data-scroll-target="#week-3">Week 3</a></li>
+  <li><a href="#useful-commands-and-information-for-shared-github-activity" id="toc-useful-commands-and-information-for-shared-github-activity" class="nav-link active" data-scroll-target="#useful-commands-and-information-for-shared-github-activity">Useful Commands and Information for Shared Github Activity</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#cloning" id="toc-cloning" class="nav-link" data-scroll-target="#cloning">2. Cloning</a></li>
+  <li><a href="#basic-git-commands" id="toc-basic-git-commands" class="nav-link" data-scroll-target="#basic-git-commands">3. Basic Git Commands</a></li>
+  <li><a href="#basic-quarto-commands" id="toc-basic-quarto-commands" class="nav-link" data-scroll-target="#basic-quarto-commands">4. Basic Quarto Commands</a></li>
   </ul>
 </nav>
     </div>
@@ -195,41 +200,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="week-3" class="level1">
-<h1>Week 3</h1>
-<p>#0. Table of Contents</p>
+<section id="useful-commands-and-information-for-shared-github-activity" class="level1">
+<h1>Useful Commands and Information for Shared Github Activity</h1>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>Table of Contents</h1>
 <ol start="0" type="1">
 <li>Table of Contents</li>
-<li>Goals</li>
-<li>Configuring BlueCrystal4</li>
+<li>Introduction</li>
+<li>Cloning</li>
+<li>Basic Git Commands</li>
+<li>Basic Quarto Commands</li>
 </ol>
-<p>#1. Goals</p>
-<p>The main aim of this week is to begin reproducing a simple active matter system in code. To this end, a suitable environment to work in must be found and utilised. For now we are primarily sticking to python.</p>
-<p>We have gained access to the Bristol supercomputers BlueCrystal4 and BluePebble (I have access to the former, my lab partner has access to the latter). We will attempt to apply the scripts to the supercomputers.</p>
-<p>In <a href="https://ldrtch.github.io/msci-wiki/activity_log/week2.html">Week 2</a> it was suggested that I would go more in depth in statistical analysis. This has been put aside for now, in the interest of getting a feel for how ABP simulations work in practice.</p>
-<p>#2. Configuring BlueCrystal4</p>
-<p>I already have access to BlueCrystal4 (BC4) due to one of my other modules. For that particular module, I am programming in C/C++; as such, I have already configured (installed and loaded) modules compatible with it. These modules are generally installed on a user instance, and loaded using the following bash command: <code>module load &lt;path&gt;</code>. For example, for loading the necessary files for Intel’s C/C++ compiler (icc), I use the following: <code>module load languages/intel/2020-u4</code>.</p>
-<p>The issue that arises is that, at least initially, we have decided to work in Python. While I plan to attempt to translate (and speed up) our later codes in C, it is preferable to agree on a shared language while we get our bearings (and Python is easier, for all its faults). I therefore need use both C and python modules; hopefully this will not cause conflicts as long as they are not loaded simultaneously. The loading can easily be done in the <code>.bashrc</code> script on the user home instance, which will keep the module loaded for any and all processes. This is inadvised in the BC4 user manual, however - like I said, conflicts can occur. It is much healthier and safer to instead load modules in the <code>.sh</code> script that will send a request to the job queue. This will be elaborated on later.</p>
-<p>You load/add modules with <code>module load</code> or <code>module add</code>. I have used the former for C and the latter for Python, though strictly to differentiate the two better. Below is a quick list of the different module commands I use:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> avail <span class="co">#Lists available modules; can combine with grep to search for a specific one</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load languages/intel/2020-u4 <span class="co">#Loads icc for C/C++</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> add languages/anaconda3/2022.11-3.9.13-tensorflow-2.11 <span class="co">#Loads anaconda tensor flow package</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> add languages/anaconda3/2020−3.8.5 <span class="co">#Loads full anaconda package</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://pyenv.run <span class="kw">|</span> <span class="fu">bash</span> <span class="co">#Loads python environment (non-anaconda alternative)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#NOTE: only one of these should be done for any instance!</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> list <span class="co">#Lists loaded modules</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Tested a quick “Hello, World!” program just to make sure that python runs correctly; it does, at least for now.</p>
-<section id="small-github-digression" class="level3">
-<h3 class="anchored" data-anchor-id="small-github-digression">3. Small Github Digression</h3>
-<p>A few things need to be said about the exact</p>
-<p>For connecting to organisation projects that I clone locally, the following commands are useful:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<p>This page is an attempt to take commands that pop up in the course of sharing our activity (whether it’s passing it collectively or publishing it to an easily accessible site). Everything here is subject to change and addition as we discover more commands that need remembering. This page should be as standardised and explanatory as possible; when deemed necessary, examples should be given alongside the basic command structure.</p>
+</section>
+<section id="cloning" class="level1">
+<h1>2. Cloning</h1>
+<p>When cloning a repository, use:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you didn’t use <code>ssh url</code> while cloning, change remote before pushing:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/<span class="op">&lt;</span>repo<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For instance, cloning the persistent exclusion process example script:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin git@github:dlactivematter/persistent-exclusion-process.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If in doubt, use the following to show all the available remotes:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-git-commands" class="level1">
+<h1>3. Basic Git Commands</h1>
+<p>Check which branch you are on (and also other available branches):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add new file to current branch</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Commit new file to current branch (prompts adding a commit comment)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="op">&lt;</span>filename<span class="op">&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Push all changes to branch</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-quarto-commands" class="level1">
+<h1>4. Basic Quarto Commands</h1>
+<p>Note: only works on .qmd files</p>
+<p>Preview <code>.qmd</code> document in browser</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="op">&lt;</span>filename<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Render all <code>.qmd</code> files into html (usually not necessary)</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Render all <code>.qmd</code> files into html and publish them to the <code>gh-pages</code> branch</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

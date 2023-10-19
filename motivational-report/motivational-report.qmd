@@ -28,21 +28,21 @@ The feature in active matter of converting stored and homogenously available ene
 
 #### References
 
-    Active matter: quantifying the departure from equilibrium. Flenner & Szamel
+1. Active matter: quantifying the departure from equilibrium. Flenner & Szamel
 
-    From Disorder to Order in Marching Locusts. Buhl et al. (2006)
+2. From Disorder to Order in Marching Locusts. Buhl et al. (2006)
 
-    Collective Motion of Humans in Mosh and Circle Pits at Heavy Metal Concerts. Silverberg et al. (2013)
+3. Collective Motion of Humans in Mosh and Circle Pits at Heavy Metal Concerts. Silverberg et al. (2013)
 
-    How simple rules determine pedestrian behavior and crowd disasters. Moussaid, Helbing & Theraulaz (2011)
+4. How simple rules determine pedestrian behavior and crowd disasters. Moussaid, Helbing & Theraulaz (2011)
 
-    Active matter at the interface between materials science and cell biology. Needleman & Zvonimir (2017)
+5. Active matter at the interface between materials science and cell biology. Needleman & Zvonimir (2017)
 
-    Phase Separation and Multibody Effects in Three-Dimensional Active Brownian Particles. Turci & Wilding (2021)
+6. Phase Separation and Multibody Effects in Three-Dimensional Active Brownian Particles. Turci & Wilding (2021)
 
-    Nano/Micromotors in Active Matte. Lv, Yank & Li (2022)
+7. Nano/Micromotors in Active Matte. Lv, Yank & Li (2022)
 
-    Catalytic Nanomotors: Autonomous Movement of Striped Nanorods, Paxton et al. (2004)
+8. Catalytic Nanomotors: Autonomous Movement of Striped Nanorods, Paxton et al. (2004)
 
 # 3. Supervisor Feedback ([Week 3](./../activity_log/week3.qmd))
 

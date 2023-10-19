@@ -4,6 +4,10 @@ title: "Home"
 
 ## Information
 
-- [Deadlines](./shared/deadlines.qmd)
-- [Repository information](./shared/repo.qmd)
-- [Commands Information](./shared/gitinfo.qmd)
+Welcome to the home page (or landing spot) for the Dissipative Learning in Active Matter project! This page links to a few useful pages for the project as a whole. For weekly lab notes, see the [activity log](./activity_log/landing.qmd), also available on the sidebar.
+
+Some generally useful links for day to day sharing and work:
+
+- [Deadlines](./shared/deadlines.qmd) : A quick list of deadlines for this project.
+- [Repository information](./shared/repo.qmd) : Info on how to set up the repository.
+- [Commands Information](./shared/gitinfo.qmd) : Useful commands for navigating the repository and publishing pages.

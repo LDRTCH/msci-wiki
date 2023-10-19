@@ -14,8 +14,16 @@ website:
         icon: person-fill
         contents:
           - activity_log/landing.qmd
+          - motivational-report/motivational-report.qmd
       - section: "Shared"
         icon: diagram-3-fill
+        contents:
+          - text: "GitHub Repository (cp fork)"
+            icon: git
+            href: "https://github.com/LDRTCH/msci-wiki"
+          - text: "GitHub Shared Organisation"
+            icon: git
+            href: "https://github.com/dlactivematter"
       - text: "Zotero library"
         icon: bookmarks-fill
         href: "https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library"

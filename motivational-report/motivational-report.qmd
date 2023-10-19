@@ -1,17 +1,17 @@
 # Motivational Report
 
-#0. Table of Contents
+# 0. Table of Contents
 
 0. Table of Contents
 1. Introduction
 2. Original Motivational Report
 3. Supervisor Feedback 
 
-#1. Introduction
+# 1. Introduction
 
 This is the landing spot for work on the Motivational Report. It was initially prompted in Week 2 as a way to get familiarised with the literature; it is expected to be a considerable part of the Interim Report, whose [deadline](./../shared/deadlines.qmd) is in Week 9.
 
-#2. Original Motivational Report ([Week 2](./../activity_log/week2.qmd))
+# 2. Original Motivational Report ([Week 2](./../activity_log/week2.qmd))
 
 ###### Pasted from "Motivational Report" chapter in Week 2
 
@@ -43,7 +43,7 @@ References
 
     Catalytic Nanomotors: Autonomous Movement of Striped Nanorods, Paxton et al. (2004)
 
-# 3 Supervisor Feedback ([Week 3](./../activity_log/week3.qmd))
+# 3. Supervisor Feedback ([Week 3](./../activity_log/week3.qmd))
 
 ###### Comments prefaced with FT and hyperlinked, commented initially on week2.md in main repository (pure markdown version of [Week2](./../activity_log/week2.qmd))
 

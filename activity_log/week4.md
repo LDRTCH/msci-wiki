@@ -17,6 +17,14 @@
   });
 </script>
 
+# Week 4
+
+# Table of Contents
+
+0. Table of Contents
+1. Introduction
+2. Motivational Report Feedback
+3. Varying Sample Size and Tumble Probability
 
 See radial distribution function (probability) - see for Leonard Jones Fluid
 
@@ -40,11 +48,20 @@ $$\rho_{3}= D_{3}\nabla \rho_{3} + f_{1} (\rho_{1},\rho_{2},\rho_{3}) $$
 
 Current step: explore; vary along density (0.01 to 0.5; choose logarithmic) and tumble probablity (10 values)
 
-To Do This Week:
+# 1. Introduction
 
-1. look over feedback for the motivational report from last week
-2. Make a 5x5 grid (space them out with lab partner)
+The aim of this week is to consolidate the work of previous weeks and to build up qualitative understanding from it. The two tasks are:
 
-- plot orientation over time
+1. Look over supervisor feedback for the motivational report from last week
+2. Make a 5x5 configuration grid of particle system from [Week 3](./week3.qmd), varying tumble probability and particle number.
+3. Combine results with lab partner
+4. Plot total orientation against time
+5. Look into clustering analysis
 
-3. Look into clustering analysis
+# 2. Motivation Report Feedback
+
+I have created a separate website for monitoring development of the Motivational Report [here](./../motivational-report/motivational-report.qmd), also accessible through the sidebar. I will address every piece of feedback below.
+
+# 3. Varying Sample Size and Tumble Probability
+
+

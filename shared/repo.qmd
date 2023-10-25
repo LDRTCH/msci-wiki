@@ -1,29 +1,40 @@
 ---
-title: "Repository information"
+title: Repository information
 ---
+
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
+
+- [Forking](#forking)
+- [Local development](#local-development)
+- [Managing branches and commits](#managing-branches-and-commits)
+- [Initialise a Quarto project](#initialise-a-quarto-project)
+- [Building pages](#building-pages)
+- [Push the changes](#push-the-changes)
+- [Accessing the live website](#accessing-the-live-website)
+
+<!-- mdformat-toc end -->
 
 A brief guide on how to setup this website elsewhere and develop the wiki.
 
-## Forking
+## Forking<a name="forking"></a>
 
 - If using a **Codeberg** account, fork [this
-repo](https://codeberg.org/lckdscl/msci-wiki).
+  repo](https://codeberg.org/lckdscl/msci-wiki).
 - If using a **GitHub** account, fork [this
-repo](https://github.com/mstcl/msci-wiki).
+  repo](https://github.com/mstcl/msci-wiki).
 
-## Local development
+## Local development<a name="local-development"></a>
 
 It's recommended to use SSH and SSH keys when working with a remote git.
 
 - Key generating instructions are found
-[here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-(this is git-server agnostic).
+  [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+  (this is git-server agnostic).
 - For **GitHub**, follow
-[this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-to add your key.
+  [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+  to add your key.
 - For **Codeberg**, it's similar, navigate to [this
-link](https://codeberg.org/user/settings/keys) when logged in, and then `Add
-key` under the `Manage SSH Keys` section.
+  link](https://codeberg.org/user/settings/keys) when logged in, and then `Add key` under the `Manage SSH Keys` section.
 
 Clone the repo locally:
 
@@ -39,7 +50,7 @@ git clone git@codeberg.org:<user>/msci-wiki.git
 git clone git@github.com:<user>/msci-wiki.git
 ```
 
-## Managing branches and commits
+## Managing branches and commits<a name="managing-branches-and-commits"></a>
 
 Make a **new branch** to build your own website from with
 
@@ -58,7 +69,7 @@ called `shared`. This is the root folder of all shared information. Any further
 directory structuring occurs within this, not outside of it.
 
 - **No individual work goes into the `shared` branch to avoid conflicts with
-filenames!**
+  filenames!**
 
 When merging new commits containing shared information from `shared` to
 `my_branch`, switch to `my_branch` with `git checkout my_branch`, and then
@@ -70,13 +81,36 @@ git merge shared
 
 - **Don't merge from `my_branch` to `shared`!**
 
-## Building pages
+In the case there are problematic commits in `shared`, future merge can be done with
+cherry-pick. Say this is `shared`:
 
-- **Codeberg** hosted sites use the branch `pages`.
-- **GitHub** hosted sites use the branch `gh-pages`.
+```txt
+SHA0 (HEAD): I want this commit
+SHA1: I don't want this commit
+SHA2: I want this commit
+```
 
-Quarto only publishes to the branch `gh-pages`. As unfortunate as it sounds,
-this means to host pages on Codeberg, it's a bit more involved.
+Then, in `my_branch`:
+
+```bash
+git cherry-pick SHA2
+git cherry-pick SHA0
+```
+
+## Initialise a Quarto project<a name="initialise-a-quarto-project"></a>
+
+In `my_branch`, make a new Quarto project with the website template:
+
+```bash
+quarto create project website
+```
+
+Take a look at `_quarto.yml` from branch `np` for an example of how to
+configure it.
+
+## Building pages<a name="building-pages"></a>
+
+Quarto by default publishes to the branch `gh-pages`.
 
 To build the pages, first, run the following:
 
@@ -87,12 +121,12 @@ quarto publish gh-pages
 This will build and push to the `gh-pages` branch.
 
 - If using **GitHub**, that's
-all you need to do.
+  all you need to do.
 
-- If using **Codeberg**, switch to `pages` if you haven't already with `git
-checkout pages`, then run `git merge gh-pages`.
+- If using **Codeberg**, you can view it by going to
+  `https://username.codeberg.page/@gh-pages`
 
-## Push the changes
+## Push the changes<a name="push-the-changes"></a>
 
 Pushing changes to remote servers make rolling back very difficult, make sure
 everything looks correct first. Use `git log` and `git status` to ensure
@@ -104,9 +138,9 @@ git push <remote> <branch>
 
 **Try to keep all branches up-to-date on all mirrors!**
 
-## Accessing the live website
+## Accessing the live website<a name="accessing-the-live-website"></a>
 
-- For **Codeberg**, it's `https://username.codeberg.page/msci-wiki` (more
-[information](https://codeberg.page)).
+- For **Codeberg**, it's `https://username.codeberg.page/msci-wiki/@gh-pages` (more
+  [information](https://codeberg.page)).
 - For **GitHub**, it's `https://username.github.io/msci-wiki` (more
-[information](https://pages.github.com/)).
+  [information](https://pages.github.com/)).

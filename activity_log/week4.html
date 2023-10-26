@@ -177,7 +177,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#week-4" id="toc-week-4" class="nav-link active" data-scroll-target="#week-4">Week 4</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#varying-sample-size-and-tumble-probability" id="toc-varying-sample-size-and-tumble-probability" class="nav-link" data-scroll-target="#varying-sample-size-and-tumble-probability">3. Varying Sample Size and Tumble Probability</a></li>
+  <li><a href="#miscellaneous-and-unsorted-notes" id="toc-miscellaneous-and-unsorted-notes" class="nav-link" data-scroll-target="#miscellaneous-and-unsorted-notes">4. Miscellaneous and Unsorted Notes</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -201,11 +211,111 @@ ul.task-list li input[type="checkbox"] {
     }
   });
 </script>
-<p>See radial distribution function (probability) - see for Leonard Jones Fluid</p>
-<p>clusters shown in GIFs last week are not isotropic</p>
-<p>Attempt a reconstruction of features of systems without breaking any symmetries.</p>
-<p>tumble rate against predicted tumble rate</p>
-<p>Possibilities to pursue now:</p>
+<section id="week-4" class="level1">
+<h1>Week 4</h1>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>Table of Contents</h1>
+<ol start="0" type="1">
+<li>Table of Contents</li>
+<li>Introduction</li>
+<li>Motivational Report Feedback</li>
+<li>Varying Sample Size and Tumble Probability</li>
+<li>Miscellaneous and Unsorted Notes</li>
+</ol>
+</section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<p>The aim of this week is to consolidate the work of previous weeks and to build up qualitative understanding from it. The tasks for the following few weeks are:</p>
+<ol type="1">
+<li>Look over supervisor feedback for the motivational report from last week</li>
+<li>Make a 5x10 configuration list of persistent exclusion process particle system from <a href="../activity_log/week3.html">Week 3</a>, varying tumble probability and particle number.</li>
+<li>Combine results with lab partner into a 10x10 grid (qualitatively showing how clustering changes as particle density and tumble probability are altered)</li>
+<li>Plot total orientation against time for various cases</li>
+<li>Look into clustering analysis</li>
+</ol>
+<p>Only the first two points are expected to be done this week. # 2. Motivation Report Feedback</p>
+<p>I have created a separate website for monitoring development of the Motivational Report <a href="../motivational-report/motivational-report.html">here</a>, also accessible through the sidebar. I will address every piece of feedback below.</p>
+<p>My original context is presented, with the supervisor comments hyperlinked and prefaced by “FT”. Underneath I add my own comments in the form of bullet points. Only the commented parts of the report are shown.</p>
+<p>Active matter is, broadly, a subcategory of matter systems <a href="">FT “matter systems is unclear</a> distingushed primarily by energy input homogenously distributed across all constituents (agents) of the system, which in turn set their own self-propelled motion across a force-free medium (for instance, the forces between particles and the fluid they move through cancel <a href="">FT not exactly. Theres i no mechanical equilibrium. On the contrary, there is dissipation</a></p>
+<ul>
+<li><p>Here I was looking for a broad category to place active matter into; matter systems is indeed too vague. I would have been better off calling it a subcategory of soft matter systems.</p></li>
+<li><p>I don’t know exactly where I got the mechanical equilibrium confusion. I may have read some very specific thing that I generalised, but yes, dissipation ought to happen - one of the most important aspects of active matter is the requirement of supplying each autonomous agent with a steady energy supply which they steadily (or perhaps not so steadily in more complex models) use up.</p></li>
+</ul>
+<p>The evident motivation in studying active matter is that it helps understand biological behaviours, and therefore the natural world <a href="">FT be more precise: it is the world of living organisms, which constantly dissipate energy to perform their biological functions</a>. Macroscopically, the construction of theoretical models can help explain, and to a limited degree predict, the behaviour of animals (such as locusts) undergoing collectively-emergent swarming behaviours (where each animal can be treated as its own autonomous agent, sharing the same generally stable ‘rules’ of altering speed and orientation while interacting with each other and the environment)[2]. This is not limited to what can be termed ‘simple’ behaviour; human behaviour can be partially mapped and understood within physically-indexed accounts of autonomous choices within (overtly or suggestively) constrained collective action. <a href="">FT: You are onto something here. Physicist Andrea Cavagna likes to say that <em>“Physics gauges the surprise in biology”</em></a>Interesting examples are swarming behaviours identified in traffic, crowd disasters and concerts[3] (note however that physical models are sometimes challenged in literature due to potential oversimplifications, insofar as, for instance, cognitive heuristics under duress might deal holistically, rather than individually, with other human agents[4] <a href="">FT not clear to me, please explain</a> ). Microscopically, active matter models offer insight into understanding how hierarchically-organised emergence happens within cell tissues, and how it may be leveraged by the medical sciences[5].</p>
+<ul>
+<li><p>I forgot that ‘natural world’ in English tends to refer more to general physical processes rather than specifically living organisms; I’ll try to be more specific regarding what active matter models help with understanding.</p></li>
+<li><p>From the brief look I managed to take at the literature, it seems that discussion of human behaviour in terms of physical systems is quite contentious. In hindsight, I should spend more than a sentence explaining this: the ‘cognitive heuristics’ argument for holism refers to the way humans deal with other humans in immediate crises. Many models will have an individual agent deal with other (in some way) adjacent agents individually; that is to say, it defines its relationship to each agent in turn, and then computes its behaviour. There are psychological arguments that this is not the case, and that instead humans might under duress conceptualise crowds (still) as a collective, and take actions in relation to the collective itself. At the time of writing this, it is unclear to me whether there are any active matter models that apply this ‘holistic’ method; the writers I cited, I believe, were criticising the models that do not attempt to do so. This is the case with the basic models I have engaged with so far (such as ABPs). It’s hard to imagine (though not impossible) how such a model can be implemented, but I don’t doubt that newer human-tracking physical models might work in this direction.</p></li>
+<li><p>Either way, I’ll look into Andrea Cavagna’s work. I’m interested in exploring this point more in detail.</p></li>
+</ul>
+<p>Outside of biology, active matter research serves to emulate, or otherwise learn from naturally-occurring behaviours in order to analyse a potentially more general thermodynamic state <a href="">FT “state” is not a good word. Are you thinking about a more general thermodynamic framework?</a> . Due to the necessarily dissipative use of energy within self-organised agents, and their internally-induced behaviour, active matter is not described by the statistical mechanics of equilibrium states. The question then arises whether, through quantitative computation and qualitative modelling/theorising, the thermodynamic laws of equilibrium can be modified and generalised to non-equilibrium states, and how these generalisations hold as departure from equilibrium through various means is increased[6] <a href="">FT: not easy to read, but the idea is important: we can be just slight off equilibrium, and have a so-called linear-response regime, or we could be beyond linear response</a> . These generalisations would, ideally, collapse into the known statistical thermodynamics states within the equilibrium limit. These insights, in turn, would facilitate the creation of synthetic active matter, whose potential, although speculatory, ranges from the biomedical application of nanomachine targeted drug delivery possibilities to the location-mapping application of nanoscopic/microscopic enivronmental sensing[7].</p>
+<ul>
+<li><p>I take the point that ‘state’ is the wrong word; another loss in translation. I did mean a more general thermodynamic framework; thermodynamic ‘state’ implies thermal equilibrium, which is exactly what active matter does not have!</p></li>
+<li><p>I do get a bit long-winded here; I’ll try to rephrase this paragraph a bit and make sentences more readable</p></li>
+</ul>
+<p><a href="">FT: You could get into more specifics, illustrating some examples of interesting behaviorus such as pattern formation or phase separation</a></p>
+<ul>
+<li>Yes, I’ll look into examples of pattern formation, as those tend to be quite demonstrative of what active matter study can do.</li>
+</ul>
+</section>
+<section id="varying-sample-size-and-tumble-probability" class="level1">
+<h1>3. Varying Sample Size and Tumble Probability</h1>
+<p>There are two independent ways of generating graphical results. The first is to generate frames and animate them into a GIF file, which is done through the script <code>video.py</code> (see <a href="../activity_log/week3.html">Week 3</a>). The other way is what is explored this week: generate a data set with <code>sampler.py</code> and then use <code>view.py</code> to obtain snapshots.</p>
+<p>The benefits of this are that datasets are stored for reference alongside the images, unlike the gif computation (which only stored the animation). This is useful for record keeping, as well as for understanding the way file storage is organised. The datasets are stored in h5py formats, a way to store huge amounts of data in a compressed manner - the downside is that the understanding process of how data is stored is les straightforward. So far, we have elected to keep a quite unoptimised version of the code for our purposes until we get a firmer grasp of the way the datasets work.</p>
+<p>We have modified the code slightly to fit our purposes - made a view variables more explicit and standardised some parts. Furthermore, we’ve made the sampler vary with density and tumble probability - our aim is for each of us to generate 50 datasets, with 10 shared density values varied over 5 individual tumble probability values. The end goal, as stated in point 3 in the <a href="#1.-introduction">Introduction</a>, to combine these into a 100 dataset grid.</p>
+<p>Each combination of data is stored in its own .h5 file. They are all indexed by a pandas dataframe, which keeps track of their ascribed particle density, tumble probability, particle speed and iteration count.</p>
+<p>The particle density <span class="math inline">\(\rho_{p}\)</span> is defined as a percentage, such that the total number of particles <span class="math inline">\(n_{p}\)</span> is defined by:</p>
+<p><span class="math display">\[n_{p}=\rho_{p}n_{x}n_{y}\]</span> where <span class="math inline">\(n_{x}\)</span> and <span class="math inline">\(n_{y}\)</span> are the dimensions of the lattice sites: the number of lattice sites along the x and y directions, respectively.</p>
+<p>As defined in <a href="../activity_log/week3.html">Week 3</a>, the tumble probability <span class="math inline">\(P_{tumble}\)</span> is the probability at any given time cycle that a specific particle will change direction. } Below are some preliminary examples of varying the density <span class="math inline">\(\rho_{p} \in [0.1,0.3,0.5]\)</span> for a constant tumble probability of <span class="math inline">\(P_{tumble} \cong 0.34\)</span>.</p>
+<object data="./week-4-files/tumble=0.34_density=0.1.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./week-4-files/tumble=0.34_density=0.1.pdf">
+<p>
+This browser does not support PDFs..
+</p>
+
+</object>
+<object data="./week-4-files/tumble=0.34_density=0.3.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./week-4-files/tumble=0.34_density=0.3.pdf">
+<p>
+This browser does not support PDFs..
+</p>
+
+</object>
+<object data="./week-4-files/tumble=0.34_density=0.5.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./week-4-files/tumble=0.34_density=0.5.pdf">
+<p>
+This browser does not support PDFs..
+</p>
+
+</object>
+<p>It’s hard to see exactly how clustering forms at such a high particle density. As such, below are some more examples that vary the density <span class="math inline">\(\rho \in [0.1,0.2,0.3]\)</span>, under the constant tumble probability of <span class="math inline">\(P_{tumble} \cong 0.073\)</span>. The reasoning is that checking lower particle densities will help avoid noise that gets in the way of clustering, and checking lower tumble probabilities will allow more clustering to occur.</p>
+<object data="./week-4-files/tumble=0.073_density=0.1.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./week-4-files/tumble=0.073_density=0.1.pdf">
+<p>
+This browser does not support PDFs..
+</p>
+
+</object>
+<object data="./week-4-files/tumble=0.073_density=0.2.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./week-4-files/tumble=0.073_density=0.2.pdf">
+<p>
+This browser does not support PDFs..
+</p>
+
+</object>
+<object data="./week-4-files/tumble=0.073_density=0.3.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./week-4-files/tumble=0.073_density=0.3.pdf">
+<p>
+This browser does not support PDFs..
+</p>
+
+</object>
+<p>Clusters can be observed, especially in the <span class="math inline">\(\rho_p = 0.2\)</span> case. They are arguably also visible in the <span class="math inline">\(\rho_p = 0.3\)</span> case, although it’s hard to disentangle clusters from one another - this will be very important later, once we start employing cluster analysis.</p>
+<p>Some other things that were not mentioned last week. In all these diagrams and animations, colours indicate orientations. Clustering can therefore be seen by observing the orientation of exterior particles pushing them into an existing chunk, which is then consequently ‘trapped’.</p>
+</section>
+<section id="miscellaneous-and-unsorted-notes" class="level1">
+<h1>4. Miscellaneous and Unsorted Notes</h1>
+<p>There are a few overarching (long-term) goals to pursue right now.</p>
 <section id="prepare-a-dataset-for-cnn" class="level4">
 <h4 class="anchored" data-anchor-id="prepare-a-dataset-for-cnn">0. Prepare a dataset for CNN</h4>
 </section>
@@ -215,20 +325,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="explore-pdes" class="level4">
 <h4 class="anchored" data-anchor-id="explore-pdes">2. Explore PDEs</h4>
 <p><span class="math display">\[\rho_{1}= D_{1}\nabla \rho_{1} + f_{1} (\rho_{1},\rho_{2},\rho_{3}) \]</span> <span class="math display">\[\rho_{2}= D_{2}\nabla \rho_{2} + f_{2} (\rho_{1},\rho_{2},\rho_{3}) \]</span> <span class="math display">\[\rho_{3}= D_{3}\nabla \rho_{3} + f_{1} (\rho_{1},\rho_{2},\rho_{3}) \]</span></p>
-<p>Current step: explore; vary along density (0.01 to 0.5; choose logarithmic) and tumble probablity (10 values)</p>
-<p>To Do This Week:</p>
-<ol type="1">
-<li>look over feedback for the motivational report from last week</li>
-<li>Make a 5x5 grid (space them out with lab partner)</li>
-</ol>
+<p>Some other short-term ideas to explore in the following weeks:</p>
 <ul>
-<li>plot orientation over time</li>
+<li><p>See radial distribution function (probability) - see for Leonard Jones Fluid</p></li>
+<li><p>Attempt a reconstruction of features of systems without breaking any symmetries.</p></li>
+<li><p>Plot umble rate against predicted tumble rate</p></li>
 </ul>
-<ol start="3" type="1">
-<li>Look into clustering analysis</li>
-</ol>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

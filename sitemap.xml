@@ -2,46 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/deadlines.html</loc>
-    <lastmod>2023-10-19T16:47:44.283Z</lastmod>
+    <lastmod>2023-10-26T01:37:24.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/shared/ftnotes/label.html</loc>
+    <lastmod>2023-10-26T01:37:24.467Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/repo.html</loc>
-    <lastmod>2023-10-19T16:47:43.839Z</lastmod>
+    <lastmod>2023-10-26T01:37:23.923Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/motivational-report/motivational-report.html</loc>
-    <lastmod>2023-10-19T16:47:43.267Z</lastmod>
+    <lastmod>2023-10-26T01:37:22.947Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/landing.html</loc>
-    <lastmod>2023-10-19T16:47:42.419Z</lastmod>
+    <lastmod>2023-10-26T01:37:21.671Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week4.html</loc>
-    <lastmod>2023-10-19T16:47:41.675Z</lastmod>
+    <lastmod>2023-10-26T01:37:20.783Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/index.html</loc>
-    <lastmod>2023-10-19T16:47:41.015Z</lastmod>
+    <lastmod>2023-10-26T01:37:19.519Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week1.html</loc>
-    <lastmod>2023-10-19T16:47:41.427Z</lastmod>
+    <lastmod>2023-10-26T01:37:19.959Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week2.html</loc>
-    <lastmod>2023-10-19T16:47:42.119Z</lastmod>
+    <lastmod>2023-10-26T01:37:21.327Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week3.html</loc>
-    <lastmod>2023-10-19T16:47:42.843Z</lastmod>
+    <lastmod>2023-10-26T01:37:22.219Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/gitinfo.html</loc>
-    <lastmod>2023-10-19T16:47:43.531Z</lastmod>
+    <lastmod>2023-10-26T01:37:23.223Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/ftnotes/Colab.html</loc>
-    <lastmod>2023-10-19T16:47:44.051Z</lastmod>
+    <lastmod>2023-10-26T01:37:24.147Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/shared/cluster.html</loc>
+    <lastmod>2023-10-26T01:37:24.703Z</lastmod>
   </url>
 </urlset>

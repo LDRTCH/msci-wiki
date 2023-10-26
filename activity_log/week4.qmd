@@ -38,6 +38,7 @@ The aim of this week is to consolidate the work of previous weeks and to build u
 5. Look into clustering analysis
 
 Only the first two points are expected to be done this week.
+
 # 2. Motivation Report Feedback
 
 I have created a separate website for monitoring development of the Motivational Report [here](./../motivational-report/motivational-report.qmd), also accessible through the sidebar. I will address every piece of feedback below.

@@ -111,7 +111,7 @@ Outside of biology, active matter research serves to emulate, or otherwise learn
 
 - Yes, I'll look into examples of pattern formation, as those tend to be quite demonstrative of what active matter study can do. 
 
-#5. Fleshing out Motivational Report [Weeks 5-6](./../activity_log/week-5-6.qmd)
+#5. Fleshing out Motivational Report [Weeks 5-6](./../activity_log/week5-6.qmd)
 
 Active matter is, broadly, a subcategory of condensed matter systems distingushed primarily by energy input homogenously distributed across all constituents (agents) of the system, which in turn set their own self-propelled motion across a medium. The agents therefore have *direct* access to energy, and use it to autonomously propel and direct themselves (with different models and situations allowing for various degrees of freedom). The study of active matter is generally grounded in (but not limited to) observed behaviour of biological agents, as they are the primary (though not only) examples of active matter in nature.
 

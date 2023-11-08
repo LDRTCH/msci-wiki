@@ -15,6 +15,7 @@ website:
         contents:
           - activity_log/landing.qmd
           - motivational-report/motivational-report.qmd
+	  - structured_information/landing.qmd
       - section: "Shared"
         icon: diagram-3-fill
         contents:

@@ -243,6 +243,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
   <li><a href="#persistent-exclusion-process-visualisation" id="toc-persistent-exclusion-process-visualisation" class="nav-link" data-scroll-target="#persistent-exclusion-process-visualisation">2. Persistent Exclusion Process Visualisation</a></li>
+  <li><a href="#utility-functions" id="toc-utility-functions" class="nav-link" data-scroll-target="#utility-functions">3. Utility Functions</a></li>
+  <li><a href="#total-orientation-against-time" id="toc-total-orientation-against-time" class="nav-link" data-scroll-target="#total-orientation-against-time">4. Total Orientation Against Time</a></li>
+  <li><a href="#cluster-analysis" id="toc-cluster-analysis" class="nav-link" data-scroll-target="#cluster-analysis">5. Cluster Analysis</a></li>
+  <li><a href="#updated-motivational-report" id="toc-updated-motivational-report" class="nav-link" data-scroll-target="#updated-motivational-report">6. Updated Motivational Report</a></li>
   </ul>
 </nav>
     </div>
@@ -268,11 +272,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
 </script>
-<p>Roberto di Leonardo - Feynman’s ratchet</p>
-<p>asymmetry due to dissipation leads to rectification, conversion into actual work</p>
-<p>look into quorum sensing!!</p>
-<p>Vicsek</p>
-<p>aggregation, maybe phase separation</p>
 <section id="weeks-5-6" class="level1">
 <h1>Weeks 5-6</h1>
 </section>
@@ -282,7 +281,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Table of Contents</p></li>
 <li><p>Introduction</p></li>
 <li><p>Persistent Exclusion Process Visualisation</p></li>
-<li><p>Orientation Against Time</p></li>
+<li><p>Utility Functions</p></li>
+<li><p>Total Orientation Against Time</p></li>
+<li><p>Cluster Analysis</p></li>
+<li><p>Updated Motivational Report</p></li>
 </ol>
 </section>
 <section id="introduction" class="level1">
@@ -290,10 +292,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>These two weeks broadly overlapped with reading week in the arts department; I used a significant portion of this time to catch up on other projects. As such, I have elected to combine these two weeks. This specific log is nonetheless expected to be shorter than the previous ones.</p>
 <p>The goals for this week are as follows:</p>
 <ul>
-<li><p>obtaining a proper graph of varying tumble probability and orientation (by arranging screnshots with various values next to each other)</p>
+<li><p>obtaining a working graph of varying tumble probability and orientation (by arranging screnshots with various values next to each other)</p>
 <ul>
 <li>mention a few issues in the code</li>
 </ul></li>
+<li><p>begin cluster analysis</p></li>
 <li><p>continue work on the motivational report</p></li>
 </ul>
 </section>
@@ -302,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It became apparent that the images obtained in <a href="../activity_log/week4.html">Week 4</a> using the <code>sampler.py</code> script to generate static images and the <code>view.py</code> script to visualise certain of these static images showed less clustering when compared to the animation in <a href="../activity_log/week3.html">Week 3</a>. Upon closer analysis, the reasoning is due to the way orientation is set up. <code>lattice.py</code> (the script that sets up the lattice in which particles move) assigns orientation ‘0’ to the background, in order to assign it a color (black). It then assigns orientations to the moving particles, depending on orientation. However, the orientations assigned to particles are ‘0’, ‘1’, ‘2’, ‘3’. What this effectively does is give a quarter of the particles the same orientation as the background, thus rendering them invisible. This is a significant information loss.</p>
 <p>Another issue is the way I have visualised static lattices in the past. In <a href="../activity_log/week4.html">Week 4</a> I have opted for downloadable .pdf files, which comes in handy for quick downloading in an unchangeable format (with no potential information loss due to poor quality), but is slightly harder to format. As such the titles are slightly cut off (something I did not notice until much later). I will try to fix it, or otherwise I will switch pack to .png formats.</p>
 <p>Below is a general graph (before having fixed the orientation problem) showing how clustering varies with varying tumble probability.</p>
-<object data="./week-5-6-files/grid.pdf" type="application/pdf" width="1000px" height="1000px">
+<object data="./week-5-6-files/grid.pdf" type="application/pdf" width="900px" height="900px">
 123 <embed src="./week-5-6-files/grid.pdf"> 124
 <p>
 This browser does not support PDFs..
@@ -310,7 +313,7 @@ This browser does not support PDFs..
 125  126
 </object>
 <p>For contrast, this is how a similar graph looks like after having fixed the orientation issues:</p>
-<object data="./week-5-6-files/gridcorrect.pdf" type="application/pdf" width="1000px" height="1000px">
+<object data="./week-5-6-files/gridcorrect.pdf" type="application/pdf" width="900px" height="900px">
 123 <embed src="./week-5-6-files/gridcorrect.pdf"> 124
 <p>
 This browser does not support PDFs..
@@ -328,7 +331,9 @@ This browser does not support PDFs..
 </ul></li>
 </ul>
 <p>There is still the task of making a 10x10 grid which shows a more elaborate change in clustering across a wider range of values. This can get quite cumbersome and needs to be rendered in a large enough size for the quality to be preserved.</p>
-<p>#3. Utility Functions</p>
+</section>
+<section id="utility-functions" class="level1">
+<h1>3. Utility Functions</h1>
 <p>Below is the script <code>utils.py</code> written by my lab partner, which features two utility functions which will come up occasionally in code. They unpack the h5py files in which the persistent exclusion process data is stored, and obtain unique iteration numbers or mean orientations.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">Utility functions</span></span>
@@ -373,7 +378,9 @@ This browser does not support PDFs..
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        ori.append(avg_ori)</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        ori_acm.append(np.mean(ori))</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ori_acm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>#4. Total Orientation Against Time</p>
+</section>
+<section id="total-orientation-against-time" class="level1">
+<h1>4. Total Orientation Against Time</h1>
 <p>The next thing to do is to show how the total orientation of the system differs with time. As a quick preliminary demonstration, we can make use of the <code>video.py</code> function and the total orientation it displays for every frame. Below are two demonstrations for the same particle density, <span class="math inline">\(\rho=0.3\)</span></p>
 <section id="rho0.3-p_tumble0.05" class="level3">
 <h3 class="anchored" data-anchor-id="rho0.3-p_tumble0.05"><span class="math inline">\(\rho=0.3; P_{tumble}=0.05\)</span></h3>
@@ -424,9 +431,12 @@ This browser does not support PDFs..
 <li>note that this is only qualitative analysis so far</li>
 </ul></li>
 </ul>
-<p>#5. Cluster Analysis</p>
+</section>
+</section>
+<section id="cluster-analysis" class="level1">
+<h1>5. Cluster Analysis</h1>
 <p>The process consists of splitting the particles using neighbour analysis. This is done with <code>scipy.ndimage</code>, using a kernel that only engages with vertical and horizontal neighbours (the ‘1’ values) and disregards diagonal neighbours (the ‘0’ values). The justification for this is that particles only have freedom of movement along vertical and horizontal directions; clustering as such emerges when inner particles are prohibited from moving by outer particles. If a particle is present on the diagonal, it cannot be said to contribute to the cluster; as such, it is disregarded.</p>
-<p>The code bellow constitutes the main analysis done in this section. It leverages h5py file manipulation and uses a locally-created function (<code>utils.get_ds_iters</code>) for obtaining individual iterations from within it. This code is heavily borrowed from my lab partner’s <a href="https://dlam.mrxl.org/activity_log/week_6.html#cluster-analysis">version</a>, which in turn makes use of our supervisor’s <a href="../shared/ftnotes/label.html">code</a>.</p>
+<p>The code bellow constitutes the main analysis done in this section. It leverages h5py file manipulation and uses a locally-created function (<code>utils.get_ds_iters</code>) for obtaining individual iterations from within it. This code is heavily borrowed from my lab partner’s <a href="https://dlam.mrxl.org/activity_log/week_6.html#cluster-analysis">version</a> (external link), which in turn makes use of our supervisor’s <a href="../shared/ftnotes/label.html">code</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -490,7 +500,9 @@ This browser does not support PDFs..
 <figcaption class="figure-caption">test</figcaption>
 </figure>
 </div>
-<p>#6. Updated Motivational Report</p>
+</section>
+<section id="updated-motivational-report" class="level1">
+<h1>6. Updated Motivational Report</h1>
 <section id="for-full-evolution-history-of-the-report-see-the-motivational-report-page." class="level5">
 <h5 class="anchored" data-anchor-id="for-full-evolution-history-of-the-report-see-the-motivational-report-page.">For full evolution history of the report, see the <a href="../motivational-report/motivational-report.html">Motivational Report</a> page.</h5>
 <p>Active matter is, broadly, a subcategory of condensed matter systems distingushed primarily by energy input homogenously distributed across all constituents (agents) of the system, which in turn set their own self-propelled motion across a medium. The agents therefore have <em>direct</em> access to energy, and use it to autonomously propel and direct themselves (with different models and situations allowing for various degrees of freedom). The study of active matter is generally grounded in (but not limited to) observed behaviour of biological agents, as they are the primary (though not only) examples of active matter in nature.</p>
@@ -519,7 +531,6 @@ This browser does not support PDFs..
 </ol>
 
 
-</section>
 </section>
 </section>
 

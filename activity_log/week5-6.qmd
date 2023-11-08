@@ -215,11 +215,11 @@ plt.show()
 
 Below are a few results with varying $P_{tumble} and a fixed $\rho=0.3$
 
-![test](./week-5-6-files/cluster1.png)
+![](./week-5-6-files/cluster1.png)
 
-![test](./week-5-6-files/cluster2.png)
+![](./week-5-6-files/cluster2.png)
 
-![test](./week-5-6-files/cluster3.png)
+![](./week-5-6-files/cluster3.png)
 
 # 6. Updated Motivational Report
 

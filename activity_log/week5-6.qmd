@@ -17,17 +17,6 @@
   });
 </script>
 
-
-Roberto di Leonardo - Feynman's ratchet
-
-asymmetry due to dissipation leads to rectification, conversion into actual work
-
-look into quorum sensing!!
-
-Vicsek
-
-aggregation, maybe phase separation
-
 # Weeks 5-6
 
 # 0. Table of Contents
@@ -38,7 +27,13 @@ aggregation, maybe phase separation
 
 2. Persistent Exclusion Process Visualisation
 
-3. Orientation Against Time
+3. Utility Functions
+
+4. Total Orientation Against Time
+
+5. Cluster Analysis
+
+6. Updated Motivational Report
 
 # 1. Introduction
 
@@ -46,10 +41,12 @@ These two weeks broadly overlapped with reading week in the arts department; I u
 
 The goals for this week are as follows:
 
-- obtaining a proper graph of varying tumble probability and orientation (by arranging screnshots with various values next to each other)
+- obtaining a working graph of varying tumble probability and orientation (by arranging screnshots with various values next to each other)
 
 	- mention a few issues in the code
 	
+- begin cluster analysis
+
 - continue work on the motivational report
 
 # 2. Persistent Exclusion Process Visualisation
@@ -60,7 +57,7 @@ Another issue is the way I have visualised static lattices in the past. In [Week
 
 Below is a general graph (before having fixed the orientation problem) showing how clustering varies with varying tumble probability.
 
-<object data="./week-5-6-files/grid.pdf" type="application/pdf" width="1000px" height="1000px">
+<object data="./week-5-6-files/grid.pdf" type="application/pdf" width="900px" height="900px">
 123     <embed src="./week-5-6-files/grid.pdf">
 124         <p>This browser does not support PDFs.</a>.</p>
 125     </embed>
@@ -68,7 +65,7 @@ Below is a general graph (before having fixed the orientation problem) showing h
 
 For contrast, this is how a similar graph looks like after having fixed the orientation issues:
 
-<object data="./week-5-6-files/gridcorrect.pdf" type="application/pdf" width="1000px" height="1000px">
+<object data="./week-5-6-files/gridcorrect.pdf" type="application/pdf" width="900px" height="900px">
 123     <embed src="./week-5-6-files/gridcorrect.pdf">
 124         <p>This browser does not support PDFs.</a>.</p>
 125     </embed>
@@ -88,7 +85,7 @@ Some qualitative analysis:
 	
 There is still the task of making a 10x10 grid which shows a more elaborate change in clustering across a wider range of values. This can get quite cumbersome and needs to be rendered in a large enough size for the quality to be preserved.
 
-#3. Utility Functions
+# 3. Utility Functions
 
 Below is the script `utils.py` written by my lab partner, which features two utility functions which will come up occasionally in code. They unpack the h5py files in which the persistent exclusion process data is stored, and obtain unique iteration numbers or mean orientations.
 
@@ -138,7 +135,7 @@ def get_mean_orientation(file) -> list:
     return ori_acm
 ```
 
-#4. Total Orientation Against Time
+# 4. Total Orientation Against Time
 
 The next thing to do is to show how the total orientation of the system differs with time. As a quick preliminary demonstration, we can make use of the `video.py` function and the total orientation it displays for every frame. Below are two demonstrations for the same particle density, $\rho=0.3$
 
@@ -163,11 +160,11 @@ The animations only run over 50 frames - this may be too small a sample size to 
 
 	- note that this is only qualitative analysis so far
 
-#5. Cluster Analysis
+# 5. Cluster Analysis
 
 The process consists of splitting the particles using neighbour analysis. This is done with `scipy.ndimage`, using a kernel that only engages with vertical and horizontal neighbours (the '1' values) and disregards diagonal neighbours (the '0' values). The justification for this is that particles only have freedom of movement along vertical and horizontal directions; clustering as such emerges when inner particles are prohibited from moving by outer particles. If a particle is present on the diagonal, it cannot be said to contribute to the cluster; as such, it is disregarded.
 
-The code bellow constitutes the main analysis done in this section. It leverages h5py file manipulation and uses a locally-created function (`utils.get_ds_iters`) for obtaining individual iterations from within it. This code is heavily borrowed from my lab partner's [version](https://dlam.mrxl.org/activity_log/week_6.html#cluster-analysis), which in turn makes use of our supervisor's [code](./../shared/ftnotes/label.ipynb).
+The code bellow constitutes the main analysis done in this section. It leverages h5py file manipulation and uses a locally-created function (`utils.get_ds_iters`) for obtaining individual iterations from within it. This code is heavily borrowed from my lab partner's [version](https://dlam.mrxl.org/activity_log/week_6.html#cluster-analysis) (external link), which in turn makes use of our supervisor's [code](./../shared/ftnotes/label.ipynb).
 
 ```python
 from scipy import ndimage
@@ -224,7 +221,7 @@ Below are a few results with varying $P_{tumble} and a fixed $\rho=0.3$
 
 ![test](./week-5-6-files/cluster3.png)
 
-#6. Updated Motivational Report
+# 6. Updated Motivational Report
 
 ##### For full evolution history of the report, see the [Motivational Report](./../motivational-report/motivational-report.qmd) page.
 

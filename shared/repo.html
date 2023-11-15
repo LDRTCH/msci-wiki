@@ -298,16 +298,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>For <strong>Codeberg</strong>:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@codeberg.org:<span class="op">&lt;</span>user<span class="op">&gt;</span>/msci-wiki.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@codeberg.org:<span class="op">&lt;</span>user<span class="op">&gt;</span>/msci-wiki.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>For <strong>GitHub</strong>:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/msci-wiki.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:<span class="op">&lt;</span>user<span class="op">&gt;</span>/msci-wiki.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="managing-branches-and-commits" class="level2">
 <h2 class="anchored" data-anchor-id="managing-branches-and-commits">Managing branches and commits<a name="managing-branches-and-commits"></a></h2>
 <p>Make a <strong>new branch</strong> to build your own website from with</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>make_your_own_unique_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>make_your_own_unique_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This branch will contain individual work + shared stuff. It should be the source of truth.</p>
 <p>From now on, we will refer to this branch as <code>my_branch</code>.</p>
 <p>When contributing to <strong>shared</strong> knowledge, switch to <code>shared</code> branch with <code>git checkout shared</code>. In this branch, there should be only one directory called <code>shared</code>. This is the root folder of all shared information. Any further directory structuring occurs within this, not outside of it.</p>
@@ -315,29 +315,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>No individual work goes into the <code>shared</code> branch to avoid conflicts with filenames!</strong></li>
 </ul>
 <p>When merging new commits containing shared information from <code>shared</code> to <code>my_branch</code>, switch to <code>my_branch</code> with <code>git checkout my_branch</code>, and then perform a merge with</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge shared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge shared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Don’t merge from <code>my_branch</code> to <code>shared</code>!</strong></li>
 </ul>
 <p>In the case there are problematic commits in <code>shared</code>, future merge can be done with cherry-pick. Say this is <code>shared</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>SHA0 (HEAD): I want this commit</span>
+<div class="sourceCode" id="cb5" data-code-line-numbers="false"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>SHA0 (HEAD): I want this commit</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>SHA1: I don't want this commit</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>SHA2: I want this commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, in <code>my_branch</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cherry-pick SHA2</span>
+<div class="sourceCode" id="cb6" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cherry-pick SHA2</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cherry-pick SHA0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="initialise-a-quarto-project" class="level2">
 <h2 class="anchored" data-anchor-id="initialise-a-quarto-project">Initialise a Quarto project<a name="initialise-a-quarto-project"></a></h2>
 <p>In <code>my_branch</code>, make a new Quarto project with the website template:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project website</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project website</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Take a look at <code>_quarto.yml</code> from branch <code>np</code> for an example of how to configure it.</p>
 </section>
 <section id="building-pages" class="level2">
 <h2 class="anchored" data-anchor-id="building-pages">Building pages<a name="building-pages"></a></h2>
 <p>Quarto by default publishes to the branch <code>gh-pages</code>.</p>
 <p>To build the pages, first, run the following:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will build and push to the <code>gh-pages</code> branch.</p>
 <ul>
 <li><p>If using <strong>GitHub</strong>, that’s all you need to do.</p></li>
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="push-the-changes" class="level2">
 <h2 class="anchored" data-anchor-id="push-the-changes">Push the changes<a name="push-the-changes"></a></h2>
 <p>Pushing changes to remote servers make rolling back very difficult, make sure everything looks correct first. Use <code>git log</code> and <code>git status</code> to ensure everything has been committed. To push everything to a mirror:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote<span class="op">&gt;</span> <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-code-line-numbers="false"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote<span class="op">&gt;</span> <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Try to keep all branches up-to-date on all mirrors!</strong></p>
 </section>
 <section id="accessing-the-live-website" class="level2">

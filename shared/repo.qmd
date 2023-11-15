@@ -40,13 +40,13 @@ Clone the repo locally:
 
 - For **Codeberg**:
 
-```bash
+```{.bash code-line-numbers="false"}
 git clone git@codeberg.org:<user>/msci-wiki.git
 ```
 
 - For **GitHub**:
 
-```bash
+```{.bash code-line-numbers="false"}
 git clone git@github.com:<user>/msci-wiki.git
 ```
 
@@ -54,7 +54,7 @@ git clone git@github.com:<user>/msci-wiki.git
 
 Make a **new branch** to build your own website from with
 
-```bash
+```{.bash code-line-numbers="false"}
 git checkout -b <make_your_own_unique_name>
 ```
 
@@ -75,7 +75,7 @@ When merging new commits containing shared information from `shared` to
 `my_branch`, switch to `my_branch` with `git checkout my_branch`, and then
 perform a merge with
 
-```bash
+```{.bash code-line-numbers="false"}
 git merge shared
 ```
 
@@ -84,7 +84,7 @@ git merge shared
 In the case there are problematic commits in `shared`, future merge can be done with
 cherry-pick. Say this is `shared`:
 
-```txt
+```{.txt code-line-numbers="false"}
 SHA0 (HEAD): I want this commit
 SHA1: I don't want this commit
 SHA2: I want this commit
@@ -92,7 +92,7 @@ SHA2: I want this commit
 
 Then, in `my_branch`:
 
-```bash
+```{.bash code-line-numbers="false"}
 git cherry-pick SHA2
 git cherry-pick SHA0
 ```
@@ -101,7 +101,7 @@ git cherry-pick SHA0
 
 In `my_branch`, make a new Quarto project with the website template:
 
-```bash
+```{.bash code-line-numbers="false"}
 quarto create project website
 ```
 
@@ -114,7 +114,7 @@ Quarto by default publishes to the branch `gh-pages`.
 
 To build the pages, first, run the following:
 
-```bash
+```{.bash code-line-numbers="false"}
 quarto publish gh-pages
 ```
 
@@ -132,7 +132,7 @@ Pushing changes to remote servers make rolling back very difficult, make sure
 everything looks correct first. Use `git log` and `git status` to ensure
 everything has been committed. To push everything to a mirror:
 
-```bash
+```{.bash code-line-numbers="false"}
 git push <remote> <branch>
 ```
 

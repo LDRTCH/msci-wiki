@@ -86,10 +86,10 @@ I will instead make a small list of what I have to look into next week, in antic
 # 5. Interim Report Progress
 
 <object data="./week-7-files/Interim_Report-3.pdf" type="application/pdf" width="1000px" height="1000px">
-123     <embed src="./week-7-files/Interim_Report-3.pdf">
-124         <p>This browser does not support PDFs.</a>.</p>
-125     </embed>
-126 </object>
+     <embed src="./week-7-files/Interim_Report-3.pdf">
+         <p>This browser does not support PDFs.</a>.</p>
+     </embed>
+ </object>
 
 Many things here are subject to change. This is a combination of the [Motivational Report](./../motivational-report/motivational-report.qmd) from before and the research we have done this week. There are a few places which have to be completed, and the Discussion section is particularly lackluster as of now. The report is currently 1695 words without references.
 

@@ -142,18 +142,36 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Information Glossary</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false"><i class="bi bi-archive" role="img">
+</i> 
+ <span class="menu-text">Python Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><i class="bi bi-diagram-3-fill" role="img">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true"><i class="bi bi-diagram-3-fill" role="img">
 </i> 
  <span class="menu-text">Shared</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
@@ -170,14 +188,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false"><i class="bi bi-diagram-2-fill" role="img">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false"><i class="bi bi-diagram-2-fill" role="img">
 </i> 
  <span class="menu-text">FT notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
@@ -205,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#weeks-9-12" id="toc-weeks-9-12" class="nav-link active" data-scroll-target="#weeks-9-12">Weeks 9-12</a></li>
+  <li><a href="#weeks-10-13" id="toc-weeks-10-13" class="nav-link active" data-scroll-target="#weeks-10-13">Weeks 10-13</a></li>
   <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
   <li><a href="#quantifying-percolation" id="toc-quantifying-percolation" class="nav-link" data-scroll-target="#quantifying-percolation">2. Quantifying Percolation</a></li>
@@ -234,8 +252,8 @@ ul.task-list li input[type="checkbox"] {
     }
   });
 </script>
-<section id="weeks-9-12" class="level1">
-<h1>Weeks 9-12</h1>
+<section id="weeks-10-13" class="level1">
+<h1>Weeks 10-13</h1>
 </section>
 <section id="table-of-contents" class="level1">
 <h1>0. Table of Contents</h1>
@@ -253,7 +271,12 @@ ul.task-list li input[type="checkbox"] {
 <h1>2. Quantifying Percolation</h1>
 <p>We can begin to quantify percolation by applying the cluster analysis outlined in <a href="../activity_log/week5-6.html">Weeks 5-6</a> (specifically subsection 5). By obtaining the size of the biggest cluster, we can see how it varies for different densities - percolation occurs at higher sizes relative to the entire system size (which as of now is still 128x128 lattice sites). The figure below shows such an analysis for different tumbling rates <span class="math inline">\(P_t\)</span>. <img src="./week-9-12-files/biggest-cluster-sizes.png" class="img-fluid"></p>
 <p>We can see that the highest possible cluster stagnates around zero for lower densities in all graphs. This means that, while clustering does begin to occur, there are many unconnected and small clusters rather than one big cluster reaching across the entire system. Take the clustering analysis picture from <a href="../activity_log/week5-6.html">Weeks 5-6</a> below, for instance; we notice obvious non-zero clusters, but they are all individually relatively small to the entire system. This is an evident non-percolation regime.</p>
-<p><img src="./week-5-6-files/cluster1.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./week-5-6-files/cluster1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">test</figcaption>
+</figure>
+</div>
 <p>Where percolation does start being called into question is when the relative percentage of the cluster becomes comparable to the set density. Sticking with the <span class="math inline">\(P_t=0.034\)</span> case, we can see that by <span class="math inline">\(\rho=0.8\)</span>, the gradient of the plotted curve becomes distinctly linear. This is precisely because the biggest cluster in the system covers the exact density thereof.</p>
 <p>Note of course that the ratio need not exactly cover the density - there is an ambiguous regime where percolation feasibly occurs with most clustering being enmeshed within the same connected cluster, but simply with a lot of agents in constant movement. We can characterise this as the zone around the ‘inflection point’ within the above graphs.</p>
 <p>Note, as well, the inflection region, which is more spread out for a smaller tumbling rate, and conversely is sharper for higher tumbling probabilities.</p>

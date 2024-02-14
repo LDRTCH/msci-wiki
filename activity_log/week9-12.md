@@ -45,4 +45,6 @@ Note of course that the ratio need not exactly cover the density - there is an a
 
 Note, as well, the inflection region, which is more spread out for a smaller tumbling rate, and conversely is sharper for higher tumbling probabilities.
 
-To further examine percolation, 
+This, however, is ultimately not a good enough metric for quantifying percolation. While the biggest cluster size analysis would, most of the time, accurately detect non-percolation in lower density regimes, as well as percolation in higher density regimes, it does not account for smaller clusters which nonetheless can perform percolation within the system. All percolation requires in practice is that a cluster unites the vertical or horizontal walls of the lattice. As such, it is feasible (both in theory and in practice) for a smaller size "biggest cluster" to form in a narrow form, which nonetheless unites two parallel walls of the lattice. A better metric to account for percolation is therefore precisely this - checking that the biggest cluster can reach over
+
+This doesn't mean the data obtained above is useless. The analysis is still interesting for seeing how clusters are distributed for many different densities and tumbling rates.

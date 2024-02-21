@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Dissipation Learning in Active Matter – week16</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Dissipation Learning in Active Matter</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-git"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/ldrtch/msci-wiki">
+            GitHub mirror
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Personal</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../activity_log/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Activity log</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../motivational-report/motivational-report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivational Report</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../structured_information/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Information Glossary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false"><i class="bi bi-archive" role="img">
+</i> 
+ <span class="menu-text">Python Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true"><i class="bi bi-diagram-3-fill" role="img">
+</i> 
+ <span class="menu-text">Shared</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
+</i> 
+ <span class="menu-text">GitHub Repository (cp fork)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/dlactivematter" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
+</i> 
+ <span class="menu-text">GitHub Shared Organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-pc-display" role="img">
+</i> 
+ <span class="menu-text">CNN Models Parameter Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false"><i class="bi bi-diagram-2-fill" role="img">
+</i> 
+ <span class="menu-text">FT notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minimal cluster analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-bookmarks-fill" role="img">
+</i> 
+ <span class="menu-text">Zotero library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#week-16" id="toc-week-16" class="nav-link active" data-scroll-target="#week-16">Week 16</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#checklist" id="toc-checklist" class="nav-link" data-scroll-target="#checklist">2. Checklist</a></li>
+  <li><a href="#model-list-and-storage" id="toc-model-list-and-storage" class="nav-link" data-scroll-target="#model-list-and-storage">3. Model List and Storage</a></li>
+  <li><a href="#shorthand-model-list" id="toc-shorthand-model-list" class="nav-link" data-scroll-target="#shorthand-model-list">4. Shorthand Model List</a></li>
+  <li><a href="#new-architecture" id="toc-new-architecture" class="nav-link" data-scroll-target="#new-architecture">3. New Architecture</a></li>
+  <li><a href="#more-tumbling-rates" id="toc-more-tumbling-rates" class="nav-link" data-scroll-target="#more-tumbling-rates">4. More Tumbling Rates</a></li>
+  <li><a href="#bigger-n-values" id="toc-bigger-n-values" class="nav-link" data-scroll-target="#bigger-n-values">4. Bigger N Values</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="week-16" class="level1">
+<h1>Week 16</h1>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>0. Table of Contents</h1>
+</section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<p>Now that we have set up the machine learning system and begun familiarising ourselves with its architecture, the aim of the next few weeks (this one included) is to begin experimenting on different training and validation data, as well as tuning the architecture.</p>
+</section>
+<section id="checklist" class="level1">
+<h1>2. Checklist</h1>
+<p>Our evolving checklist of things to explore regarding CNNs can be found <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/">here</a> (Sheet 1). The highlight of what has been currently done and what is currently aimed at has been transcribed below.</p>
+<ul class="task-list">
+<li><input type="checkbox" checked="">Data augmentation (rolled): noticeable improvement</li>
+<li><input type="checkbox" checked="">More samples: noticeable improvement</li>
+<li><input type="checkbox" checked="">Different alphas (training): noticeable improvement</li>
+<li><input type="checkbox">Gaps in alphas (training)</li>
+<li><input type="checkbox">Different densities</li>
+<li><input type="checkbox">Data augmentation (rotate)</li>
+<li><input type="checkbox">Tune learning rate/optimiser</li>
+<li><input type="checkbox">Tune batch size</li>
+</ul>
+</section>
+<section id="model-list-and-storage" class="level1">
+<h1>3. Model List and Storage</h1>
+<p>In order to keep track of our many models, involving different layers and different data training sets, we opted to create a standardised table detailing the different parameters going into the system, such as training data snapshots, ratio of training to prediction data, etc. Below is a quick (preliminary) snapshot of the first few lines of the table, for reference. Note that a lot of columns have been skipped, which detail the utilised densities, tumbling rates and system sizes used for training and validation.</p>
+<p><img src="./week-16-files/table.png" class="img-fluid"></p>
+<p>The growing model list can be found <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/">here</a>, on the same link as the checklist above (Sheet 2). Below are transcribed our current sought metrics (coloured in green within the table above).</p>
+<ul>
+<li>Maximum STD: 0.02
+<ul>
+<li>This is the maximum standard deviation a particular prediction spread can have. For example, given a model, the maximum STD determines the biggest spread in the output predictions (which are generated for some specific tumbling rates). Ideally the spreads would be similar across, but we can consider the learning to have failed if any individual prediction has too big a spread.</li>
+</ul></li>
+<li>Average STD: 0.01
+<ul>
+<li>This is the average standard deviation a particular prediction spread can have. Taking the same example as above, this averages over all predicted tumbling rates to obtain an average spread deviation. This naturally has to be small as well in order for the model to succeed.</li>
+</ul></li>
+<li>Mean Average Error: 0.01</li>
+<li>Pearson’s Coefficient: 0.975</li>
+<li>Overlap Ratio: 1</li>
+</ul>
+</section>
+<section id="shorthand-model-list" class="level1">
+<h1>4. Shorthand Model List</h1>
+<p>While each model is referred to by the aforementioned standardisation, it is also useful to communicate architecture more quickly. Here’s the current list of different architecturess being used, all indexed by a model number (MN). The latter predictions generated in <a href="../activity_log/week13-15.html">Weeks 13-15</a> are all done with MN_1, for example.</p>
+<section id="mn_1" class="level3">
+<h3 class="anchored" data-anchor-id="mn_1">MN_1</h3>
+<ol type="1">
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’,strides=(3,3),activation=“relu”, input_shape=shape)</li>
+<li>BN</li>
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’)</li>
+<li>BN</li>
+<li>MAXPOOL (pool_size=(3,3))</li>
+<li>CONV (filters=6,kernel_size=(3,3),padding=‘same’)</li>
+<li>BN</li>
+<li>CONV (filters=6,kernel_size=(3,3),padding=‘same’)</li>
+<li>BN</li>
+<li>MAXPOOL (pool_size=(3,3))</li>
+<li>FC (units=128,activation=‘relu’)</li>
+<li>DO (0.2) (without layout optimiser)</li>
+<li>FC (units=10,activation=‘softmax’)</li>
+<li>FLATTEN</li>
+<li>FC (units=1,activation=‘linear’)</li>
+</ol>
+</section>
+<section id="mn_2" class="level3">
+<h3 class="anchored" data-anchor-id="mn_2">MN_2</h3>
+<ol type="1">
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’,input_shape=shape)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=6,kernel_size=(5,5),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>AVGPOOL</li>
+<li>DO (0.2) (without layout optimiser)</li>
+<li>FC (units=64,activation=‘relu’)</li>
+<li>DO (0.2) (without layout optimiser)</li>
+<li>FC (units=10,activation=‘softmax’)</li>
+<li>FLATTEN</li>
+<li>FC (units=1,activation=‘linear’)</li>
+</ol>
+<p>As more architectures are employed, the full list will be updated <a href="../models.html">here</a>.</p>
+</section>
+</section>
+<section id="new-architecture" class="level1">
+<h1>3. New Architecture</h1>
+<p>Using the architecture of MN_2, we can try to examine a similar case to which we applied MN_1. Below is the prediction of model atreus1273, applied to a sample size of 70000 iterations spread equally among 5 turning rates (50000 training, 20000 validation), for density 0.15.</p>
+<p><img src="./week-16-files/atreus1273.png" class="img-fluid"></p>
+<p>The fitting overall seems to be worse, but the top middle values are almost perfectly fitted. My lab partner has gotten better results with this model, so I will continue exploring it in parallel with MN_1 for now.</p>
+</section>
+<section id="more-tumbling-rates" class="level1">
+<h1>4. More Tumbling Rates</h1>
+<p>There is an obvious extension in increasing the amount of tumbling rates utilised. This may help the CNN pick up on the clustering/dissipation pattern better by providing more scenarios in which it can be examined.</p>
+<p>Below is an example reprouction of MN_1 trained on the same values as the last example in <a href="../activity_log/week13-15.html">Weeks 13-15</a>, model median4431. It has now been standardised to be easliy referred to in our table.</p>
+<p><img src="./week-16-files/median4431.png" class="img-fluid"></p>
+<p>Note that this is using rolled data, so it is bound to be more accurate than the unrolled variants we will consider below.</p>
+</section>
+<section id="bigger-n-values" class="level1">
+<h1>4. Bigger N Values</h1>
+<section id="michigan2241" class="level3">
+<h3 class="anchored" data-anchor-id="michigan2241">michigan2241</h3>
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 256, 256, 3)       30        
+                                                                 
+ max_pooling2d (MaxPooling2  (None, 128, 128, 3)       0         
+ D)                                                              
+                                                                 
+ re_lu (ReLU)                (None, 128, 128, 3)       0         
+                                                                 
+ batch_normalization (Batch  (None, 128, 128, 3)       12        
+ Normalization)                                                  
+                                                                 
+ conv2d_1 (Conv2D)           (None, 128, 128, 6)       456       
+                                                                 
+ max_pooling2d_1 (MaxPoolin  (None, 64, 64, 6)         0         
+ g2D)                                                            
+                                                                 
+ re_lu_1 (ReLU)              (None, 64, 64, 6)         0         
+                                                                 
+ batch_normalization_1 (Bat  (None, 64, 64, 6)         24        
+ chNormalization)                                                
+                                                                 
+ global_average_pooling2d (  (None, 6)                 0         
+ GlobalAveragePooling2D)                                         
+                                                                 
+ dropout (Dropout)           (None, 6)                 0         
+                                                                 
+ dense (Dense)               (None, 64)                448       
+                                                                 
+ dropout_1 (Dropout)         (None, 64)                0         
+                                                                 
+ dense_1 (Dense)             (None, 10)                650       
+                                                                 
+ flatten (Flatten)           (None, 10)                0         
+                                                                 
+ dense_2 (Dense)             (None, 1)                 11        
+                                                                 
+=================================================================
+Total params: 1631 (6.37 KB)
+Trainable params: 1613 (6.30 KB)
+Non-trainable params: 18 (72.00 Byte)
+_________________________________________________________________</code></pre>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Made with Quarto (cp branch)</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

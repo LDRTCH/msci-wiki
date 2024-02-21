@@ -2,98 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/deadlines.html</loc>
-    <lastmod>2024-02-14T14:25:49.100Z</lastmod>
+    <lastmod>2024-02-21T14:33:26.041Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/ftnotes/interim-report-structure.html</loc>
-    <lastmod>2024-02-14T14:25:48.584Z</lastmod>
+    <lastmod>2024-02-21T14:33:25.557Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/ftnotes/Colab.html</loc>
-    <lastmod>2024-02-14T14:25:48.024Z</lastmod>
+    <lastmod>2024-02-21T14:33:24.952Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/gitinfo.html</loc>
-    <lastmod>2024-02-14T14:25:47.216Z</lastmod>
+    <lastmod>2024-02-21T14:33:23.980Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/notebooks/cp_network.html</loc>
-    <lastmod>2024-02-14T14:25:46.144Z</lastmod>
+    <lastmod>2024-02-21T14:33:22.956Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week9.html</loc>
-    <lastmod>2024-02-14T14:25:45.428Z</lastmod>
+    <lastmod>2024-02-21T14:33:22.316Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week8.html</loc>
-    <lastmod>2024-02-14T14:25:44.740Z</lastmod>
+    <lastmod>2024-02-21T14:33:21.672Z</lastmod>
   </url>
   <url>
-    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week13-15.html</loc>
-    <lastmod>2024-02-14T14:25:43.992Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week2.html</loc>
-    <lastmod>2024-02-14T14:25:42.972Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week5-6.html</loc>
-    <lastmod>2024-02-14T14:25:41.932Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/index.html</loc>
-    <lastmod>2024-02-14T14:25:40.888Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/persistent-exclusion-process/persistent-exclusion-process/notebooks/cp_network.html</loc>
-    <lastmod>2024-02-14T14:25:40.216Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/structured_information/landing.html</loc>
-    <lastmod>2024-02-14T14:25:39.752Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/persistent-exclusion-process/persistent-exclusion-process/notebooks/np_network.html</loc>
-    <lastmod>2024-02-14T14:25:40.616Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week1.html</loc>
-    <lastmod>2024-02-14T14:25:41.308Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week4.html</loc>
-    <lastmod>2024-02-14T14:25:42.484Z</lastmod>
+    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week16.html</loc>
+    <lastmod>2024-02-21T14:33:20.956Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week7.html</loc>
-    <lastmod>2024-02-14T14:25:43.320Z</lastmod>
+    <lastmod>2024-02-21T14:33:19.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week4.html</loc>
+    <lastmod>2024-02-21T14:33:19.188Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week1.html</loc>
+    <lastmod>2024-02-21T14:33:17.912Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/models.html</loc>
+    <lastmod>2024-02-21T14:33:17.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/persistent-exclusion-process/persistent-exclusion-process/notebooks/np_network.html</loc>
+    <lastmod>2024-02-21T14:33:16.500Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/persistent-exclusion-process/persistent-exclusion-process/notebooks/cp_network3.html</loc>
+    <lastmod>2024-02-21T14:33:15.312Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/structured_information/landing.html</loc>
+    <lastmod>2024-02-21T14:33:14.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/persistent-exclusion-process/persistent-exclusion-process/notebooks/cp_network.html</loc>
+    <lastmod>2024-02-21T14:33:16.056Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/persistent-exclusion-process/persistent-exclusion-process/notebooks/cp_network2.html</loc>
+    <lastmod>2024-02-21T14:33:16.876Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/index.html</loc>
+    <lastmod>2024-02-21T14:33:17.452Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week5-6.html</loc>
+    <lastmod>2024-02-21T14:33:18.500Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week2.html</loc>
+    <lastmod>2024-02-21T14:33:19.640Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ldrtch.github.io/msci-wiki/activity_log/week13-15.html</loc>
+    <lastmod>2024-02-21T14:33:20.572Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/landing.html</loc>
-    <lastmod>2024-02-14T14:25:44.384Z</lastmod>
+    <lastmod>2024-02-21T14:33:21.336Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week3.html</loc>
-    <lastmod>2024-02-14T14:25:45.192Z</lastmod>
+    <lastmod>2024-02-21T14:33:22.088Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/activity_log/week9-12.html</loc>
-    <lastmod>2024-02-14T14:25:45.736Z</lastmod>
+    <lastmod>2024-02-21T14:33:22.592Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/motivational-report/motivational-report.html</loc>
-    <lastmod>2024-02-14T14:25:46.924Z</lastmod>
+    <lastmod>2024-02-21T14:33:23.704Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/repo.html</loc>
-    <lastmod>2024-02-14T14:25:47.792Z</lastmod>
+    <lastmod>2024-02-21T14:33:24.740Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/ftnotes/label.html</loc>
-    <lastmod>2024-02-14T14:25:48.336Z</lastmod>
+    <lastmod>2024-02-21T14:33:25.256Z</lastmod>
   </url>
   <url>
     <loc>https://ldrtch.github.io/msci-wiki/shared/cluster.html</loc>
-    <lastmod>2024-02-14T14:25:48.828Z</lastmod>
+    <lastmod>2024-02-21T14:33:25.789Z</lastmod>
   </url>
 </urlset>

@@ -16,6 +16,7 @@ website:
           - activity_log/landing.qmd
           - motivational-report/motivational-report.qmd
           - structured_information/landing.qmd
+          - models.qmd
           - section: "Python Notebooks"
             icon: archive
             contents:
@@ -29,6 +30,9 @@ website:
           - text: "GitHub Shared Organisation"
             icon: git
             href: "https://github.com/dlactivematter"
+          - text: "CNN Models Parameter Tables"
+            icon: pc-display
+            href: "https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/"
           - section: "FT notes"
             icon: diagram-2-fill
             contents:

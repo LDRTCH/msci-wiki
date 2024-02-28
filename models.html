@@ -272,6 +272,26 @@ ul.task-list li input[type="checkbox"] {
 <li>DENSE (units=1,activation=‘linear’)</li>
 </ol>
 </section>
+<section id="mn_1.5" class="level3">
+<h3 class="anchored" data-anchor-id="mn_1.5">MN_1.5</h3>
+<ol type="1">
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’,strides=(3,3),activation=‘relu’,input_shape=shape)</li>
+<li>BN</li>
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’)</li>
+<li>BN</li>
+<li>MAXPOOL (pool_size=(3,3))</li>
+<li>CONV (filters=6,kernel_size=(3,3),padding=‘same’)</li>
+<li>BN</li>
+<li>CONV (filters=6,kernel_size=(3,3),padding=‘same’)</li>
+<li>BN</li>
+<li>MAXPOOL (pool_size=(3,3))</li>
+<li>FC (units=128,activation=‘relu’)</li>
+<li>DO (0.2) (without layout optimiser)</li>
+<li>FC (units=10,activation=‘softmax’)</li>
+<li>FLATTEN</li>
+<li>FC (units=1,activation=‘linear’)</li>
+</ol>
+</section>
 <section id="mn_2" class="level3">
 <h3 class="anchored" data-anchor-id="mn_2">MN_2</h3>
 <ol type="1">
@@ -290,6 +310,30 @@ ul.task-list li input[type="checkbox"] {
 <li>DENSE (units=10,activation=‘softmax’)</li>
 <li>FLATTEN</li>
 <li>DENSE (units=1,activation=‘linear’)</li>
+</ol>
+</section>
+<section id="mn_3" class="level3">
+<h3 class="anchored" data-anchor-id="mn_3">MN_3</h3>
+<ol type="1">
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’,input_shape=shape)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=4,kernel_size=(4,4),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=6, kernel_size=(5,5),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>AVGPOOL</li>
+<li>DO (0.1) (without layout optimiser)</li>
+<li>FC (units=128,activation=‘relu’)</li>
+<li>DO (0.1) (without layout optimiser)</li>
+<li>FC (units=3,activation=‘relu’)</li>
+<li>FLATTEN</li>
+<li>FC (units=1,activation=‘linear’)</li>
 </ol>
 
 

@@ -61,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -244,6 +246,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#new-architecture" id="toc-new-architecture" class="nav-link" data-scroll-target="#new-architecture">3. New Architecture</a></li>
   <li><a href="#more-tumbling-rates" id="toc-more-tumbling-rates" class="nav-link" data-scroll-target="#more-tumbling-rates">4. More Tumbling Rates</a></li>
   <li><a href="#bigger-n-values" id="toc-bigger-n-values" class="nav-link" data-scroll-target="#bigger-n-values">4. Bigger N Values</a></li>
+  <li><a href="#model-summaries" id="toc-model-summaries" class="nav-link" data-scroll-target="#model-summaries">5. Model Summaries</a></li>
   </ul>
 </nav>
     </div>
@@ -292,8 +295,12 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li>Mean Average Error: 0.01</li>
 <li>Pearson’s Coefficient: 0.975</li>
-<li>Overlap Ratio: 1</li>
+<li>Overlap Ratio: 1
+<ul>
+<li>This ratio indicates the amount of tumbling rate prediction spreads which overlap at all with the expected tumbling rates.</li>
+</ul></li>
 </ul>
+<p>Combining a ubiquitous overlap ratio with a very small average and maximum standard deviation yields results which are both very accurate and very precise.</p>
 </section>
 <section id="shorthand-model-list" class="level1">
 <h1>4. Shorthand Model List</h1>
@@ -355,8 +362,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="bigger-n-values" class="level1">
 <h1>4. Bigger N Values</h1>
-<section id="michigan2241" class="level3">
-<h3 class="anchored" data-anchor-id="michigan2241">michigan2241</h3>
+<p>Here is a brief attempt to train the CNN on broader N values. This will be investigated more in depth at the end of the project. Model michigan2241 is trained on <span class="math inline">\(N_x=N_y=256\)</span>; an example screenshot can be found below.</p>
+<p><img src="./week-16-files/256.0_0.016.png" class="img-fluid"></p>
+<p>Running MN_2 architecture, the training yields the following predictions:</p>
+<p><img src="./week-16-files/michigan2241.png" class="img-fluid"></p>
+<p>We can see the fitting does not match</p>
 <pre><code>Model: "sequential"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
@@ -401,9 +411,11 @@ Total params: 1631 (6.37 KB)
 Trainable params: 1613 (6.30 KB)
 Non-trainable params: 18 (72.00 Byte)
 _________________________________________________________________</code></pre>
-
-
 </section>
+<section id="model-summaries" class="level1">
+<h1>5. Model Summaries</h1>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

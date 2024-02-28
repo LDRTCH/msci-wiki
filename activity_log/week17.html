@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Dissipation Learning in Active Matter – week17</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Dissipation Learning in Active Matter</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-git"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/ldrtch/msci-wiki">
+            GitHub mirror
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Personal</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../activity_log/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Activity log</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../motivational-report/motivational-report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivational Report</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../structured_information/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Information Glossary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false"><i class="bi bi-archive" role="img">
+</i> 
+ <span class="menu-text">Python Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true"><i class="bi bi-diagram-3-fill" role="img">
+</i> 
+ <span class="menu-text">Shared</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
+</i> 
+ <span class="menu-text">GitHub Repository (cp fork)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/dlactivematter" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
+</i> 
+ <span class="menu-text">GitHub Shared Organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-pc-display" role="img">
+</i> 
+ <span class="menu-text">CNN Models Parameter Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false"><i class="bi bi-diagram-2-fill" role="img">
+</i> 
+ <span class="menu-text">FT notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minimal cluster analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-bookmarks-fill" role="img">
+</i> 
+ <span class="menu-text">Zotero library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#week-17" id="toc-week-17" class="nav-link active" data-scroll-target="#week-17">Week 17</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#story" id="toc-story" class="nav-link" data-scroll-target="#story">2. Story</a></li>
+  <li><a href="#discussing-similar-research" id="toc-discussing-similar-research" class="nav-link" data-scroll-target="#discussing-similar-research">3. Discussing Similar Research</a></li>
+  <li><a href="#mn_3-discussion" id="toc-mn_3-discussion" class="nav-link" data-scroll-target="#mn_3-discussion">4. MN_3 Discussion</a></li>
+  <li><a href="#example-mn_3-application" id="toc-example-mn_3-application" class="nav-link" data-scroll-target="#example-mn_3-application">5. Example MN_3 Application</a></li>
+  <li><a href="#gaps-in-p_tumble-monochrome" id="toc-gaps-in-p_tumble-monochrome" class="nav-link" data-scroll-target="#gaps-in-p_tumble-monochrome">6. Gaps in <span class="math inline">\(P_{tumble}\)</span> (monochrome)</a></li>
+  <li><a href="#preliminary-tumbling-rate-extrapolation" id="toc-preliminary-tumbling-rate-extrapolation" class="nav-link" data-scroll-target="#preliminary-tumbling-rate-extrapolation">7. Preliminary Tumbling Rate Extrapolation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+<section id="week-17" class="level1">
+<h1>Week 17</h1>
+</section>
+<section id="table-of-contents" class="level1">
+<h1>0. Table of Contents</h1>
+<ol type="1">
+<li>Introduction</li>
+<li>Story</li>
+<li>Discussing Similar Research</li>
+<li>MN_3 Discussion</li>
+<li>Example MN_3 Application</li>
+<li>Gaps in <span class="math inline">\(P_{tumble}\)</span> (monochrome)</li>
+</ol>
+</section>
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<p>The main purpose of this week is to bring out a concrete direction in the numerical research done so far, as well as continue carrying it out.</p>
+</section>
+<section id="story" class="level1">
+<h1>2. Story</h1>
+<p>The aim of the second part of our project was to generate neural network automatised recovery of intrinsic properties within our persistent exclusion process system by evaluating experimental data. The motivation is twofold: pragmatically, the aim is to provide a proof of concept engineering of a tool which can evaluate and identify active matter systems. To this end, generalisation of phenomena is key; such a neural network should be able to adapt to a vast variation of parameters, namely tumbling rates, densities and sample sizes. Furthermore, there is a theoretical component to the utility of this research - on one hand, a machine learning algorithm reproducing the inherent tumbling quantity of a system can serve as external validation of active matter phenomena; with the caveat, of course, that this external validation (by which we mean externalised, removed from human judgement) is nonetheless trained and verified with human-set metrics and understanding.** On the other hand, obtaining a generalised and automated tool for evaluating active matter systems can point human focus to the interesting regions of behaviour, thus supplementing analytical examination.**</p>
+<p>The algorithm returns various predictions for every tumbling-density-size system it is applied to; these predictions have a spread, which we intend to lower and center around the real tumbling rate, but nonetheless it is important to note that it does not provide a discrete singular prediction. One goal is to qualitatively evaluate the distributions of predictions, with the hopes of a gaussian-like organisation centred on the actual tumbling rate. In this sense the algorithm exhibits human-like prediction. The crux of the issue is determining satisfactory metrics for evaluating the systems. The goal, however, is not to perfectly fine-tune the system as much as to make it applicable enough in order to highlight different qualitative distinctions and how they influence the algorithm’s output - with the explicit intent to link to qualitative phenomena which we have examined in the first part of our project.</p>
+<section id="degrees-of-freedom" class="level5">
+<h5 class="anchored" data-anchor-id="degrees-of-freedom">1. Degrees of freedom</h5>
+<p>One of the important explorations is examining how changing the input degrees of freedom alters the machine output. By degrees of freedom, we specifically mean positions and orientations - the CNN can be fed either ‘experiment-like’ images, which present only black and white displays of our active matter system, and thus only allows the network to extrapolate on positions, or it can be fed afferent orientations as well, as colours for each particle, and henceforth weight its parameters with this extra difference. We can then explore how training the CNN on one degree of freedom setup influences its predictions on the other. Our expectations going in are that:</p>
+<ul>
+<li>training the CNN on strictly positions will have similar predictions when validating it on positions+orientations; this is because it will/might simply approach the coloured landscape the same way it approaches the monochrome landscape, by contrasting existing particles with the black background.</li>
+<li>training the CNN on positions and orientations will have worse preditions when validating it just on positions; this is because, having been trained to recognise colour and incorporate it in predictions, the system might struggle to ‘explain’ the images which now lack this degree of freedom</li>
+</ul>
+<p>If these expectations prove to be correct, training the CNN on positions+orientations might be a worse prospect, due to most real life applications/evaluations of active matter not being able to access the orientation of agents through still images. Nonetheless, training on positions+orientations may give the CNN a better insight into the clustering phenomenon as a whole, due to the role particle orientations play in cluster formation and evaporation.</p>
+<p>Once we’ve explored how degrees of freedom alter the CNN predictions, it is useful to explore some modifications to the orientation+position setup. An interesting extension is exploring how misinformation affects the neural network. Some active matter imaging, of, say, Janus particles rolling in 2D, can trace the orientation of a particle. But this tracing is imperfect, and there are some ambiguous cases where orientation may be misread. As such, we could engineer a dataset which ‘misreads’ the orientation of a certain ratio of the total particles, recolouring them.</p>
+</section>
+<section id="predicting-novel-tumbling-rates" class="level5">
+<h5 class="anchored" data-anchor-id="predicting-novel-tumbling-rates">2. Predicting novel tumbling rates</h5>
+<p>Another important exploration is how training on a certain set of tumbling rates can then cause the CNN to be able to accurately predict tumbling rates in different regions. Our preliminary experiments have not been able to replicate such results - attempting to predict tumbling rates spaced out inbetween the training tumbling rates has caused the system to attempt to fit its predictions to the neighbouring training rates, and therefore given a very large spread to the data. This may however be strictly due to the low training data we have given the CNN so far - both low amount of original evolutions to give the system more depth of experience, as well as low amount of distinct tumbling rates. It ma</p>
+<p>Here are our expectations regarding this part of the project:</p>
+<ul>
+<li><p>Using interspersed sets of training/validation will yield accurate predictions (on the validation samples) provided the spacing between values is low enough.</p></li>
+<li><p>Using vastly separated sets is going to fare poorly in prediction, due to different clustering behaviour which the CNN is not adequately accustomed to.</p></li>
+</ul>
+</section>
+<section id="predicting-novel-densities" class="level5">
+<h5 class="anchored" data-anchor-id="predicting-novel-densities">3. Predicting novel densities</h5>
+<p>Training on a certain set of densities might also present interesting behaviour when applying the algorithm on a different set of densities.</p>
+<p>A noteworthy extension of our research is to then apply this neural network to real active matter systems by ‘translating’ physical scenarios into the visual language our tool is familiar with.</p>
+<p>We have experimented with various architecture models (a summary of the different architectures can be found <a href="../models.html">here</a>). From now on we will be mostly running the MN_3 (discussed in a section below). Slight variations, if existent, will be noted explicitly, as well as reversals to other architectures.</p>
+</section>
+<section id="gaps-in-data" class="level5">
+<h5 class="anchored" data-anchor-id="gaps-in-data">4. Gaps in data</h5>
+<p>Training the CNN on an equally (and slightly) spaced set of tumbling rates might cause it to develop a certain logarithmic bias in establishing a tumbling rate. It is therefore useful to test how the CNN develops when trained on more and/or unevenly spaced tumbling rates, in order to examine any potential misdirections in data.</p>
+</section>
+<section id="system-size-dependence" class="level5">
+<h5 class="anchored" data-anchor-id="system-size-dependence">5. System size dependence</h5>
+<p>To gauge how the CNN can trace the underlying behaviour of <em>clustering</em> and detailed balance breaking as it relates to the tumbling rate, it may be useful to examine how a CNN trained on a specific system size will fare in predicting tumbling rates for different system sizes.</p>
+</section>
+</section>
+<section id="discussing-similar-research" class="level1">
+<h1>3. Discussing Similar Research</h1>
+<p>Deep learning probability flows and entropy production rates in active matter, Boffi and Vanden-Eijnden, 2023.</p>
+</section>
+<section id="mn_3-discussion" class="level1">
+<h1>4. MN_3 Discussion</h1>
+<p>Below is the CNN architecture we have settled on. As a reminder, all the architectures used in this project can be found <a href="../models.html">here</a>.</p>
+<ol type="1">
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’,input_shape=shape)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=4,kernel_size=(4,4),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=6, kernel_size=(5,5),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>AVGPOOL</li>
+<li>DO (0.1) (without layout optimiser)</li>
+<li>FC (units=128,activation=‘relu’)</li>
+<li>DO (0.1) (without layout optimiser)</li>
+<li>FC (units=3,activation=‘relu’)</li>
+<li>FLATTEN</li>
+<li>FC (units=1,activation=‘linear’)</li>
+</ol>
+<p>We have already briefly gone over what each architecture function type does in <a href="../activity_log/week13-15.html">Weeks 13-15</a>. However, a more general justification is outlined here. The activation function is kept as ReLU althroughout (with the exception of the last function); it is overall both better at accommodating high weights in the kernel functions, as well as much less resource intensive to generate when compared to the sigma function.</p>
+<p>Convolutional layers are our main method of extrapolating features from input data. It is generally good practice to structure architecture such that the first stages employ a small kernel, which is gradually increased with subsequent convolutions. This approach is meant to leverage a fundamental prospect of neural networks: they begin by combing and extrapolating low-level features, which in subsequent layers are meant to form into more general, ‘zoomed out’ features. A good analogy would be drawn number recognition (borrowed from <a href="https://www.3blue1brown.com/lessons/neural-networks">here</a>: the first few stages of a neural network may identify pixels or curved lines, while the latter stages might pick up on entire shapes and ultimately numbers themselves. In a similar vein, our CNN may identify individual paricles and small clustering before it identifies large clusters, and subsequently picks up on underlying tumbling rate. Therefore, the kernel sizes for our CONV layers go from (3,3) to (5,5) in increments of (1,1). The CONV layer depth (its number of filters) is similarly increasing; the first layers pick up on low-level features, which then are extrapolated to form more complex patterns in latter layers.</p>
+<p>Each convolutional layer is followed by a maximum pooling layer. These reduce dimensionality and keep the maximal value in the subregions binned. This is a method of down-sampling, increasing the generality of the feature map in order to circumvent very slight variations significantly altering the neural network training; the pool size is almost always (2,2) in literature, due to further increases resulting in too steep a reduction of output neurons. This is then followed by explicit ReLU activations, and finally we use batch normalisation layers in order to ‘standardise’ the output of previous layers to be used as the input for subsequent layers. Such layers involve variance scaling and mean centering in order to circumvent co-variate shifts caused by the normalised input becoming much smaller or bigger throughout the layers. Batch normalisation layers also help prevent overfitting.</p>
+<p>Finally, after three cycles of CONV-&gt;MAXPOOL-&gt;ReLU-&gt;BN, an average pooling layer further downsizes the system. We use two dropout layers to prevent overfitting. note their placement <em>after</em> pooling layers. Dropout layers aid in getting rid of high dependency on small sets of features (by nullifying a proportion of neurons), but a pooling layer negates some of this by synthesising areas of neurons and converging them into less neurons. Maximum pooling is much more harmful, due to it effectively invalidating any nulled neurons it ‘catches’ in its pool and simply picking the highest value, but average pooling also risks minimising the impact of null neurons by taking the average of its pool.</p>
+<p>These dropout layers are interspersed with fully connected (dense) layers, which leverage all input neurons as they decrease output neurons (note the sharp decrease of ‘units’). We are essentially attempting to arrive at a single tumbling rate value at the end of the architecture, and therefore will require a single unit for the final FC layer. This is, again, a movement into deeper features by increasing the generality of our layers. the flattening layer that precedes the final FC is there to convert out feature maps to one dimension for final output.</p>
+<p>We have used ‘same’ padding due to the borders of the image being overall important in our case.</p>
+<p>The general ballpark for hyperparameters, a broad perspective for architecture motivations, as well as some explanations has been taken from brief surveys of CNN literature. See, for example: <a href="https://towardsdatascience.com/a-guide-to-an-efficient-way-to-build-neural-network-architectures-part-ii-hyper-parameter-42efca01e5d7">1</a>, <a href="https://www.baeldung.com/cs/deep-cnn-design">2</a>, <a href="https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/">3</a>, <a href="https://towardsdatascience.com/a-guide-to-an-efficient-way-to-build-neural-network-architectures-part-i-hyper-parameter-8129009f131b">4</a>.</p>
+<p>For our standard case of <span class="math inline">\(N_x=N_y=128\)</span>, the number of tuneable parameters in MN_3 is 2171.</p>
+</section>
+<section id="example-mn_3-application" class="level1">
+<h1>5. Example MN_3 Application</h1>
+<p>Below is the model stage4124. It is trained on our full logspace of <span class="math inline">\(P_{tumble}\)</span> values, and only on density <span class="math inline">\(\rho=0.15\)</span>, with 40000 total snapshots and a validation ratio of 0.2 (which is to say, 0.2*40000=8000 is the validation pool). Training was done for 30 epochs.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Predictions</th>
+<th style="text-align: center;">Loss Evolution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-17-files/stage4124-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-17-files/stage4124-mae.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<p>Some parameters are within acceptable margins as outlined in <a href="../activity_log/week16.html">Week 16</a>. Intuitively from the graph, the deviations from our margins relate specifically to the maximum spread (as can be seen in the higher tumbling rate values) and the Pearson’s coefficient.</p>
+<p>This seems to be a persisting problem for the neural network. As we will see in the section below, lower values of the turning rate tend to have less spread, whereas higher values of the turning rate tend to have more spread.</p>
+</section>
+<section id="gaps-in-p_tumble-monochrome" class="level1">
+<h1>6. Gaps in <span class="math inline">\(P_{tumble}\)</span> (monochrome)</h1>
+<p>As mentioned at the beginning of this week’s log, an exploration of gaps in tumbling rate is essential for understanding the potential shortcomings of architecture MN_3. All models below are trained on <strong>4x rolling</strong>, with 1000 snapshots per <span class="math inline">\((P_t,\rho)\)</span> combination and only <span class="math inline">\(\rho=0.15\)</span>. All models are trained for <strong>30 epochs</strong>.</p>
+<section id="balteus3123-p_t-in-0.0160.0230.0340.0500.0730.107" class="level3">
+<h3 class="anchored" data-anchor-id="balteus3123-p_t-in-0.0160.0230.0340.0500.0730.107">balteus3123: <span class="math inline">\(P_t \in \\{0.016,0.023,0.034,0.050,0.073,0.107\\}\)</span></h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Predictions</th>
+<th style="text-align: center;">Loss Evolution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-17-files/balteus3123-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-17-files/balteus3123-mae.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<p>All parameters are within margins.</p>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: 0.00679200328886509</li>
+<li><input type="checkbox" checked="">Min STD: 0.0000000018626451</li>
+<li><input type="checkbox" checked="">Avg STD: 0.00386919</li>
+<li><input type="checkbox" checked="">Max STD: 0.006857624</li>
+<li><input type="checkbox" checked="">Overlap Ratio: 1.0</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.98338868291357</li>
+</ul>
+</section>
+<section id="goose4421-p_t-in-0.0160.0340.0500.107" class="level3">
+<h3 class="anchored" data-anchor-id="goose4421-p_t-in-0.0160.0340.0500.107">goose4421: <span class="math inline">\(P_t \in \\{0.016,0.034,0.050,0.107 \\}\)</span></h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Predictions</th>
+<th style="text-align: center;">Loss Evolution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-17-files/goose4421-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-17-files/goose4421-mae.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<p>Most parameters are within margins, but the prediction misses the first point.</p>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: 0.00417405366897583</li>
+<li><input type="checkbox" checked="">Min STD: 0.00031636294</li>
+<li><input type="checkbox" checked="">Avg STD:0.0038618112</li>
+<li><input type="checkbox" checked="">Max STD: 0.006754256</li>
+<li><input type="checkbox">Overlap ratio: 0.75</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.988395863033326</li>
+</ul>
+</section>
+<section id="lyrical2734-p_t-in-0.016" class="level3">
+<h3 class="anchored" data-anchor-id="lyrical2734-p_t-in-0.016">lyrical2734: <span class="math inline">\(P_t \in \\{ 0.016\\}\)</span></h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Predictions</th>
+<th style="text-align: center;">Loss Evolution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-17-files/lyrical2734-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-17-files/lyrical2734-mae.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<p>All parameters are within margins. It’s hard to gleam this from the graph, since all the prediction points seem to undershoot, but they undershoot by very little. Zoomed out to the magnitudes we usually see spread in (<span class="math inline">\(10^{-1}\)</span> or <span class="math inline">\(10^{-2}\)</span>) they would look perfectly centred. Note that the Pearson coefficient is not available, since we only have one data set.</p>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: 0.000894570257514715</li>
+<li><input type="checkbox" checked="">Min STD: 0.00021818299</li>
+<li><input type="checkbox" checked="">Avg STD: 0.00021818299</li>
+<li><input type="checkbox" checked="">Max STD: 0.00021818299</li>
+<li><input type="checkbox" checked="">Overlap ratio: 1.0</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: nan</li>
+</ul>
+</section>
+<section id="book1634-p_t-in-0.0160.0730.1070.157" class="level3">
+<h3 class="anchored" data-anchor-id="book1634-p_t-in-0.0160.0730.1070.157">book1634: <span class="math inline">\(P_t \in \\{ 0.016,0.073,0.107,0.157 \\}\)</span></h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Predictions</th>
+<th style="text-align: center;">Loss Evolution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-17-files/book1634-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-17-files/book1634-mae.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<p>Parameters</p>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: 0.00829896610230207</li>
+<li><input type="checkbox" checked="">Min STD: 0.0000000037252903</li>
+<li><input type="checkbox" checked="">Avg STD: 0.007414392</li>
+<li><input type="checkbox">Max STD: 0.013894851</li>
+<li><input type="checkbox">Overlap ratio: 0.75</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.978325479793127</li>
+</ul>
+</section>
+</section>
+<section id="preliminary-tumbling-rate-extrapolation" class="level1">
+<h1>7. Preliminary Tumbling Rate Extrapolation</h1>
+<p>Model balteus3123 yielded promising data when validated on the same parameters it was trained in. By also validating it on the rest of the tumbling rate logspace, we may be able to obtain some useful information about how the neural network learns from data. We expect it to have relatively close tumbling rate predictions for those closest to the logarithmic scale it was given (so, namely, on 0.157, as it is the next value after the trained ones), but that it will break up fairly quickly when trying to predict bigger turning rates.</p>
+<p><img src="./week-17-files/lost5622-pred.png" class="img-fluid"></p>
+<p>Parameters</p>
+<ul>
+<li>[] MAE:</li>
+<li>[] Min STD:</li>
+<li>[] Avg STD:</li>
+<li>[] Max STD:</li>
+<li>[] Overlap ratio:</li>
+<li>[] Pearson Coefficient:</li>
+</ul>
+<p>MONOCHROME if img &gt; 0 img = 1</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Made with Quarto (cp branch)</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

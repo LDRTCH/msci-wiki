@@ -1,0 +1,81 @@
+---
+title: CNN Models
+---
+
+This page hosts all of the main model architectures utilised in our project, indexed by model number (MN).
+
+### MN_1
+
+1. CONV (filters=3,kernel_size=(3,3),padding='same',strides=(3,3),activation="relu", input_shape=shape)
+2. BN
+3. CONV (filters=3,kernel_size=(3,3),padding='same')
+4. BN
+5. MAXPOOL (pool_size=(3,3))
+6. CONV (filters=6,kernel_size=(3,3),padding='same')
+7. BN
+8. CONV (filters=6,kernel_size=(3,3),padding='same')
+9. BN
+10. MAXPOOL (pool_size=(3,3))
+11. DENSE (units=128,activation='relu')
+12. DO (0.2) (without layout optimiser)
+13. DENSE (units=10,activation='softmax')
+14. FLATTEN
+15. DENSE (units=1,activation='linear')
+
+### MN_1.5
+
+1. CONV (filters=3,kernel_size=(3,3),padding='same',strides=(3,3),activation='relu',input_shape=shape)
+2. BN
+3. CONV (filters=3,kernel_size=(3,3),padding='same')
+4. BN
+5. MAXPOOL (pool_size=(3,3))
+6. CONV (filters=6,kernel_size=(3,3),padding='same')
+7. BN
+8. CONV (filters=6,kernel_size=(3,3),padding='same')
+9. BN
+10. MAXPOOL (pool_size=(3,3))
+11. FC (units=128,activation='relu')
+12. DO (0.2) (without layout optimiser)
+13. FC (units=10,activation='softmax')
+14. FLATTEN
+15. FC (units=1,activation='linear')
+
+### MN_2
+
+1. CONV (filters=3,kernel_size=(3,3),padding='same',input_shape=shape)
+2. MAXPOOL (pool_size=(2,2),padding='same')
+3. ReLU
+4. BN
+5. CONV (filters=6,kernel_size=(5,5),padding='same')
+6. MAXPOOL (pool_size=(2,2),padding='same')
+7. ReLU
+8. BN
+9. AVGPOOL
+10. DO (0.2) (without layout optimiser)
+11. DENSE (units=64,activation='relu')
+12. DO (0.2) (without layout optimiser)
+13. DENSE (units=10,activation='softmax')
+14. FLATTEN
+15. DENSE (units=1,activation='linear')
+
+### MN_3
+
+1. CONV (filters=3,kernel_size=(3,3),padding='same',input_shape=shape)
+2. MAXPOOL (pool_size=(2,2),padding='same')
+3. ReLU
+4. BN
+5. CONV (filters=4,kernel_size=(4,4),padding='same')
+6. MAXPOOL (pool_size=(2,2),padding='same')
+7. ReLU
+8. BN
+9. CONV (filters=6, kernel_size=(5,5),padding='same')
+10. MAXPOOL (pool_size=(2,2),padding='same')
+11. ReLU
+12. BN
+13. AVGPOOL
+14. DO (0.1) (without layout optimiser)
+15. FC (units=128,activation='relu')
+16. DO (0.1) (without layout optimiser)
+17. FC (units=3,activation='relu')
+18. FLATTEN
+19. FC (units=1,activation='linear')

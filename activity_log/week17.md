@@ -1,10 +1,35 @@
-# Week 16
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+# Week 17
 
 # 0. Table of Contents
+1. Introduction
+2. Story
+3. Discussing Similar Research
+4. MN_3 Discussion
+6. Example MN_3 Application
+6. Gaps in $P_{tumble}$ (monochrome)
 
 # 1. Introduction
 
-
+The main purpose of this week is to bring out a concrete direction in the numerical research done so far, as well as continue carrying it out.
 
 # 2. Story
 
@@ -20,9 +45,7 @@ One of the important explorations is examining how changing the input degrees of
 
 If these expectations prove to be correct, training the CNN on positions+orientations might be a worse prospect, due to most real life applications/evaluations of active matter not being able to access the orientation of agents through still images. Nonetheless, training on positions+orientations may give the CNN a better insight into the clustering phenomenon as a whole, due to the role particle orientations play in cluster formation and evaporation.
 
-misinformation extension - janus particles rolling in 2d
-
-SPRINKLES
+Once we've explored how degrees of freedom alter the CNN predictions, it is useful to explore some modifications to the orientation+position setup. An interesting extension is exploring how misinformation affects the neural network. Some active matter imaging, of, say, Janus particles rolling in 2D, can trace the orientation of a particle. But this tracing is imperfect, and there are some ambiguous cases where orientation may be misread. As such, we could engineer a dataset which 'misreads' the orientation of a certain ratio of the total particles, recolouring them.
 
 ##### 2. Predicting novel tumbling rates
 
@@ -36,20 +59,156 @@ Here are our expectations regarding this part of the project:
  
 ##### 3. Predicting novel densities
 
-Training on a certain set of densities will
-
-We have experimented with various architecture models (a summary of the different architectures can be found [here](./../models.qmd)).
-
-
-
-
-
-
-
+Training on a certain set of densities might also present interesting behaviour when applying the algorithm on a different set of densities.
 
 A noteworthy extension of our research is to then apply this neural network to real active matter systems by 'translating'  physical scenarios into the visual language our tool is familiar with.
 
-to recover patterns
+We have experimented with various architecture models (a summary of the different architectures can be found [here](./../models.qmd)). From now on we will be mostly running the MN_3 (discussed in a section below). Slight variations, if existent, will be noted explicitly, as well as reversals to other architectures.
+
+##### 4. Gaps in data
+
+Training the CNN on an equally (and slightly) spaced set of tumbling rates might cause it to develop a certain logarithmic bias in establishing a tumbling rate. It is therefore useful to test how the CNN develops when trained on more and/or unevenly spaced tumbling rates, in order to examine any potential misdirections in data. 
+
+##### 5. System size dependence
+
+To gauge how the CNN can trace the underlying behaviour of *clustering* and detailed balance breaking as it relates to the tumbling rate, it may be useful to examine how a CNN trained on a specific system size will fare in predicting tumbling rates for different system sizes.
+
+# 3. Discussing Similar Research
+
+Deep learning probability flows and entropy production rates in active matter, Boffi and Vanden-Eijnden, 2023.
+
+# 4. MN_3 Discussion
+
+Below is the CNN architecture we have settled on. As a reminder, all the architectures used in this project can be found [here](./../models.qmd).
+
+1. CONV (filters=3,kernel_size=(3,3),padding='same',input_shape=shape)
+2. MAXPOOL (pool_size=(2,2),padding='same')
+3. ReLU
+4. BN
+5. CONV (filters=4,kernel_size=(4,4),padding='same')
+6. MAXPOOL (pool_size=(2,2),padding='same')
+7. ReLU
+8. BN
+9. CONV (filters=6, kernel_size=(5,5),padding='same')
+10. MAXPOOL (pool_size=(2,2),padding='same')
+11. ReLU
+12. BN
+13. AVGPOOL
+14. DO (0.1) (without layout optimiser)
+15. FC (units=128,activation='relu')
+16. DO (0.1) (without layout optimiser)
+17. FC (units=3,activation='relu')
+18. FLATTEN
+19. FC (units=1,activation='linear')
+
+We have already briefly gone over what each architecture function type does in [Weeks 13-15](./week13-15.qmd). However, a more general justification is outlined here. The activation function is kept as ReLU althroughout (with the exception of the last function); it is overall both better at accommodating high weights in the kernel functions, as well as much less resource intensive to generate when compared to the sigma function.
+
+Convolutional layers are our main method of extrapolating features from input data. It is generally good practice to structure architecture such that the first stages employ a small kernel, which is gradually increased with subsequent convolutions. This approach is meant to leverage a fundamental prospect of neural networks: they begin by combing and extrapolating low-level features, which in subsequent layers are meant to form into more general, 'zoomed out' features. A good analogy would be drawn number recognition (borrowed from [here](https://www.3blue1brown.com/lessons/neural-networks): the first few stages of a neural network may identify pixels or curved lines, while the latter stages might pick up on entire shapes and ultimately numbers themselves. In a similar vein, our CNN may identify individual paricles and small clustering before it identifies large clusters, and subsequently picks up on underlying tumbling rate. Therefore, the kernel sizes for our CONV layers go from (3,3) to (5,5) in increments of (1,1). The CONV layer depth (its number of filters) is similarly increasing; the first layers pick up on low-level features, which then are extrapolated to form more complex patterns in latter layers.
+
+Each convolutional layer is followed by a maximum pooling layer. These reduce dimensionality and keep the maximal value in the subregions binned. This is a method of down-sampling, increasing the generality of the feature map in order to circumvent very slight variations significantly altering the neural network training; the pool size is almost always (2,2) in literature, due to further increases resulting in too steep a reduction of output neurons. This is then followed by explicit ReLU activations, and finally we use batch normalisation layers in order to 'standardise' the output of previous layers to be used as the input for subsequent layers. Such layers involve variance scaling and mean centering in order to circumvent co-variate shifts caused by the normalised input becoming much smaller or bigger throughout the layers. Batch normalisation layers also help prevent overfitting.
+
+Finally, after three cycles of CONV->MAXPOOL->ReLU->BN, an average pooling layer further downsizes the system. We use two dropout layers to prevent overfitting. note their placement *after* pooling layers. Dropout layers aid in getting rid of high dependency on small sets of features (by nullifying a proportion of neurons), but a pooling layer negates some of this by synthesising areas of neurons and converging them into less neurons. Maximum pooling is much more harmful, due to it effectively invalidating any nulled neurons it 'catches' in its pool and simply picking the highest value, but average pooling also risks minimising the impact of null neurons by taking the average of its pool.
+
+These dropout layers are interspersed with fully connected (dense) layers, which leverage all input neurons as they decrease output neurons (note the sharp decrease of 'units'). We are essentially attempting to arrive at a single tumbling rate value at the end of the architecture, and therefore will require a single unit for the final FC layer. This is, again, a movement into deeper features by increasing the generality of our layers. the flattening layer that precedes the final FC is there to convert out feature maps to one dimension for final output.
+
+We have used 'same' padding due to the borders of the image being overall important in our case.
+
+The general ballpark for hyperparameters, a broad perspective for architecture motivations, as well as some explanations has been taken from brief surveys of CNN literature. See, for example: [1](https://towardsdatascience.com/a-guide-to-an-efficient-way-to-build-neural-network-architectures-part-ii-hyper-parameter-42efca01e5d7), [2](https://www.baeldung.com/cs/deep-cnn-design), [3](https://machinelearningmastery.com/pooling-layers-for-convolutional-neural-networks/), [4](https://towardsdatascience.com/a-guide-to-an-efficient-way-to-build-neural-network-architectures-part-i-hyper-parameter-8129009f131b).
+
+For our standard case of $N_x=N_y=128$, the number of tuneable parameters in MN_3 is 2171.
+
+# 5. Example MN_3 Application
+
+Below is the model stage4124. It is trained on our full logspace of $P_{tumble}$ values, and only on density $\rho=0.15$, with 40000 total snapshots and a validation ratio of 0.2 (which is to say, 0.2*40000=8000 is the validation pool). Training was done for 30 epochs.
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-17-files/stage4124-pred.png)  |  ![](./week-17-files/stage4124-mae.png)
+
+Some parameters are within acceptable margins as outlined in [Week 16](./week16.qmd). Intuitively from the graph, the deviations from our margins relate specifically to the maximum spread (as can be seen in the higher tumbling rate values) and the Pearson's coefficient.
+
+This seems to be a persisting problem for the neural network. As we will see in the section below, lower values of the turning rate tend to have less spread, whereas higher values of the turning rate tend to have more spread. 
+
+# 6. Gaps in $P_{tumble}$ (monochrome)
+
+As mentioned at the beginning of this week's log, an exploration of gaps in tumbling rate is essential for understanding the potential shortcomings of architecture MN_3. All models below are trained on **4x rolling**, with 1000 snapshots per $(P_t,\rho)$ combination and only $\rho=0.15$. All models are trained for **30 epochs**.
+
+### balteus3123: $P_t \in \\{0.016,0.023,0.034,0.050,0.073,0.107\\}$
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-17-files/balteus3123-pred.png)  |  ![](./week-17-files/balteus3123-mae.png)
+
+All parameters are within margins.
+
+- [x] MAE: 0.00679200328886509
+- [x] Min STD: 0.0000000018626451
+- [x] Avg STD: 0.00386919
+- [x] Max STD: 0.006857624
+- [x] Overlap Ratio: 1.0
+- [x] Pearson Coefficient: 0.98338868291357
+
+
+### goose4421: $P_t \in \\{0.016,0.034,0.050,0.107 \\}$
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-17-files/goose4421-pred.png)  |  ![](./week-17-files/goose4421-mae.png)
+
+Most parameters are within margins, but the prediction misses the first point.
+
+- [X] MAE: 0.00417405366897583
+- [X] Min STD: 0.00031636294
+- [X] Avg STD:0.0038618112
+- [X] Max STD: 0.006754256
+- [ ] Overlap ratio: 0.75
+- [X] Pearson Coefficient: 0.988395863033326
+
+### lyrical2734: $P_t \in \\{ 0.016\\}$
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-17-files/lyrical2734-pred.png)  |  ![](./week-17-files/lyrical2734-mae.png)
+
+All parameters are within margins. It's hard to gleam this from the graph, since all the prediction points seem to undershoot, but they undershoot by very little. Zoomed out to the magnitudes we usually see spread in ($10^{-1}$ or $10^{-2}$) they would look perfectly centred. Note that the Pearson coefficient is not available, since we only have one data set.
+
+- [X] MAE: 0.000894570257514715
+- [X] Min STD: 0.00021818299
+- [X] Avg STD: 0.00021818299
+- [X] Max STD: 0.00021818299
+- [X] Overlap ratio: 1.0
+- [X] Pearson Coefficient: nan
+
+### book1634: $P_t \in \\{ 0.016,0.073,0.107,0.157 \\}$
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-17-files/book1634-pred.png)  |  ![](./week-17-files/book1634-mae.png)
+
+
+Parameters
+
+- [X] MAE: 0.00829896610230207
+- [X] Min STD: 0.0000000037252903
+- [X] Avg STD: 0.007414392
+- [ ] Max STD: 0.013894851
+- [ ] Overlap ratio: 0.75
+- [X] Pearson Coefficient: 0.978325479793127
+
+# 7. Preliminary Tumbling Rate Extrapolation
+
+Model balteus3123 yielded promising data when validated on the same parameters it was trained in. By also validating it on the rest of the tumbling rate logspace, we may be able to obtain some useful information about how the neural network learns from data. We expect it to have relatively close tumbling rate predictions for those closest to the logarithmic scale it was given (so, namely, on 0.157, as it is the next value after the trained ones), but that it will break up fairly quickly when trying to predict bigger turning rates.
+
+![](./week-17-files/lost5622-pred.png)
+
+Parameters
+
+- [] MAE:
+- [] Min STD:
+- [] Avg STD:
+- [] Max STD:
+- [] Overlap ratio:
+- [] Pearson Coefficient:
 
 MONOCHROME
 if img > 0

@@ -249,8 +249,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#different-density-comparison-omitting-highest-tumbling-rate" id="toc-different-density-comparison-omitting-highest-tumbling-rate" class="nav-link" data-scroll-target="#different-density-comparison-omitting-highest-tumbling-rate">8. Different Density Comparison (Omitting Highest Tumbling Rate)</a></li>
   <li><a href="#multiple-nearby-densities" id="toc-multiple-nearby-densities" class="nav-link" data-scroll-target="#multiple-nearby-densities">9. Multiple Nearby Densities</a></li>
   <li><a href="#epoch-numbers" id="toc-epoch-numbers" class="nav-link" data-scroll-target="#epoch-numbers">10. Epoch Numbers</a></li>
-  <li><a href="#monochrome-interpolation" id="toc-monochrome-interpolation" class="nav-link" data-scroll-target="#monochrome-interpolation">11. Monochrome Interpolation</a></li>
-  <li><a href="#monochrome-extrapolation" id="toc-monochrome-extrapolation" class="nav-link" data-scroll-target="#monochrome-extrapolation">12. Monochrome Extrapolation</a></li>
+  <li><a href="#monochrome-interpolation-low-tumbling-rates" id="toc-monochrome-interpolation-low-tumbling-rates" class="nav-link" data-scroll-target="#monochrome-interpolation-low-tumbling-rates">11. Monochrome Interpolation (Low Tumbling Rates)</a></li>
+  <li><a href="#monochrome-interpolation-high-tumbling-rates" id="toc-monochrome-interpolation-high-tumbling-rates" class="nav-link" data-scroll-target="#monochrome-interpolation-high-tumbling-rates">12. Monochrome Interpolation (High Tumbling Rates)</a></li>
+  <li><a href="#monochrome-extrapolation" id="toc-monochrome-extrapolation" class="nav-link" data-scroll-target="#monochrome-extrapolation">13. Monochrome Extrapolation</a></li>
   </ul>
 </nav>
     </div>
@@ -292,7 +293,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Different Density Comparison (Omitting Highest Tumbling Rate)</li>
 <li>Multiple Nearby Densities</li>
 <li>Epoch Numbers</li>
-<li>Monochrome Interpolation</li>
+<li>Monochrome Interpolation (Low Tumbling Rates)</li>
+<li>Monochrome Interpolation (High Tumbling Rates)</li>
 <li>Monochrome Extrapolation</li>
 </ol>
 </section>
@@ -769,7 +771,8 @@ Actual value 0.5: Average = 0.49756 +- 0.00513; Expected value within 0.475 stde
 </tr>
 </tbody>
 </table>
-<pre><code>Actual value 0.073: Average = 0.09487 +- 0.00837; Expected value within 2.613 stdevs of mean
+<pre><code>Prediction means and standard deviations.
+Actual value 0.073: Average = 0.09487 +- 0.00837; Expected value within 2.613 stdevs of mean
 Actual value 0.231: Average = 0.24794 +- 0.01834; Expected value within 0.924 stdevs of mean
 Actual value 0.34: Average = 0.37743 +- 0.05689; Expected value within 0.658 stdevs of mean
 Actual value 0.5: Average = 0.49567 +- 0.02125; Expected value within 0.204 stdevs of mean</code></pre>
@@ -1202,13 +1205,393 @@ Actual value 0.34: Average = 0.29158 +- 0.02782; Expected value within 1.740 std
 </table>
 </section>
 </section>
-<section id="monochrome-interpolation" class="level1">
-<h1>11. Monochrome Interpolation</h1>
+<section id="monochrome-interpolation-low-tumbling-rates" class="level1">
+<h1>11. Monochrome Interpolation (Low Tumbling Rates)</h1>
+<section id="derive1278-crab8432-rho0.25-p_val-in-0.023-0.073-p_train-in-0.0160.0340.0500.107" class="level4">
+<h4 class="anchored" data-anchor-id="derive1278-crab8432-rho0.25-p_val-in-0.023-0.073-p_train-in-0.0160.0340.0500.107">derive1278 (crab8432) <span class="math inline">\(\rho=0.25\)</span> <span class="math inline">\(P_{val} \in \\{ 0.023, 0.073\\}\)</span>, <span class="math inline">\(P_{train} \in \\{0.016,0.034,0.050,0.107 \\}\)</span></h4>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">derive1278</th>
+<th style="text-align: center;">crab8432</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-18-files/derive1278-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-18-files/crab8432-pred.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Prediction means and standard deviations for derive1278.
+Actual value 0.023: Average = 0.01815 +- 0.00382; Expected value within 1.270 stdevs of mean
+Actual value 0.073: Average = 0.07531 +- 0.00863; Expected value within 0.268 stdevs of mean</code></pre>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: -</li>
+<li><input type="checkbox" checked="">Min STD: 0.0038166833</li>
+<li><input type="checkbox" checked="">Avg STD: 0.0062226485</li>
+<li><input type="checkbox">Max STD: 0.008628614</li>
+<li><input type="checkbox" checked="">Overlap Ratio: 1 (acc 5e-3)</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.973814798645944</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>derive1278</th>
+<th>crab8432</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Avg STD</td>
+<td>0.0062226485</td>
+<td>0.0037065577</td>
+</tr>
+<tr class="even">
+<td>Max STD</td>
+<td>0.008628614</td>
+<td>0.005531624</td>
+</tr>
+<tr class="odd">
+<td>Overlap Ratio</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Pearson Coefficient</td>
+<td>0.973815</td>
+<td>0.991052</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="story4919-summer6911-rho0.25-p_val-in-0.0230.0340.050-p_train-in-0.0160.0730.1070.157" class="level4">
+<h4 class="anchored" data-anchor-id="story4919-summer6911-rho0.25-p_val-in-0.0230.0340.050-p_train-in-0.0160.0730.1070.157">story4919 (summer6911): <span class="math inline">\(\rho=0.25\)</span>, <span class="math inline">\(P_{val} \in \\{ 0.023,0.034,0.050 \\}\)</span>, <span class="math inline">\(P_{train} \in \\{0.016,0.073,0.107,0.157 \\}\)</span></h4>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">story4919</th>
+<th style="text-align: center;">summer6911</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-18-files/story4919-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-18-files/summer6911-pred.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Prediction means and standard deviations for story4919.
+Actual value 0.023: Average = 0.03101 +- 0.00552; Expected value within 1.452 stdevs of mean
+Actual value 0.034: Average = 0.04259 +- 0.00784; Expected value within 1.096 stdevs of mean
+Actual value 0.05: Average = 0.06339 +- 0.00805; Expected value within 1.663 stdevs of mean</code></pre>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: -</li>
+<li><input type="checkbox" checked="">Min STD: 0.005518279</li>
+<li><input type="checkbox" checked="">Avg STD: 0.0071368576</li>
+<li><input type="checkbox">Max STD: 0.00805434</li>
+<li><input type="checkbox" checked="">Overlap Ratio: 1 (acc 5e-3)</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.878673132485899</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>story4919</th>
+<th>summer6911</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Avg STD</td>
+<td>0.0071368576</td>
+<td>0.0066630687</td>
+</tr>
+<tr class="even">
+<td>Max STD</td>
+<td>0.00805434</td>
+<td>0.013605628</td>
+</tr>
+<tr class="odd">
+<td>Overlap Ratio</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Pearson Coefficient</td>
+<td>0.878673</td>
+<td>0.986987</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="monochrome-interpolation-high-tumbling-rates" class="level1">
+<h1>12. Monochrome Interpolation (High Tumbling Rates)</h1>
+<section id="rabbit0196-tread4399-rho0.25-p_val-in-0.1070.2310.340-p_train-in-0.0730.1570.5" class="level4">
+<h4 class="anchored" data-anchor-id="rabbit0196-tread4399-rho0.25-p_val-in-0.1070.2310.340-p_train-in-0.0730.1570.5">rabbit0196 (tread4399): <span class="math inline">\(\rho=0.25\)</span>, <span class="math inline">\(P_{val} \in \\{0.107,0.231,0.340 \\}\)</span>, <span class="math inline">\(P_{train} \in \\{0.073,0.157,0.5 \\}\)</span></h4>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">rabbit0196</th>
+<th style="text-align: center;">tread4399</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-18-files/rabbit0196-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-18-files/tread4399-pred.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Prediction means and standard deviations for rabbit0196.
+Actual value 0.107: Average = 0.13162 +- 0.01054; Expected value within 2.336 stdevs of mean
+Actual value 0.231: Average = 0.29793 +- 0.06501; Expected value within 1.030 stdevs of mean
+Actual value 0.34: Average = 0.47849 +- 0.01906; Expected value within 7.268 stdevs of mean
+
+Prediction means and standard deviations for tread4399.
+Actual value 0.073: Average = 0.08449 +- 0.00540; Expected value within 2.128 stdevs of mean
+Actual value 0.157: Average = 0.15972 +- 0.00279; Expected value within 0.973 stdevs of mean
+Actual value 0.5: Average = 0.49756 +- 0.00513; Expected value within 0.475 stdevs of mean</code></pre>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: -</li>
+<li><input type="checkbox" checked="">Min STD: 0.010536376</li>
+<li><input type="checkbox" checked="">Avg STD: 0.031534202<br>
+</li>
+<li><input type="checkbox">Max STD: 0.06501088</li>
+<li><input type="checkbox" checked="">Overlap Ratio: 1 (acc 5e-3)</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.961320568504786</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>rabbit0196</th>
+<th>tread4399</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Avg STD</td>
+<td>0.031534202</td>
+<td>0.004439787</td>
+</tr>
+<tr class="even">
+<td>Max STD</td>
+<td>0.06501088</td>
+<td>0.0054007815</td>
+</tr>
+<tr class="odd">
+<td>Overlap Ratio</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Pearson Coefficient</td>
+<td>0.961321</td>
+<td>0.999564</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="door1333-revolve8117-rho0.25-p_val-in-0.1070.157-p_train-in-0.0730.2310.3400.500" class="level4">
+<h4 class="anchored" data-anchor-id="door1333-revolve8117-rho0.25-p_val-in-0.1070.157-p_train-in-0.0730.2310.3400.500">door1333 (revolve8117): <span class="math inline">\(\rho=0.25\)</span>, <span class="math inline">\(P_{val} \in \\{0.107,0.157 \\}\)</span>, <span class="math inline">\(P_{train} \in \\{0.073,0.231,0.340,0.500\\}\)</span></h4>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">door1333</th>
+<th style="text-align: center;">revolve8117</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-18-files/door1333-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-18-files/revolve8117-pred.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Prediction means and standard deviations for door1333.
+Actual value 0.107: Average = 0.14482 +- 0.01286; Expected value within 2.942 stdevs of mean
+Actual value 0.157: Average = 0.20067 +- 0.01161; Expected value within 3.761 stdevs of mean
+
+Prediction means and standard deviations for revolve8117.
+Actual value 0.073: Average = 0.09487 +- 0.00837; Expected value within 2.613 stdevs of mean
+Actual value 0.231: Average = 0.24794 +- 0.01834; Expected value within 0.924 stdevs of mean
+Actual value 0.34: Average = 0.37743 +- 0.05689; Expected value within 0.658 stdevs of mean
+Actual value 0.5: Average = 0.49567 +- 0.02125; Expected value within 0.204 stdevs of mean</code></pre>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: -</li>
+<li><input type="checkbox" checked="">Min STD: 0.0116104465</li>
+<li><input type="checkbox" checked="">Avg STD: 0.0122337025</li>
+<li><input type="checkbox">Max STD: 0.012856959</li>
+<li><input type="checkbox" checked="">Overlap Ratio: 1 (acc 5e-3)</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.915762512590914</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>door1333</th>
+<th>revolve8117</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Avg STD</td>
+<td>0.0122337025</td>
+<td>0.026211156</td>
+</tr>
+<tr class="even">
+<td>Max STD</td>
+<td>0.012856959</td>
+<td>0.05688635</td>
+</tr>
+<tr class="odd">
+<td>Overlap Ratio</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Pearson Coefficient</td>
+<td>0.915763</td>
+<td>0.974905</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="monochrome-extrapolation" class="level1">
-<h1>12. Monochrome Extrapolation</h1>
+<h1>13. Monochrome Extrapolation</h1>
+<p>salmon9100: extrapolate downwards</p>
+<section id="tomato6633-salad8110-rho0.25-p_val-in-0.1570.2310.3400.500-p_train-in-0.0160.0230.0340.050.0730.107" class="level4">
+<h4 class="anchored" data-anchor-id="tomato6633-salad8110-rho0.25-p_val-in-0.1570.2310.3400.500-p_train-in-0.0160.0230.0340.050.0730.107">tomato6633 (salad8110): <span class="math inline">\(\rho=0.25\)</span>, <span class="math inline">\(P_{val} \in \\{ 0.157,0.231,0.340,0.500\\}\)</span>, <span class="math inline">\(P_{train} \in \\{0.016,0.023,0.034,0.05,0.073,0.107 \\}\)</span></h4>
+<p>Extrapolating upwards.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">tomato6633</th>
+<th style="text-align: center;">salad8110</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-18-files/tomato6633-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-18-files/salad8110-pred.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Prediction means and standard deviations for tomato6633.
+Actual value 0.157: Average = 0.12189 +- 0.00509; Expected value within 6.904 stdevs of mean
+Actual value 0.231: Average = 0.13669 +- 0.00462; Expected value within 20.414 stdevs of mean
+Actual value 0.34: Average = 0.14682 +- 0.00438; Expected value within 44.096 stdevs of mean
+Actual value 0.5: Average = 0.15471 +- 0.00434; Expected value within 79.595 stdevs of mean</code></pre>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: -</li>
+<li><input type="checkbox" checked="">Min STD: 0.004338048</li>
+<li><input type="checkbox" checked="">Avg STD: 0.0046061105</li>
+<li><input type="checkbox" checked="">Max STD: 0.0050855814</li>
+<li><input type="checkbox">Overlap Ratio: 0 (acc 5e-3)</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: 0.891692673465758</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>tomato6633</th>
+<th>salad8110</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Avg STD</td>
+<td>0.0046061105</td>
+<td>0.0035765618</td>
+</tr>
+<tr class="even">
+<td>Max STD</td>
+<td>0.0050855814</td>
+<td>0.0058416952</td>
+</tr>
+<tr class="odd">
+<td>Overlap Ratio</td>
+<td>0.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Pearson Coefficient</td>
+<td>0.891693</td>
+<td>0.986550</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bear3250-salmon9100-rho0.25-p_val" class="level4">
+<h4 class="anchored" data-anchor-id="bear3250-salmon9100-rho0.25-p_val">bear3250 (salmon9100): <span class="math inline">\(\rho=0.25\)</span>, $P_{val} \{ \}</h4>
+<p>Extrapolating downwards.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">bear3250</th>
+<th style="text-align: center;">salmon9100</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="./week-18-files/bear3250-pred.png" class="img-fluid"></td>
+<td style="text-align: center;"><img src="./week-18-files/salmon9100-pred.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Prediction means and standard deviations for bear3250.
+Actual value 0.016: Average = 0.07631 +- 0.00000; Expected value within 8094958.352 stdevs of mean
+Actual value 0.023: Average = 0.07631 +- 0.00000; Expected value within 7155434.256 stdevs of mean
+Actual value 0.034: Average = 0.07631 +- 0.00000; Expected value within 5679039.248 stdevs of mean
+Actual value 0.05: Average = 0.07631 +- 0.00000; Expected value within 3531555.600 stdevs of mean
+
+Prediction means and standard deviations for salmon9100.
+Actual value 0.073: Average = 0.07637 +- 0.00064; Expected value within 5.309 stdevs of mean
+Actual value 0.107: Average = 0.11958 +- 0.01252; Expected value within 1.005 stdevs of mean
+Actual value 0.157: Average = 0.16357 +- 0.00663; Expected value within 0.990 stdevs of mean
+Actual value 0.231: Average = 0.24277 +- 0.02668; Expected value within 0.441 stdevs of mean
+Actual value 0.34: Average = 0.34620 +- 0.03178; Expected value within 0.195 stdevs of mean
+Actual value 0.5: Average = 0.44783 +- 0.03338; Expected value within 1.563 stdevs of mean</code></pre>
+<ul class="task-list">
+<li><input type="checkbox" checked="">MAE: -</li>
+<li><input type="checkbox" checked="">Min STD: 0.000000007450581</li>
+<li><input type="checkbox" checked="">Avg STD: 0.000000007450581<br>
+</li>
+<li><input type="checkbox" checked="">Max STD: 0.000000007450581</li>
+<li><input type="checkbox">Overlap Ratio: 0 (acc 5e-3)</li>
+<li><input type="checkbox" checked="">Pearson Coefficient: nan</li>
+</ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

@@ -303,8 +303,8 @@ ul.task-list li input[type="checkbox"] {
 <p>If these expectations prove to be correct, training the CNN on positions+orientations might be a worse prospect, due to most real life applications/evaluations of active matter not being able to access the orientation of agents through still images. Nonetheless, training on positions+orientations may give the CNN a better insight into the clustering phenomenon as a whole, due to the role particle orientations play in cluster formation and evaporation.</p>
 <p>Once we’ve explored how degrees of freedom alter the CNN predictions, it is useful to explore some modifications to the orientation+position setup. An interesting extension is exploring how misinformation affects the neural network. Some active matter imaging, of, say, Janus particles rolling in 2D, can trace the orientation of a particle. But this tracing is imperfect, and there are some ambiguous cases where orientation may be misread. As such, we could engineer a dataset which ‘misreads’ the orientation of a certain ratio of the total particles, recolouring them.</p>
 </section>
-<section id="predicting-novel-tumbling-rates" class="level5">
-<h5 class="anchored" data-anchor-id="predicting-novel-tumbling-rates">2. Predicting novel tumbling rates</h5>
+<section id="predicting-untrained-tumbling-rates-interpolation-extrapolation" class="level5">
+<h5 class="anchored" data-anchor-id="predicting-untrained-tumbling-rates-interpolation-extrapolation">2. Predicting untrained tumbling rates (interpolation, extrapolation)</h5>
 <p>Another important exploration is how training on a certain set of tumbling rates can then cause the CNN to be able to accurately predict tumbling rates in different regions. Our preliminary experiments have not been able to replicate such results - attempting to predict tumbling rates spaced out inbetween the training tumbling rates has caused the system to attempt to fit its predictions to the neighbouring training rates, and therefore given a very large spread to the data. This may however be strictly due to the low training data we have given the CNN so far - both low amount of original evolutions to give the system more depth of experience, as well as low amount of distinct tumbling rates. It ma</p>
 <p>Here are our expectations regarding this part of the project:</p>
 <ul>
@@ -312,8 +312,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Using vastly separated sets is going to fare poorly in prediction, due to different clustering behaviour which the CNN is not adequately accustomed to.</p></li>
 </ul>
 </section>
-<section id="predicting-novel-densities" class="level5">
-<h5 class="anchored" data-anchor-id="predicting-novel-densities">3. Predicting novel densities</h5>
+<section id="predicting-untrained-densities" class="level5">
+<h5 class="anchored" data-anchor-id="predicting-untrained-densities">3. Predicting untrained densities</h5>
 <p>Training on a certain set of densities might also present interesting behaviour when applying the algorithm on a different set of densities.</p>
 <p>A noteworthy extension of our research is to then apply this neural network to real active matter systems by ‘translating’ physical scenarios into the visual language our tool is familiar with.</p>
 <p>We have experimented with various architecture models (a summary of the different architectures can be found <a href="../models.html">here</a>). From now on we will be mostly running the MN_3 (discussed in a section below). Slight variations, if existent, will be noted explicitly, as well as reversals to other architectures.</p>

@@ -21,9 +21,24 @@
 
 # 0. Table of Contents
 
+1. Introduction
+2. Refining CNN Architecture
+3. Degrees of Freedom Discussion
+4. Density Discussion in Big Tumbling Rate Spread
+5. Gaps in Lower Tumbling Rates for Higher Densities
+6. Gaps in Higher Tumbling Rates for Higher Densities
+7. Omitting Highest Tumbling Rate
+8. Different Density Comparison (Omitting Highest Tumbling Rate)
+9. Multiple Nearby Densities
+10. Epoch Numbers
+11. Monochrome Interpolation
+12. Monochrome Extrapolation
+
 # 1. Introduction
 
-# 2. Refining CNN Architecture :(
+The main purpose of this week is to further explore gaps in tumbling rates for our CNN predictions, alongside discussions of densities and clusters. The auxiliary purpose of this week is to flesh out the discussion around degrees of freedom.
+
+# 2. Refining CNN Architecture
 
 The intermediary convolutional layer in MN_3 was running a (4,4) kernel size; this is uncentered, and therefore slightly hinders the model. We have swapped it out for a (5,5) kernel size.
 
@@ -57,6 +72,16 @@ The natural fix for such a problem is more data, but there is some other analysi
 Below is an example of how the landscape looks for $\rho=0.25$. This is a randomly selected image from the pool of utilised probabilities, so its tumbling rate is unknown; nonetheless this image gives a visual idea of the amount of particles on the screen.
 
 ![](./week-18-files/density-0.25-example.png)
+
+And below is a side by side comparison of the last screenshots of an evolution using $P_{tumble}=0.34$, for $\rho=0.35$ (left), $\rho=0.25$ (center) and $\rho=0.15$ (right). We can see that in the center case the density is hitgh enough for clusters to begin forming (though only barely), whereas the left case already has more noticeable clusters.
+
+![](./week-18-files/)
+
+| $\rho=0.35$, $P_{tumble}=0.34$  | $\rho=0.25$, $P_{tumble}=0.34$             |  $\rho=0.15$, $P_{tumble}=0.34$
+---------------------------------:|:-------------------------:|:-------------------------:
+| ![](./week-18-files/0.34_0.35.png) | ![](./week-18-files/0.34_0.25.png)  |  ![](./week-18-files/0.34_0.15.png)
+
+
 
 #### reverb3164: $\rho=0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500 \\}$, 30 epochs
 
@@ -177,6 +202,8 @@ summer6911: $\rho=0.25$             |  book1634: $\rho=0.15$
 
 (Note: the overlap ratio just barely misses book1634 in the $P_{tumble}=0.016$ case even with the 5e-3 extension)
 
+# 6. Gaps in Higher Tumbling Rates for Higher Densities
+
 #### salmon9100: $\rho = 0.25$, $P_{tumble} \in \\{0.073,0.107,0.157,0.231,0.34,0.5 \\}$, 30 epochs
 
 Predictions             |  Loss Evolution
@@ -242,6 +269,8 @@ Actual value 0.5: Average = 0.49567 +- 0.02125; Expected value within 0.204 stde
 - [X] Overlap Ratio: 1 (acc 5e-3)
 - [ ] Pearson Coefficient: 0.974904538431155
 
+# 7. Omitting Highest Tumbling Rate
+
 #### flag1899: $\rho=0.25$, $$P_{tumble} \in \\{0.034,0.050,0.073,0.157,0.231 \\}, 30 epochs
 
 Predictions             |  Loss Evolution
@@ -265,8 +294,182 @@ Actual value 0.231: Average = 0.22189 +- 0.01270; Expected value within 0.718 st
 - [X] Overlap Ratio: 1 (acc 5e-3)
 - [X] Pearson Coefficient: 0.984593225567436
 
-# 5. Epoch Numbers
+#### candy8131: $\rho=0.25$, $P_{tumble} \in \\{0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 32000 (0.2) snapshots
 
-compare reverb3164 with remnant3992
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-18-files/candy8131-pred.png)  |  ![](./week-18-files/candy8131-mae.png)
 
-# 6. Interpolation and Extrapolation (Monochrome)
+```
+Prediction means and standard deviations.
+Actual value 0.023: Average = 0.03053 +- 0.00393; Expected value within 1.917 stdevs of mean
+Actual value 0.034: Average = 0.04008 +- 0.00437; Expected value within 1.393 stdevs of mean
+Actual value 0.05: Average = 0.05421 +- 0.00473; Expected value within 0.891 stdevs of mean
+Actual value 0.073: Average = 0.07196 +- 0.00521; Expected value within 0.199 stdevs of mean
+Actual value 0.107: Average = 0.10870 +- 0.00724; Expected value within 0.235 stdevs of mean
+Actual value 0.157: Average = 0.15856 +- 0.01793; Expected value within 0.087 stdevs of mean
+Actual value 0.231: Average = 0.23771 +- 0.02513; Expected value within 0.267 stdevs of mean
+Actual value 0.34: Average = 0.30826 +- 0.02299; Expected value within 1.381 stdevs of mean
+```
+
+- [ ] MAE: 0.0119977109134197
+- [X] Min STD: 0.0039281165
+- [X] Avg STD: 0.011441505
+- [ ] Max STD: 0.025132488
+- [X] Overlap Ratio: 1.0 (acc 5e-3)
+- [X] Pearson Coefficient: 0.985809870908463
+
+#### briar9222: $\rho=0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 36000 (0.2) snapshots
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-18-files/briar9222-pred.png)  |  ![](./week-18-files/briar9222-mae.png)
+
+```
+Prediction means and standard deviations.
+Actual value 0.016: Average = 0.01687 +- 0.00000; Expected value within 469738.408 stdevs of mean
+Actual value 0.023: Average = 0.01806 +- 0.00219; Expected value within 2.259 stdevs of mean
+Actual value 0.034: Average = 0.03374 +- 0.00421; Expected value within 0.061 stdevs of mean
+Actual value 0.05: Average = 0.05006 +- 0.00412; Expected value within 0.015 stdevs of mean
+Actual value 0.073: Average = 0.06890 +- 0.00514; Expected value within 0.798 stdevs of mean
+Actual value 0.107: Average = 0.10614 +- 0.00696; Expected value within 0.124 stdevs of mean
+Actual value 0.157: Average = 0.15741 +- 0.01823; Expected value within 0.022 stdevs of mean
+Actual value 0.231: Average = 0.22961 +- 0.02319; Expected value within 0.060 stdevs of mean
+Actual value 0.34: Average = 0.30098 +- 0.02491; Expected value within 1.566 stdevs of mean
+
+```
+
+- [ ] MAE: 0.0109049286693335
+- [X] Min STD: 0.0000000018626451
+- [X] Avg STD: 0.009882737
+- [ ] Max STD: 0.024909819
+- [X] Overlap Ratio: 1.0 (acc 5e-3)
+- [X] Pearson Coefficient: 0.986715154338279
+
+# 8. Different Density Comparison (Omitting Highest Tumbling Rate)
+
+Omitting the regime which exhibits non-clustering behaviour for both $\rho=0.15$ and $\rho=0.25$, we can even better highlight the difference between the two densities in generating predictions. We can better yet contrast both of them to the $\rho=0.35$ case, as was briefly done near the beginning of this Week.
+
+#### stamp5111: $\rho=0.15$, $P_{tumble}\in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 36000 (0.2) snapshots
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-18-files/stamp5111-pred.png)  |  ![](./week-18-files/stamp5111-mae.png)
+
+```
+Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02170 +- 0.00062; Expected value within 9.130 stdevs of mean
+Actual value 0.023: Average = 0.02707 +- 0.00378; Expected value within 1.077 stdevs of mean
+Actual value 0.034: Average = 0.04148 +- 0.00404; Expected value within 1.850 stdevs of mean
+Actual value 0.05: Average = 0.05424 +- 0.00314; Expected value within 1.349 stdevs of mean
+Actual value 0.073: Average = 0.08061 +- 0.00730; Expected value within 1.041 stdevs of mean
+Actual value 0.107: Average = 0.11660 +- 0.01217; Expected value within 0.789 stdevs of mean
+Actual value 0.157: Average = 0.17568 +- 0.02403; Expected value within 0.777 stdevs of mean
+Actual value 0.231: Average = 0.24407 +- 0.02617; Expected value within 0.499 stdevs of mean
+Actual value 0.34: Average = 0.30026 +- 0.02976; Expected value within 1.336 stdevs of mean
+```
+- [ ] MAE: 0.0144910635426641
+- [X] Min STD: 0.000623846
+- [X] Avg STD: 0.012336487
+- [ ] Max STD: 0.029758396
+- [ ] Overlap Ratio: 0.89 (acc 5e-3)
+- [X] Pearson Coefficient: 0.976878137376062
+
+#### ripple9010: $\rho=0.35$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 36000 (0.2) snapshots
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-18-files/ripple9010-pred.png)  |  ![](./week-18-files/ripple9010-mae.png)
+
+```
+Prediction means and standard deviations.
+Actual value 0.016: Average = 0.01950 +- 0.00000; Expected value within 1879028.408 stdevs of mean
+Actual value 0.023: Average = 0.02014 +- 0.00208; Expected value within 1.375 stdevs of mean
+Actual value 0.034: Average = 0.03159 +- 0.00694; Expected value within 0.347 stdevs of mean
+Actual value 0.05: Average = 0.05213 +- 0.00506; Expected value within 0.420 stdevs of mean
+Actual value 0.073: Average = 0.07047 +- 0.00630; Expected value within 0.401 stdevs of mean
+Actual value 0.107: Average = 0.10682 +- 0.00768; Expected value within 0.024 stdevs of mean
+Actual value 0.157: Average = 0.15306 +- 0.01171; Expected value within 0.336 stdevs of mean
+Actual value 0.231: Average = 0.22579 +- 0.01955; Expected value within 0.266 stdevs of mean
+Actual value 0.34: Average = 0.30243 +- 0.01907; Expected value within 1.971 stdevs of mean
+```
+
+- [ ] MAE: 0.010349047370255
+- [X] Min STD: 0.0000000018626451
+- [X] Avg STD: 0.008708556
+- [ ] Max STD: 0.019550083
+- [X] Overlap Ratio: 1.0 (acc 5e-3)
+- [X] Pearson Coefficient: 0.991194498813799
+
+### Comparison
+
+| Parameter  | ripple9010 $(\rho=0.35)$ | briar9222 $(\rho=0.25)$ | stamp5111 $(\rho=0.15)$ |
+| ---------- | ---------- | --------- | -------------- |
+| MAE  | 0.010349  | 0.010905 | 0.014491 |
+| Avg STD  | 0.008708556  | 0.009882737 | 0.012336487 |
+| Max STD  | 0.019550083  | 0.024909819  | 0.029758396 |
+| Overlap Ratio | 1.0 | 1.0 | 0.89 |
+
+| Expected Values | 0.016 | 0.023 | 0.034 | 0.050 | 0.073 | 0.107 | 0.157 | 0.231 | 0.34 |
+| --------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ---- |
+| $\rho=0.35$ | $0.01950 \pm 0.00000$ | $0.02014 \pm 0.00208$ | $0.03159 \pm 0.00694$ | $0.05213 \pm 0.00506$ | $0.07047 \pm 0.00630$ | $0.10682 \pm 0.00768$ | $0.15306 \pm 0.01171$ | $0.22579 \pm 0.01955$ | $0.30243 \pm 0.01907$ |
+| $\rho=0.25$ | $0.01687 \pm 0.00000$ | $0.01806 \pm 0.00219$ | $0.03374 \pm 0.00421$ | $0.05006 \pm 0.00412$ | $0.06890 \pm 0.00514$ | $0.10614 \pm 0.00696$ | $0.15741 \pm 0.01823$ | $0.22961 \pm 0.02319$ | $0.30098 \pm 0.02491$
+| $\rho=0.15$ | $0.02170\pm 0.00062$ | $0.02707 \pm 0.00378$ | $0.04148 \pm 0.00404$ | $0.05424 \pm 0.00314$ | $0.08061 \pm 0.00730$ | $0.11660 \pm 0.01217$ | $0.17568 \pm 0.02403$ | $0.24407 \pm 0.02617$ | $0.30026 \pm 0.02976$ |
+
+# 9. Multiple Nearby Densities
+
+#### keter3955: 
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-18-files/keter3955-pred.png)  |  ![](./week-18-files/keter3955-mae.png)
+
+```
+Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02119 +- 0.00000; Expected value within 1392564.204 stdevs of mean
+Actual value 0.023: Average = 0.02253 +- 0.00321; Expected value within 0.147 stdevs of mean
+Actual value 0.034: Average = 0.03882 +- 0.00464; Expected value within 1.038 stdevs of mean
+Actual value 0.05: Average = 0.05392 +- 0.00443; Expected value within 0.886 stdevs of mean
+Actual value 0.073: Average = 0.07471 +- 0.00426; Expected value within 0.403 stdevs of mean
+Actual value 0.107: Average = 0.11074 +- 0.00665; Expected value within 0.563 stdevs of mean
+Actual value 0.157: Average = 0.15046 +- 0.01607; Expected value within 0.407 stdevs of mean
+Actual value 0.231: Average = 0.21991 +- 0.02594; Expected value within 0.427 stdevs of mean
+Actual value 0.34: Average = 0.29158 +- 0.02782; Expected value within 1.740 stdevs of mean
+```
+
+- [ ] MAE: 0.0126360701397061
+- [X] Min STD: 0.0000000037252903
+- [X] Avg STD: 0.010336722
+- [ ] Max STD: 0.027823886
+- [ ] Overlap Ratio: 0.89 (acc 5e-3)
+- [X] Pearson Coefficient: 0.984687332725716
+
+# 10. Epoch Numbers
+
+We have been mostly running 30 epochs for each CNN model. We can see a downward shift in all the MAE evolutions above, with a potential indication that more epochs might decrease it further and thus yield even better results. Below is a model ran for 40 epochs, as it compares to reverb3164, outlined above at the beginning.
+
+#### remnant3992: $\rho=0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.5000 \\}$, 40 epochs, 40000 (0.2) snapshots
+
+Predictions             |  Loss Evolution
+:-------------------------:|:-------------------------:
+![](./week-18-files/remnant3992-prediction.png)  |  ![](./week-18-files/remnant3992-mae.png)
+
+- [ ] MAE: 0.0164859797805548
+- [X] Min STD: 0.00021988283
+- [X] Avg STD: 0.013953483
+- [ ] Max STD: 0.0383877
+- [X] Overlap Ratio: 1 (acc 5e-3)
+- [X] Pearson Coefficient: 0.987502201574785
+
+### Comparison
+
+| Parameter  | reverb3164 (30 epochs) | remnant3992 (40 epochs) |
+| ---------- | ---------- | --------- |
+| MAE  | 0.017795  | 0.016486 |
+| Avg STD  | 0.011430472  | 0.013953483 |
+| Max STD  | 0.030022161  | 0.0383877  |
+| Overlap Ratio | 0.7 | 1.0 |
+
+# 11. Monochrome Interpolation
+
+# 12. Monochrome Extrapolation

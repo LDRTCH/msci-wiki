@@ -47,7 +47,7 @@ If these expectations prove to be correct, training the CNN on positions+orienta
 
 Once we've explored how degrees of freedom alter the CNN predictions, it is useful to explore some modifications to the orientation+position setup. An interesting extension is exploring how misinformation affects the neural network. Some active matter imaging, of, say, Janus particles rolling in 2D, can trace the orientation of a particle. But this tracing is imperfect, and there are some ambiguous cases where orientation may be misread. As such, we could engineer a dataset which 'misreads' the orientation of a certain ratio of the total particles, recolouring them.
 
-##### 2. Predicting novel tumbling rates
+##### 2. Predicting untrained tumbling rates (interpolation, extrapolation)
 
 Another important exploration is how training on a certain set of tumbling rates can then cause the CNN to be able to accurately predict tumbling rates in different regions. Our preliminary experiments have not been able to replicate such results - attempting to predict tumbling rates spaced out inbetween the training tumbling rates has caused the system to attempt to fit its predictions to the neighbouring training rates, and therefore given a very large spread to the data. This may however be strictly due to the low training data we have given the CNN so far - both low amount of original evolutions to give the system more depth of experience, as well as low amount of distinct tumbling rates. It ma
 
@@ -57,7 +57,7 @@ Here are our expectations regarding this part of the project:
 
 - Using vastly separated sets is going to fare poorly in prediction, due to different clustering behaviour which the CNN is not adequately accustomed to.
  
-##### 3. Predicting novel densities
+##### 3. Predicting untrained densities
 
 Training on a certain set of densities might also present interesting behaviour when applying the algorithm on a different set of densities.
 

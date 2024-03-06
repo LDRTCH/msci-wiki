@@ -197,22 +197,18 @@ Parameters
 
 # 7. Preliminary Tumbling Rate Extrapolation
 
-Model balteus3123 yielded promising data when validated on the same parameters it was trained in. By also validating it on the rest of the tumbling rate logspace, we may be able to obtain some useful information about how the neural network learns from data. We expect it to have relatively close tumbling rate predictions for those closest to the logarithmic scale it was given (so, namely, on 0.157, as it is the next value after the trained ones), but that it will break up fairly quickly when trying to predict bigger turning rates.
+Model `balteus3123` yielded promising data when validated on the same parameters it was trained in. By also validating it on the rest of the tumbling rate logspace, we may be able to obtain some useful information about how the neural network learns from data. We expect it to have relatively close tumbling rate predictions for those closest to the logarithmic scale it was given (so, namely, on 0.157, as it is the next value after the trained ones), but that it will break up fairly quickly when trying to predict bigger turning rates. Below are the results of resulting 'model' **lost5622** (in reality the model itself is still balteus, but we have to index the different validation runs as well; in the CNN model table, the convention used for such cases is `validation-model (trained-model)`).
 
 ![](./week-17-files/lost5622-pred.png)
 
+But this is not what's happening in practice. Rather, seems the CNN does still assume an increase in tumbling rate, but not by how much is represented in practice. It's then possible the intervals in our logspace values are too large themselves to adequately prepare the CNN for extrapolation. Alternatively, it's possible we are not running them for enough epochs, although we see diminishing returns on minimising our loss values with increasing epochs.
+
 Parameters
 
-- [] MAE:
-- [] Min STD:
-- [] Avg STD:
-- [] Max STD:
-- [] Overlap ratio:
-- [] Pearson Coefficient:
-
-MONOCHROME
-if img > 0
-img = 1
-
-
+- [ ] MAE: nan
+- [X] Min STD: 0.0064124665
+- [X] Avg STD: 0.0065698978
+- [X] Max STD: 0.006815907
+- [ ] Overlap ratio: 0.0
+- [ ] Pearson Coefficient: 0.837442029399365
 

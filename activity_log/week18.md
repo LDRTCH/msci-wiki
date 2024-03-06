@@ -31,8 +31,9 @@
 8. Different Density Comparison (Omitting Highest Tumbling Rate)
 9. Multiple Nearby Densities
 10. Epoch Numbers
-11. Monochrome Interpolation
-12. Monochrome Extrapolation
+11. Monochrome Interpolation (Low Tumbling Rates)
+12. Monochrome Interpolation (High Tumbling Rates)
+13. Monochrome Extrapolation
 
 # 1. Introduction
 
@@ -256,6 +257,7 @@ Predictions             |  Loss Evolution
 ![](./week-18-files/revolve8117-pred.png)  |  ![](./week-18-files/revolve8117-mae.png)
 
 ```
+Prediction means and standard deviations.
 Actual value 0.073: Average = 0.09487 +- 0.00837; Expected value within 2.613 stdevs of mean
 Actual value 0.231: Average = 0.24794 +- 0.01834; Expected value within 0.924 stdevs of mean
 Actual value 0.34: Average = 0.37743 +- 0.05689; Expected value within 0.658 stdevs of mean
@@ -470,6 +472,184 @@ Predictions             |  Loss Evolution
 | Max STD  | 0.030022161  | 0.0383877  |
 | Overlap Ratio | 0.7 | 1.0 |
 
-# 11. Monochrome Interpolation
+# 11. Monochrome Interpolation (Low Tumbling Rates)
 
-# 12. Monochrome Extrapolation
+#### derive1278 (crab8432) $\rho=0.25$ $P_{val} \in \\{ 0.023, 0.073\\}$, $P_{train} \in \\{0.016,0.034,0.050,0.107 \\}$
+
+derive1278             |  crab8432
+:-------------------------:|:-------------------------:
+![](./week-18-files/derive1278-pred.png)  |  ![](./week-18-files/crab8432-pred.png)
+
+```
+Prediction means and standard deviations for derive1278.
+Actual value 0.023: Average = 0.01815 +- 0.00382; Expected value within 1.270 stdevs of mean
+Actual value 0.073: Average = 0.07531 +- 0.00863; Expected value within 0.268 stdevs of mean
+```
+
+- [X] MAE: -
+- [X] Min STD: 0.0038166833
+- [X] Avg STD: 0.0062226485
+- [ ] Max STD: 0.008628614
+- [X] Overlap Ratio: 1 (acc 5e-3)
+- [X] Pearson Coefficient: 0.973814798645944
+
+| Parameter  | derive1278 | crab8432 |
+| ---------- | ---------- | --------- |
+| Avg STD  | 0.0062226485  | 0.0037065577 |
+| Max STD  | 0.008628614  | 0.005531624  |
+| Overlap Ratio | 1.0 | 1.0 |
+| Pearson Coefficient | 0.973815 | 0.991052 |
+
+#### story4919 (summer6911): $\rho=0.25$, $P_{val} \in \\{ 0.023,0.034,0.050 \\}$, $P_{train} \in \\{0.016,0.073,0.107,0.157 \\}$
+
+story4919             |  summer6911
+:-------------------------:|:-------------------------:
+![](./week-18-files/story4919-pred.png)  |  ![](./week-18-files/summer6911-pred.png)
+
+```
+Prediction means and standard deviations for story4919.
+Actual value 0.023: Average = 0.03101 +- 0.00552; Expected value within 1.452 stdevs of mean
+Actual value 0.034: Average = 0.04259 +- 0.00784; Expected value within 1.096 stdevs of mean
+Actual value 0.05: Average = 0.06339 +- 0.00805; Expected value within 1.663 stdevs of mean
+```
+- [X] MAE: -
+- [X] Min STD: 0.005518279
+- [X] Avg STD: 0.0071368576
+- [ ] Max STD: 0.00805434
+- [X] Overlap Ratio: 1 (acc 5e-3)
+- [X] Pearson Coefficient: 0.878673132485899
+
+| Parameter  | story4919 | summer6911 |
+| ---------- | ---------- | --------- |
+| Avg STD  | 0.0071368576  | 0.0066630687 |
+| Max STD  | 0.00805434  | 0.013605628  |
+| Overlap Ratio | 1.0 | 1.0 |
+| Pearson Coefficient | 0.878673 | 0.986987 |
+
+# 12. Monochrome Interpolation (High Tumbling Rates)
+
+#### rabbit0196 (tread4399): $\rho=0.25$, $P_{val} \in \\{0.107,0.231,0.340 \\}$, $P_{train} \in \\{0.073,0.157,0.5 \\}$
+
+rabbit0196             |  tread4399
+:-------------------------:|:-------------------------:
+![](./week-18-files/rabbit0196-pred.png)  |  ![](./week-18-files/tread4399-pred.png)
+
+```
+Prediction means and standard deviations for rabbit0196.
+Actual value 0.107: Average = 0.13162 +- 0.01054; Expected value within 2.336 stdevs of mean
+Actual value 0.231: Average = 0.29793 +- 0.06501; Expected value within 1.030 stdevs of mean
+Actual value 0.34: Average = 0.47849 +- 0.01906; Expected value within 7.268 stdevs of mean
+
+Prediction means and standard deviations for tread4399.
+Actual value 0.073: Average = 0.08449 +- 0.00540; Expected value within 2.128 stdevs of mean
+Actual value 0.157: Average = 0.15972 +- 0.00279; Expected value within 0.973 stdevs of mean
+Actual value 0.5: Average = 0.49756 +- 0.00513; Expected value within 0.475 stdevs of mean
+```
+- [X] MAE: -
+- [X] Min STD: 0.010536376
+- [X] Avg STD: 0.031534202	
+- [ ] Max STD: 0.06501088
+- [X] Overlap Ratio: 1 (acc 5e-3)
+- [X] Pearson Coefficient: 0.961320568504786
+
+| Parameter  | rabbit0196 | tread4399 |
+| ---------- | ---------- | --------- |
+| Avg STD  | 0.031534202  | 0.004439787 |
+| Max STD  | 0.06501088  | 0.0054007815  |
+| Overlap Ratio | 1.0 | 1.0 |
+| Pearson Coefficient | 0.961321 | 0.999564 |
+
+#### door1333 (revolve8117): $\rho=0.25$, $P_{val} \in \\{0.107,0.157 \\}$, $P_{train} \in \\{0.073,0.231,0.340,0.500\\}$
+
+door1333             |  revolve8117
+:-------------------------:|:-------------------------:
+![](./week-18-files/door1333-pred.png)  |  ![](./week-18-files/revolve8117-pred.png)
+
+```
+Prediction means and standard deviations for door1333.
+Actual value 0.107: Average = 0.14482 +- 0.01286; Expected value within 2.942 stdevs of mean
+Actual value 0.157: Average = 0.20067 +- 0.01161; Expected value within 3.761 stdevs of mean
+
+Prediction means and standard deviations for revolve8117.
+Actual value 0.073: Average = 0.09487 +- 0.00837; Expected value within 2.613 stdevs of mean
+Actual value 0.231: Average = 0.24794 +- 0.01834; Expected value within 0.924 stdevs of mean
+Actual value 0.34: Average = 0.37743 +- 0.05689; Expected value within 0.658 stdevs of mean
+Actual value 0.5: Average = 0.49567 +- 0.02125; Expected value within 0.204 stdevs of mean
+```
+- [X] MAE: -
+- [X] Min STD: 0.0116104465
+- [X] Avg STD: 0.0122337025	
+- [ ] Max STD: 0.012856959
+- [X] Overlap Ratio: 1 (acc 5e-3)
+- [X] Pearson Coefficient: 0.915762512590914
+
+| Parameter  | door1333 | revolve8117 |
+| ---------- | ---------- | --------- |
+| Avg STD  | 0.0122337025  | 0.026211156 |
+| Max STD  | 0.012856959  | 0.05688635  |
+| Overlap Ratio | 1.0 | 1.0 |
+| Pearson Coefficient | 0.915763 | 0.974905 |
+
+# 13. Monochrome Extrapolation
+
+salmon9100: extrapolate downwards
+
+#### tomato6633 (salad8110): $\rho=0.25$, $P_{val} \in \\{ 0.157,0.231,0.340,0.500\\}$, $P_{train} \in \\{0.016,0.023,0.034,0.05,0.073,0.107 \\}$
+
+Extrapolating upwards.
+
+tomato6633             |  salad8110
+:-------------------------:|:-------------------------:
+![](./week-18-files/tomato6633-pred.png)  |  ![](./week-18-files/salad8110-pred.png)
+
+```
+Prediction means and standard deviations for tomato6633.
+Actual value 0.157: Average = 0.12189 +- 0.00509; Expected value within 6.904 stdevs of mean
+Actual value 0.231: Average = 0.13669 +- 0.00462; Expected value within 20.414 stdevs of mean
+Actual value 0.34: Average = 0.14682 +- 0.00438; Expected value within 44.096 stdevs of mean
+Actual value 0.5: Average = 0.15471 +- 0.00434; Expected value within 79.595 stdevs of mean
+```
+- [X] MAE: -
+- [X] Min STD: 0.004338048
+- [X] Avg STD: 0.0046061105	
+- [X] Max STD: 0.0050855814
+- [ ] Overlap Ratio: 0 (acc 5e-3)
+- [X] Pearson Coefficient: 0.891692673465758
+
+| Parameter  | tomato6633 | salad8110 |
+| ---------- | ---------- | --------- |
+| Avg STD  | 0.0046061105  | 0.0035765618 |
+| Max STD  | 0.0050855814  | 0.0058416952  |
+| Overlap Ratio | 0.0 | 1.0 |
+| Pearson Coefficient | 0.891693 | 0.986550 |
+
+#### bear3250 (salmon9100): $\rho=0.25$, $P_{val} \in \\{ \\}
+
+Extrapolating downwards.
+
+bear3250             |  salmon9100
+:-------------------------:|:-------------------------:
+![](./week-18-files/bear3250-pred.png)  |  ![](./week-18-files/salmon9100-pred.png)
+
+```
+Prediction means and standard deviations for bear3250.
+Actual value 0.016: Average = 0.07631 +- 0.00000; Expected value within 8094958.352 stdevs of mean
+Actual value 0.023: Average = 0.07631 +- 0.00000; Expected value within 7155434.256 stdevs of mean
+Actual value 0.034: Average = 0.07631 +- 0.00000; Expected value within 5679039.248 stdevs of mean
+Actual value 0.05: Average = 0.07631 +- 0.00000; Expected value within 3531555.600 stdevs of mean
+
+Prediction means and standard deviations for salmon9100.
+Actual value 0.073: Average = 0.07637 +- 0.00064; Expected value within 5.309 stdevs of mean
+Actual value 0.107: Average = 0.11958 +- 0.01252; Expected value within 1.005 stdevs of mean
+Actual value 0.157: Average = 0.16357 +- 0.00663; Expected value within 0.990 stdevs of mean
+Actual value 0.231: Average = 0.24277 +- 0.02668; Expected value within 0.441 stdevs of mean
+Actual value 0.34: Average = 0.34620 +- 0.03178; Expected value within 0.195 stdevs of mean
+Actual value 0.5: Average = 0.44783 +- 0.03338; Expected value within 1.563 stdevs of mean
+```
+- [X] MAE: -
+- [X] Min STD: 0.000000007450581
+- [X] Avg STD: 0.000000007450581	
+- [X] Max STD: 0.000000007450581
+- [ ] Overlap Ratio: 0 (acc 5e-3)
+- [X] Pearson Coefficient: nan
+

@@ -317,348 +317,339 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-03-03 02:06:21.319063: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-03-03 02:06:21.319095: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-03-03 02:06:21.319123: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-03-03 02:06:21.330372: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2024-03-03 02:06:22.871465: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT</code></pre>
+<pre><code>2024-03-14 15:46:23.586193: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-03-14 15:46:23.586229: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-03-14 15:46:23.590817: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>KeyboardInterrupt: </code></pre>
 </div>
 </div>
 <section id="setup-gpu" class="level1">
 <h1>Setup GPU</h1>
 <p>First, follow instructions <a href="https://gist.github.com/zrruziev/b93e1292bf2ee39284f834ec7397ee9f">here</a>, or alternatively run:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> /sys/bus/pci/devices/<span class="pp">*</span><span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> 0 <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> <span class="va">$a</span>/numa_node<span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> /sys/bus/pci/devices/<span class="pp">*</span><span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> 0 <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> <span class="va">$a</span>/numa_node<span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We do this as a workaround for <a href="https://github.com/tensorflow/tensorflow/issues/42738">this error</a>:</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gpu_devices <span class="op">=</span> tf.config.experimental.list_physical_devices(<span class="st">'GPU'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> device <span class="kw">in</span> gpu_devices:</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    tf.config.experimental.set_memory_growth(device, <span class="va">True</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tf.config.list_physical_devices(<span class="st">'GPU'</span>), tf.test.gpu_device_name())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[] </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-03-03 02:06:30.442087: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:894] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2024-03-03 02:06:30.560730: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2211] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
-2024-03-03 02:06:30.561749: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:894] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2024-03-03 02:06:30.561885: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2211] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gpu_devices <span class="op">=</span> tf.config.experimental.list_physical_devices(<span class="st">'GPU'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> device <span class="kw">in</span> gpu_devices:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    tf.config.experimental.set_memory_growth(device, <span class="va">True</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tf.config.list_physical_devices(<span class="st">'GPU'</span>), tf.test.gpu_device_name())</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TF Version:"</span>,tf.__version__)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"CUDA Version:"</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="import-and-prepare-data" class="level1">
 <h1>Import and prepare data</h1>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_floats(string):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> re.findall(<span class="vs">r"[-+]?\d*\.\d+|\d+"</span>, string)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_load(alphas,densities):</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> []</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> alp <span class="kw">in</span> alphas:</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> val <span class="kw">in</span> densities:</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            files <span class="op">+=</span> glob.glob(<span class="ss">f"../data/three-rolling/dataset_tumble_</span><span class="sc">{</span>alp<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">.h5"</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>              img <span class="op">=</span> fin[key][:]</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>              img[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span> <span class="co"># MONOCHROME</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>              shape <span class="op">=</span> img.shape</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>              inputs.append(img)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>              outputs.append(tumble)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Scramble the dataset</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_dataset(x,y,last<span class="op">=</span><span class="dv">3600</span>):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Number of unique alpha: "</span>, <span class="bu">len</span>(np.unique(y)))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Unique alphas:"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(np.unique(y))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Shape of x: "</span>, np.shape(x))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Shape of y: "</span>, np.shape(y))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    x_train, y_train <span class="op">=</span> x[:<span class="op">-</span>last], y[:<span class="op">-</span>last]</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    x_val,y_val <span class="op">=</span> x[<span class="op">-</span>last:],y[<span class="op">-</span>last:]</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Size of training data: "</span>, <span class="bu">len</span>(x_train))</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Size of validation data: "</span>, <span class="bu">len</span>(x_val))</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_train, y_train, x_val, y_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_floats(string):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> re.findall(<span class="vs">r"[-+]?\d*\.\d+|\d+"</span>, string)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_load(alphas,densities):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> []</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> alp <span class="kw">in</span> alphas:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> val <span class="kw">in</span> densities:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            files <span class="op">+=</span> glob.glob(<span class="ss">f"../data/three-rolling/dataset_tumble_</span><span class="sc">{</span>alp<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">.h5"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> h5py.File(f, <span class="st">"r"</span>) <span class="im">as</span> fin:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>          count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> key <span class="kw">in</span> fin.keys():</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>              img <span class="op">=</span> fin[key][:]</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>              img[img <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span> <span class="co"># MONOCHROME</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>              img <span class="op">=</span> img.reshape((img.shape[<span class="dv">0</span>], img.shape[<span class="dv">1</span>],<span class="dv">1</span>))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>              shape <span class="op">=</span> img.shape</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>              inputs.append(img)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>              outputs.append(tumble)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>              count<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Scramble the dataset</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.arange(<span class="bu">len</span>(outputs)).astype(<span class="bu">int</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> np.random.permutation(order)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(inputs)[order],np.array(outputs)[order],shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#all alphas: [0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500]</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#all densities: [0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95]</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x,y,shape <span class="op">=</span> data_load(alphas<span class="op">=</span>[<span class="fl">0.016</span>,<span class="fl">0.023</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>,<span class="fl">0.073</span>,<span class="fl">0.107</span>,<span class="fl">0.157</span>,<span class="fl">0.231</span>,<span class="fl">0.340</span>], densities<span class="op">=</span>[<span class="fl">0.25</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_dataset(x,y,last<span class="op">=</span><span class="dv">3600</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Number of unique alpha: "</span>, <span class="bu">len</span>(np.unique(y)))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Unique alphas:"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(np.unique(y))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Shape of x: "</span>, np.shape(x))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Shape of y: "</span>, np.shape(y))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    x_train, y_train <span class="op">=</span> x[:<span class="op">-</span>last], y[:<span class="op">-</span>last]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    x_val,y_val <span class="op">=</span> x[<span class="op">-</span>last:],y[<span class="op">-</span>last:]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Size of training data: "</span>, <span class="bu">len</span>(x_train))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Size of validation data: "</span>, <span class="bu">len</span>(x_val))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_train, y_train, x_val, y_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#all alphas: [0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#all densities: [0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95]</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x,y,shape <span class="op">=</span> data_load(alphas<span class="op">=</span>[<span class="fl">0.016</span>,<span class="fl">0.023</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>], densities<span class="op">=</span>[<span class="fl">0.25</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We have N * number of unique alpha snapshots total, we split them into training set and a validation set with the ratio 80/20:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x_train, y_train, x_val, y_val <span class="op">=</span> split_dataset(x,y,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x)<span class="op">*</span><span class="fl">0.2</span>)) <span class="co">#len(x)*1 means no training, only validation!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(x_val[<span class="dv">1000</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.matshow(x_val[<span class="dv">1000</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="setup-and-train-our-model" class="level1">
 <h1>Setup and train our model</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense,Conv2D,Flatten,Dropout,MaxPooling2D,BatchNormalization,AveragePooling2D,Normalization,LeakyReLU,GlobalAveragePooling2D,ReLU</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense,Conv2D,Flatten,Dropout,MaxPooling2D,BatchNormalization,AveragePooling2D,Normalization,LeakyReLU,GlobalAveragePooling2D,ReLU</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Workaround for dropout not working:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextlib</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="at">@contextlib.contextmanager</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> options(options):</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  old_opts <span class="op">=</span> tf.config.optimizer.get_experimental_options()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  tf.config.optimizer.set_experimental_options(options)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>:</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">finally</span>:</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    tf.config.optimizer.set_experimental_options(old_opts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextlib</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">@contextlib.contextmanager</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> options(options):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  old_opts <span class="op">=</span> tf.config.optimizer.get_experimental_options()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  tf.config.optimizer.set_experimental_options(options)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>:</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">finally</span>:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    tf.config.optimizer.set_experimental_options(old_opts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Run this after analysis to reset model and release RAM before changing the architecture</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gc</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>K.clear_session()</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> prediction</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> model</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> history</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gc</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>K.clear_session()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> prediction</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> model</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> history</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Collected: "</span>, gc.collect())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="setting-up-the-models-architecture" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-the-models-architecture">Setting up the model’s architecture</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_net(shape):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> Sequential()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    model.add(ReLU())</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    model.add(BatchNormalization())</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">4</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    model.add(ReLU())</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    model.add(BatchNormalization())</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    model.add(ReLU())</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    model.add(BatchNormalization())</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    model.add(GlobalAveragePooling2D())</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">3</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    model.add(Flatten())</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_net(shape):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> Sequential()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">3</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">"same"</span>, input_shape<span class="op">=</span>shape))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    model.add(ReLU())</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    model.add(BatchNormalization())</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">4</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    model.add(ReLU())</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    model.add(BatchNormalization())</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    model.add(Conv2D(filters<span class="op">=</span><span class="dv">6</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), padding<span class="op">=</span><span class="st">"same"</span>))</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    model.add(ReLU())</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    model.add(BatchNormalization())</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    model.add(GlobalAveragePooling2D())</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> options({<span class="st">"layout_optimizer"</span>: <span class="va">False</span>}):</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        model.add(Dropout(<span class="fl">0.1</span>))</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">3</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    model.add(Flatten())</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    model.add(Dense(units<span class="op">=</span><span class="dv">1</span>, activation<span class="op">=</span><span class="st">"linear"</span>))</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> make_net(shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> make_net(shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="optimizer" class="level2">
 <h2 class="anchored" data-anchor-id="optimizer">Optimizer</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#optimizer = keras.optimizers.Adam(learning_rate=0.0003)</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.006</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>optimizer, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#optimizer = keras.optimizers.Adam(learning_rate=0.0003)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> keras.optimizers.SGD(learning_rate<span class="op">=</span><span class="fl">0.006</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mae'</span>, optimizer<span class="op">=</span>optimizer, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="training-and-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="training-and-evaluation">Training and evaluation</h2>
 <p>Before training, these are the “predictions”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> model.predict(x_val, batch_size<span class="op">=</span><span class="dv">64</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of prediction : "</span>, np.shape(prediction))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.plot(y_val, prediction.T[<span class="dv">0</span>], <span class="st">'o'</span>, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.plot(y_val, y_val, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, prediction.T[<span class="dv">0</span>]).statistic)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Input turning rate"</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Predicted turning rate"</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"equal"</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> model.predict(x_val, batch_size<span class="op">=</span><span class="dv">64</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of prediction : "</span>, np.shape(prediction))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.plot(y_val, prediction.T[<span class="dv">0</span>], <span class="st">'o'</span>, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.plot(y_val, y_val, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, prediction.T[<span class="dv">0</span>]).statistic)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Input turning rate"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Predicted turning rate"</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"equal"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>demo_idx <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.matshow(x_val[demo_idx])</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actual: "</span>, y_val[demo_idx])</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predicted: "</span>, prediction.T[<span class="dv">0</span>][demo_idx])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>demo_idx <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.matshow(x_val[demo_idx])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actual: "</span>, y_val[demo_idx])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predicted: "</span>, prediction.T[<span class="dv">0</span>][demo_idx])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can play with the architecture and see how the untrained predictions can change too.</p>
 </section>
 <section id="run-the-training" class="level2">
 <h2 class="anchored" data-anchor-id="run-the-training">Run the training</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>epochs<span class="op">=</span><span class="dv">30</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    x_train,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    y_train,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>epochs,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span>batch_size,</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(x_val, y_val)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>epochs<span class="op">=</span><span class="dv">30</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>batch_size<span class="op">=</span><span class="dv">64</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    x_train,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    y_train,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>epochs,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span>batch_size,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(x_val, y_val)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Evaluate on test data:"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.evaluate(x_val, y_val, batch_size<span class="op">=</span>batch_size, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Evaluate on test data:"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.evaluate(x_val, y_val, batch_size<span class="op">=</span>batch_size, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="alternatively-load-a-trained-model" class="level1">
 <h1>Alternatively, load a trained model</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"balteus3123"</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'../models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"salmon9100"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.models.load_model(<span class="ss">f'../models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras'</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="analyse-training-results" class="level1">
 <h1>Analyse training results</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> model.predict(x_val)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of prediction : "</span>, np.shape(prediction))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> model.predict(x_val)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of prediction : "</span>, np.shape(prediction))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">0.85</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> prediction.T[<span class="dv">0</span>]</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> cm.batlowS(np.digitize(v, bins))</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>colors_actual <span class="op">=</span> cm.batlowS(np.digitize(np.unique(y_val),bins))</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>fig, (ax1,ax2) <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>,ncols<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">6</span>))</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax1.scatter(y_val, v, c<span class="op">=</span>colors, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>ax1.scatter(np.unique(y_val), np.unique(y_val), marker<span class="op">=</span><span class="st">"_"</span>, color<span class="op">=</span><span class="st">'k'</span>, s<span class="op">=</span><span class="dv">200</span>)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>ax1.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>ax1.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(np.unique(y_val))</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_yscale("log")</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_yticks(np.unique(y_val))</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>ax1.set_facecolor([<span class="fl">0.98</span>,<span class="fl">0.98</span>,<span class="fl">0.98</span>,<span class="dv">1</span>])</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> bins:</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    ax1.axvline(val, alpha<span class="op">=</span><span class="fl">0.05</span>, c<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Input turning rate"</span>)</span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Predicted turning rate"</span>)</span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">0</span>, <span class="st">"predicted"</span>, np.<span class="bu">abs</span>(v <span class="op">-</span> y_val))</span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">1</span>, <span class="st">"actual"</span>, y_val)</span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>sns.violinplot(</span>
-<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax2,</span>
-<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df,</span>
-<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"actual"</span>,</span>
-<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"predicted"</span>,</span>
-<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"w"</span>,</span>
-<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.7</span>,</span>
-<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a>    density_norm<span class="op">=</span><span class="st">"width"</span>,</span>
-<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb24-45"><a href="#cb24-45" aria-hidden="true" tabindex="-1"></a>    inner<span class="op">=</span><span class="st">"box"</span>,</span>
-<span id="cb24-46"><a href="#cb24-46" aria-hidden="true" tabindex="-1"></a>    inner_kws<span class="op">=</span>{<span class="st">"box_width"</span>: <span class="dv">4</span>, <span class="st">"color"</span>: <span class="st">"0.2"</span>},</span>
-<span id="cb24-47"><a href="#cb24-47" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb24-48"><a href="#cb24-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-49"><a href="#cb24-49" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Actual turning rate"</span>)</span>
-<span id="cb24-50"><a href="#cb24-50" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="vs">r"Modulus difference predictions $|P_</span><span class="sc">{actual}</span><span class="vs">-P_</span><span class="sc">{pred}</span><span class="vs">|$"</span>)</span>
-<span id="cb24-51"><a href="#cb24-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-52"><a href="#cb24-52" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb24-53"><a href="#cb24-53" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.suptitle("CNN Turning Rate Predictions Against Actual Values")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">0.85</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> prediction.T[<span class="dv">0</span>]</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> cm.batlowS(np.digitize(v, bins))</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>colors_actual <span class="op">=</span> cm.batlowS(np.digitize(np.unique(y_val),bins))</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>fig, (ax1,ax2) <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>,ncols<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">6</span>))</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>ax1.scatter(y_val, v, c<span class="op">=</span>colors, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>ax1.scatter(np.unique(y_val), np.unique(y_val), marker<span class="op">=</span><span class="st">"_"</span>, color<span class="op">=</span><span class="st">'k'</span>, s<span class="op">=</span><span class="dv">200</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>ax1.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>ax1.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(np.unique(y_val))</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_yscale("log")</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_yticks(np.unique(y_val))</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>ax1.set_facecolor([<span class="fl">0.98</span>,<span class="fl">0.98</span>,<span class="fl">0.98</span>,<span class="dv">1</span>])</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> bins:</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    ax1.axvline(val, alpha<span class="op">=</span><span class="fl">0.05</span>, c<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Input turning rate"</span>)</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Predicted turning rate"</span>)</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">0</span>, <span class="st">"predicted"</span>, np.<span class="bu">abs</span>(v <span class="op">-</span> y_val))</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">1</span>, <span class="st">"actual"</span>, y_val)</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>sns.violinplot(</span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax2,</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df,</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"actual"</span>,</span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"w"</span>,</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>    density_norm<span class="op">=</span><span class="st">"width"</span>,</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>    inner<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>    inner_kws<span class="op">=</span>{<span class="st">"box_width"</span>: <span class="dv">4</span>, <span class="st">"color"</span>: <span class="st">"0.2"</span>},</span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Actual turning rate"</span>)</span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="vs">r"Modulus difference predictions $|P_</span><span class="sc">{actual}</span><span class="vs">-P_</span><span class="sc">{pred}</span><span class="vs">|$"</span>)</span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.suptitle("CNN Turning Rate Predictions Against Actual Values")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> []</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> []</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>overlap <span class="op">=</span> []</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> <span class="fl">1e-3</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">"Prediction means and standard deviations."</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    v_mapped <span class="op">=</span> v[np.where(y_val <span class="op">==</span> val)]</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    stdev <span class="op">=</span> np.std(v_mapped)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    std.append(stdev)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    mean <span class="op">=</span> np.mean(v_mapped)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    overlap.append((val <span class="op">+</span> accuracy <span class="op">&gt;=</span> np.<span class="bu">min</span>(v_mapped)) <span class="op">&amp;</span> (val <span class="op">-</span> accuracy <span class="op">&lt;=</span> np.<span class="bu">max</span>(v_mapped)))</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (<span class="ss">f"Actual value </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">: Average = </span><span class="sc">{</span>mean<span class="sc">:.5f}</span><span class="ss"> +- </span><span class="sc">{</span>stdev<span class="sc">:.5f}</span><span class="ss">; Expected value within </span><span class="sc">{</span><span class="bu">abs</span>(val<span class="op">-</span>mean)<span class="op">/</span>stdev<span class="sc">:.3f}</span><span class="ss"> stdevs of mean"</span>)</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Overlap ratio:"</span>, np.<span class="bu">sum</span>(overlap)<span class="op">/</span><span class="bu">len</span>(overlap))</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"(Min, Max, Avg) STD:"</span>, np.<span class="bu">min</span>(std), np.<span class="bu">max</span>(std), np.mean(std))</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, v).statistic)</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    v_mapped <span class="op">=</span> v[np.where(y_val <span class="op">==</span> val)]</span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    means.append(np.mean(v_mapped))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> []</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> []</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>overlap <span class="op">=</span> []</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> <span class="fl">5e-3</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">"Prediction means and standard deviations."</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    v_mapped <span class="op">=</span> v[np.where(y_val <span class="op">==</span> val)]</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    stdev <span class="op">=</span> np.std(v_mapped)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    std.append(stdev)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    mean <span class="op">=</span> np.mean(v_mapped)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    overlap.append((val <span class="op">+</span> accuracy <span class="op">&gt;=</span> np.<span class="bu">min</span>(v_mapped)) <span class="op">&amp;</span> (val <span class="op">-</span> accuracy <span class="op">&lt;=</span> np.<span class="bu">max</span>(v_mapped)))</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (<span class="ss">f"Actual value </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">: Average = </span><span class="sc">{</span>mean<span class="sc">:.5f}</span><span class="ss"> +- </span><span class="sc">{</span>stdev<span class="sc">:.5f}</span><span class="ss">; Expected value within </span><span class="sc">{</span><span class="bu">abs</span>(val<span class="op">-</span>mean)<span class="op">/</span>stdev<span class="sc">:.3f}</span><span class="ss"> stdevs of mean"</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"With accuracy </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">, overlap ratio:"</span>, np.<span class="bu">sum</span>(overlap)<span class="op">/</span><span class="bu">len</span>(overlap))</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"(Min, Max, Avg) STD:"</span>, np.<span class="bu">min</span>(std), np.<span class="bu">max</span>(std), np.mean(std))</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, v).statistic)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    v_mapped <span class="op">=</span> v[np.where(y_val <span class="op">==</span> val)]</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    means.append(np.mean(v_mapped))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>val_acc <span class="op">=</span> history.history[<span class="st">'val_mae'</span>]</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> history.history[<span class="st">'loss'</span>]</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>val_loss <span class="op">=</span> history.history[<span class="st">'val_loss'</span>]</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>epochs_range <span class="op">=</span> <span class="bu">range</span>(epochs)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plt.plot(epochs_range, acc, label<span class="op">=</span><span class="st">'Training MAE'</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plt.plot(epochs_range, val_acc, label<span class="op">=</span><span class="st">'Validation MAE'</span>)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> history.history[<span class="st">'mae'</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>val_acc <span class="op">=</span> history.history[<span class="st">'val_mae'</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> history.history[<span class="st">'loss'</span>]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>val_loss <span class="op">=</span> history.history[<span class="st">'val_loss'</span>]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>epochs_range <span class="op">=</span> <span class="bu">range</span>(epochs)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.plot(epochs_range, acc, label<span class="op">=</span><span class="st">'Training MAE'</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.plot(epochs_range, val_acc, label<span class="op">=</span><span class="st">'Validation MAE'</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Training and Validation MAE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="kernel-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="kernel-analysis">Kernel analysis</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>filters, biases <span class="op">=</span> model.layers[<span class="dv">0</span>].get_weights()</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (filters.shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(filters.shape[<span class="op">-</span><span class="dv">1</span>]):</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  f <span class="op">=</span> filters[:, :, :, k]</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  plt.matshow(f.squeeze())</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>filters, biases <span class="op">=</span> model.layers[<span class="dv">0</span>].get_weights()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (filters.shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(filters.shape[<span class="op">-</span><span class="dv">1</span>]):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  f <span class="op">=</span> filters[:, :, :, k]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  plt.matshow(f.squeeze())</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="save-model-if-needed" class="level1">
 <h1>Save model (if needed)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"candy8131"</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>model.save(<span class="ss">f"../models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"steppe2299"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>model.save(<span class="ss">f"../models/</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

@@ -320,12 +320,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-21 11:05:47.244966: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-02-21 11:05:47.245000: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-02-21 11:05:47.249196: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-02-21 11:05:47.637083: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+<pre><code>2024-02-21 11:59:57.475142: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-02-21 11:59:57.475171: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-02-21 11:59:57.475204: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-02-21 11:59:57.484521: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2024-02-21 11:05:49.851256: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT</code></pre>
+2024-02-21 11:59:59.614736: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT</code></pre>
 </div>
 </div>
 </section>
@@ -343,11 +343,11 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <pre><code>[] </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-21 11:05:57.852047: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:894] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2024-02-21 11:05:58.578024: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2211] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+<pre><code>2024-02-21 12:00:22.740053: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:894] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-21 12:00:22.812508: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2211] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
-2024-02-21 11:05:58.580268: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:894] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
-2024-02-21 11:05:58.580479: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2211] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+2024-02-21 12:00:22.813697: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:894] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-21 12:00:22.813848: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2211] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...</code></pre>
 </div>
 </div>
@@ -360,7 +360,7 @@ Skipping registering GPU devices...</code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_load():</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    density <span class="op">=</span> <span class="fl">0.15</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"../data/dataset_tumble_*_0.15.h5"</span>) <span class="co">#imports all tumbling rates for density 0.15</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> glob.glob(<span class="ss">f"../data/no-rolling/dataset_tumble_*_0.15.h5"</span>) <span class="co">#imports all tumbling rates for density 0.15</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    inputs,outputs <span class="op">=</span> [],[]</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> files:</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        tumble <span class="op">=</span> <span class="bu">float</span>(extract_floats(f)[<span class="dv">0</span>])</span>
@@ -387,9 +387,9 @@ Skipping registering GPU devices...</code></pre>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of x: "</span>, np.shape(x))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of y: "</span>, np.shape(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Number of unique alpha:  5
-Shape of x:  (70000, 128, 128, 1)
-Shape of y:  (70000,)</code></pre>
+<pre><code>Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)</code></pre>
 </div>
 </div>
 <p>We have 10000 * number of unique alpha snapshots total, we split them into a training set and a validation set:</p>
@@ -401,8 +401,8 @@ Shape of y:  (70000,)</code></pre>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Size of training data: "</span>, <span class="bu">len</span>(x_train))</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Size of validation data: "</span>, <span class="bu">len</span>(x_val))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Size of training data:  50000
-Size of validation data:  20000</code></pre>
+<pre><code>Size of training data:  0
+Size of validation data:  10000</code></pre>
 </div>
 </div>
 </section>
@@ -542,12 +542,12 @@ _________________________________________________________________</code></pre>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">"log"</span>)</span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2024-02-21 11:11:56.367005: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 1310720000 exceeds 10% of free system memory.</code></pre>
+<pre><code>2024-02-21 12:06:56.038688: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 655360000 exceeds 10% of free system memory.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>313/313 [==============================] - 9s 25ms/step
-Shape of prediction :  (20000, 1)
-Pearson's correlation coeff:  0.15875775436417172</code></pre>
+<pre><code>157/157 [==============================] - 5s 31ms/step
+Shape of prediction :  (10000, 1)
+Pearson's correlation coeff:  0.11336512822524027</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="cp_network_files/figure-html/cell-13-output-3.png" class="img-fluid"></p>
@@ -559,8 +559,8 @@ Pearson's correlation coeff:  0.15875775436417172</code></pre>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Actual: "</span>, y_val[demo_idx])</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predicted: "</span>, prediction.T[<span class="dv">0</span>][demo_idx])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Actual:  0.073
-Predicted:  0.06415788</code></pre>
+<pre><code>Actual:  0.05
+Predicted:  0.040429983</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="cp_network_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
@@ -579,136 +579,78 @@ Predicted:  0.06415788</code></pre>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    batch_size<span class="op">=</span><span class="dv">64</span>,</span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(x_val, y_val)</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-21 11:12:34.914368: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 3276800000 exceeds 10% of free system memory.
-2024-02-21 11:13:35.476556: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 1310720000 exceeds 10% of free system memory.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Epoch 1/10
-781/782 [============================&gt;.] - ETA: 0s - loss: 0.0386 - accuracy: 0.0000e+00782/782 [==============================] - 61s 73ms/step - loss: 0.0386 - accuracy: 0.0000e+00 - val_loss: 0.0456 - val_accuracy: 0.0000e+00
-Epoch 2/10
-782/782 [==============================] - 34s 44ms/step - loss: 0.0281 - accuracy: 0.0000e+00 - val_loss: 0.0287 - val_accuracy: 0.0000e+00
-Epoch 3/10
-782/782 [==============================] - 30s 39ms/step - loss: 0.0262 - accuracy: 0.0000e+00 - val_loss: 0.0348 - val_accuracy: 0.0000e+00
-Epoch 4/10
-782/782 [==============================] - 30s 38ms/step - loss: 0.0239 - accuracy: 0.0000e+00 - val_loss: 0.0650 - val_accuracy: 0.0000e+00
-Epoch 5/10
-782/782 [==============================] - 34s 43ms/step - loss: 0.0237 - accuracy: 0.0000e+00 - val_loss: 0.0197 - val_accuracy: 0.0000e+00
-Epoch 6/10
-782/782 [==============================] - 43s 55ms/step - loss: 0.0221 - accuracy: 0.0000e+00 - val_loss: 0.0197 - val_accuracy: 0.0000e+00
-Epoch 7/10
-782/782 [==============================] - 38s 48ms/step - loss: 0.0219 - accuracy: 0.0000e+00 - val_loss: 0.0514 - val_accuracy: 0.0000e+00
-Epoch 8/10
-782/782 [==============================] - 49s 63ms/step - loss: 0.0208 - accuracy: 0.0000e+00 - val_loss: 0.0237 - val_accuracy: 0.0000e+00
-Epoch 9/10
-782/782 [==============================] - 55s 70ms/step - loss: 0.0209 - accuracy: 0.0000e+00 - val_loss: 0.0201 - val_accuracy: 0.0000e+00
-Epoch 10/10
-782/782 [==============================] - 40s 51ms/step - loss: 0.0204 - accuracy: 0.0000e+00 - val_loss: 0.0224 - val_accuracy: 0.0000e+00</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: Expected input data to be non-empty.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Evaluate on test data:"</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.evaluate(x_val, y_val, batch_size<span class="op">=</span><span class="dv">64</span>, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results[<span class="dv">0</span>])</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test accuracy:"</span>, results[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Evaluate on test data:
-Test loss: 0.022364376112818718
-Test accuracy: 0.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-21 11:27:54.561518: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 1310720000 exceeds 10% of free system memory.</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Evaluate on test data:"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.evaluate(x_val, y_val, batch_size<span class="op">=</span><span class="dv">64</span>, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test loss:"</span>, results[<span class="dv">0</span>])</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Test accuracy:"</span>, results[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="analyse-training-results" class="level1">
 <h1>Analyse training results</h1>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> model.predict(x_val, batch_size<span class="op">=</span><span class="dv">64</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of prediction : "</span>, np.shape(prediction))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>2024-02-21 11:31:12.707337: W tensorflow/tsl/framework/cpu_allocator_impl.cc:83] Allocation of 1310720000 exceeds 10% of free system memory.</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> model.predict(x_val, batch_size<span class="op">=</span><span class="dv">64</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape of prediction : "</span>, np.shape(prediction))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>313/313 [==============================] - 8s 26ms/step
-Shape of prediction :  (20000, 1)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">1.2</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> prediction.T[<span class="dv">0</span>]</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> cm.hawaiiS(np.digitize(v, bins))</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> []</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    std.append(np.std(v[np.where(y_val <span class="op">==</span> val)]))</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"(Min, Max, Avg) STD:"</span>, np.<span class="bu">min</span>(std), np.<span class="bu">max</span>(std), np.mean(std))</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>ax.plot(y_val, prediction.T[<span class="dv">0</span>], <span class="st">'o'</span>, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>ax.plot(y_val, y_val, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'r'</span>,markersize<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, prediction.T[<span class="dv">0</span>]).statistic)</span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Input turning rate"</span>)</span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted turning rate"</span>)</span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_aspect("equal")</span></span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>ax.set_xscale(<span class="st">"log"</span>)</span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>ax.set_yscale(<span class="st">"log"</span>)</span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(np.unique(y))</span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>ax.set_yticks(np.unique(y))</span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> bins:</span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    ax.axvline(val, alpha<span class="op">=</span><span class="fl">0.05</span>, c<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.unique(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(Min, Max, Avg) STD: 0.0020576774 0.04477857 0.016082471
-Pearson's correlation coeff:  0.9715155605791752
-[0.016 0.034 0.073 0.157 0.34 ]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="cp_network_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">1.2</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> prediction.T[<span class="dv">0</span>]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> cm.hawaiiS(np.digitize(v, bins))</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> []</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    std.append(np.std(v[np.where(y_val <span class="op">==</span> val)]))</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"(Min, Max, Avg) STD:"</span>, np.<span class="bu">min</span>(std), np.<span class="bu">max</span>(std), np.mean(std))</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>ax.plot(y_val, prediction.T[<span class="dv">0</span>], <span class="st">'o'</span>, c<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>ax.plot(y_val, y_val, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'r'</span>,markersize<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, prediction.T[<span class="dv">0</span>]).statistic)</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Input turning rate"</span>)</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted turning rate"</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_aspect("equal")</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>ax.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>ax.set_yscale(<span class="st">"log"</span>)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>ax.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(np.unique(y))</span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>ax.set_yticks(np.unique(y))</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> bins:</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>    ax.axvline(val, alpha<span class="op">=</span><span class="fl">0.05</span>, c<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.unique(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="kernel-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="kernel-analysis">Kernel analysis</h3>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>filters, biases <span class="op">=</span> model.layers[<span class="dv">0</span>].get_weights()</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (filters.shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(filters.shape[<span class="op">-</span><span class="dv">1</span>]):</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  f <span class="op">=</span> filters[:, :, :, k]</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  plt.matshow(f.squeeze())</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>3</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="cp_network_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="cp_network_files/figure-html/cell-19-output-3.png" class="img-fluid"></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="cp_network_files/figure-html/cell-19-output-4.png" class="img-fluid"></p>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>filters, biases <span class="op">=</span> model.layers[<span class="dv">0</span>].get_weights()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (filters.shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(filters.shape[<span class="op">-</span><span class="dv">1</span>]):</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  f <span class="op">=</span> filters[:, :, :, k]</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  plt.matshow(f.squeeze())</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="save-model-if-needed" class="level1">
 <h1>Save model (if needed)</h1>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"../models/median4431.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"../models/median4431.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

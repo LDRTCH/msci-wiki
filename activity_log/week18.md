@@ -41,7 +41,7 @@ The main purpose of this week is to further explore gaps in tumbling rates for o
 
 # 2. Refining CNN Architecture
 
-The intermediary convolutional layer in MN_3 was running a (4,4) kernel size; this is uncentered, and therefore slightly hinders the model. We have swapped it out for a (5,5) kernel size.
+The intermediary convolutional layer in MN_3 was running a (4,4) kernel size; this is uncentered, and therefore slightly hinders the model. We have swapped it out for a (5,5) kernel size. This is the logic behind averaging within a single value by looking around its local neighbourhood.		
 
 We could do 'contour plots' of individual clusters to map out how their orientation
 

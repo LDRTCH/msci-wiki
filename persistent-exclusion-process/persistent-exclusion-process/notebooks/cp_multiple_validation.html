@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Dissipation Learning in Active Matter - Import packages</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Dissipation Learning in Active Matter
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../">Dissipation Learning in Active Matter</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-git"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/ldrtch/msci-wiki">
+            GitHub mirror
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><i class="bi bi-person-fill" role="img">
+</i> 
+ <span class="menu-text">Personal</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../activity_log/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Activity log</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../motivational-report/motivational-report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivational Report</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../structured_information/landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Information Glossary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CNN Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false"><i class="bi bi-archive" role="img">
+</i> 
+ <span class="menu-text">Python Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true"><i class="bi bi-diagram-3-fill" role="img">
+</i> 
+ <span class="menu-text">Shared</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
+</i> 
+ <span class="menu-text">GitHub Repository (cp fork)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/dlactivematter" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
+</i> 
+ <span class="menu-text">GitHub Shared Organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://cryptpad.fr/sheet/#/3/sheet/edit/7200dabe21ea346d966571a07eb6f33a/" class="sidebar-item-text sidebar-link"><i class="bi bi-pc-display" role="img">
+</i> 
+ <span class="menu-text">CNN Models Parameter Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false"><i class="bi bi-diagram-2-fill" role="img">
+</i> 
+ <span class="menu-text">FT notes</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../shared/ftnotes/label.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minimal cluster analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://www.zotero.org/groups/5210328/dissipation_learning_in_active_matter/library" class="sidebar-item-text sidebar-link"><i class="bi bi-bookmarks-fill" role="img">
+</i> 
+ <span class="menu-text">Zotero library</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#set-seed-optional" id="toc-set-seed-optional" class="nav-link active" data-scroll-target="#set-seed-optional">Set seed (optional)</a></li>
+  <li><a href="#setup-gpu" id="toc-setup-gpu" class="nav-link" data-scroll-target="#setup-gpu">Setup GPU</a></li>
+  <li><a href="#define-functions" id="toc-define-functions" class="nav-link" data-scroll-target="#define-functions">Define Functions</a></li>
+  <li><a href="#import-and-prepare-data" id="toc-import-and-prepare-data" class="nav-link" data-scroll-target="#import-and-prepare-data">Import and prepare data</a></li>
+  <li><a href="#predict-multiple-models" id="toc-predict-multiple-models" class="nav-link" data-scroll-target="#predict-multiple-models">Predict multiple models</a></li>
+  <li><a href="#plot-one-results" id="toc-plot-one-results" class="nav-link" data-scroll-target="#plot-one-results">Plot one results</a>
+  <ul class="collapse">
+  <li><a href="#predict-one-on-one" id="toc-predict-one-on-one" class="nav-link" data-scroll-target="#predict-one-on-one">Predict one on one</a></li>
+  <li><a href="#predict-one-on-two" id="toc-predict-one-on-two" class="nav-link" data-scroll-target="#predict-one-on-two">Predict one on two</a></li>
+  <li><a href="#predict-one-on-three" id="toc-predict-one-on-three" class="nav-link" data-scroll-target="#predict-one-on-three">Predict one on three</a></li>
+  </ul></li>
+  <li><a href="#plot-monochrome-results" id="toc-plot-monochrome-results" class="nav-link" data-scroll-target="#plot-monochrome-results">Plot monochrome results</a>
+  <ul class="collapse">
+  <li><a href="#predict-two-on-two" id="toc-predict-two-on-two" class="nav-link" data-scroll-target="#predict-two-on-two">Predict two on two</a></li>
+  <li><a href="#predict-two-on-one" id="toc-predict-two-on-one" class="nav-link" data-scroll-target="#predict-two-on-one">Predict two on one</a></li>
+  <li><a href="#predict-two-on-three" id="toc-predict-two-on-three" class="nav-link" data-scroll-target="#predict-two-on-three">Predict two on three</a></li>
+  </ul></li>
+  <li><a href="#plot-scrambled-results" id="toc-plot-scrambled-results" class="nav-link" data-scroll-target="#plot-scrambled-results">Plot Scrambled Results</a>
+  <ul class="collapse">
+  <li><a href="#predict-three-on-three" id="toc-predict-three-on-three" class="nav-link" data-scroll-target="#predict-three-on-three">Predict three on three</a></li>
+  <li><a href="#predict-three-on-one" id="toc-predict-three-on-one" class="nav-link" data-scroll-target="#predict-three-on-one">Predict three on one</a></li>
+  <li><a href="#predict-three-on-two" id="toc-predict-three-on-two" class="nav-link" data-scroll-target="#predict-three-on-two">Predict three on two</a></li>
+  <li><a href="#combined-plots" id="toc-combined-plots" class="nav-link" data-scroll-target="#combined-plots">Combined plots</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Import packages</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h5py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'./..'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.training_utils <span class="im">import</span> data_load, extract_floats, split_dataset, predict_multi_by_name, plot_violin_and_statistics,cross_mean_err_calculator</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras <span class="im">import</span> backend <span class="im">as</span> K</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense,Conv2D,Flatten,Dropout,MaxPooling2D,BatchNormalization,AveragePooling2D,LeakyReLU,GlobalAveragePooling2D,ReLU</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmcrameri <span class="im">import</span> cm</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-04-15 22:46:20.013183: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-04-15 22:46:20.126745: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-15 22:46:22.013569: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT</code></pre>
+</div>
+</div>
+<section id="set-seed-optional" class="level1">
+<h1>Set seed (optional)</h1>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fixed_seed <span class="op">=</span> <span class="dv">216</span> <span class="co">#choose seed (comment out if not needed)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'fixed_seed'</span> <span class="kw">in</span> <span class="bu">locals</span>():</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    keras.utils.set_random_seed(fixed_seed)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Running program with fixed seed:"</span>,fixed_seed)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Running program with random seed."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running program with fixed seed: 216</code></pre>
+</div>
+</div>
+</section>
+<section id="setup-gpu" class="level1">
+<h1>Setup GPU</h1>
+<p>First, follow instructions <a href="https://gist.github.com/zrruziev/b93e1292bf2ee39284f834ec7397ee9f">here</a>, or alternatively run:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> /sys/bus/pci/devices/<span class="pp">*</span><span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> 0 <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> <span class="va">$a</span>/numa_node<span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We do this as a workaround for <a href="https://github.com/tensorflow/tensorflow/issues/42738">this error</a>:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gpu_devices <span class="op">=</span> tf.config.experimental.list_physical_devices(<span class="st">'GPU'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> device <span class="kw">in</span> gpu_devices:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    tf.config.experimental.set_memory_growth(device, <span class="va">True</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tf.config.list_physical_devices(<span class="st">'GPU'</span>), tf.test.gpu_device_name())</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TF Version:"</span>,tf.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')] /device:GPU:0
+TF Version: 2.16.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-04-15 22:46:24.894395: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.097387: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.097511: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.100146: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.100239: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.100292: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.201387: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.201471: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.201526: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:25.201574: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1928] Created device /device:GPU:0 with 6187 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9</code></pre>
+</div>
+</div>
+</section>
+<section id="define-functions" class="level1">
+<h1>Define Functions</h1>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> violin_plotter (v,y_val,adjustment,legloc<span class="op">=</span><span class="st">"upper left"</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    bins <span class="op">=</span> np.logspace(<span class="op">-</span><span class="dv">6</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">10</span>, base<span class="op">=</span><span class="dv">2</span>)<span class="op">*</span><span class="fl">0.85</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#v = prediction2.T[0]</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> cm.batlowS(np.digitize(v, bins))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    colors_actual <span class="op">=</span> cm.batlowS(np.digitize(np.unique(y_val),bins))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    fig, (ax1,ax2) <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>,ncols<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">6</span>),dpi<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    df.insert(<span class="dv">0</span>, <span class="st">"predicted"</span>, v <span class="op">-</span> y_val)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    df.insert(<span class="dv">1</span>, <span class="st">"actual"</span>, y_val)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    sns.violinplot(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        ax<span class="op">=</span>ax1,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>df,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"actual"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">"w"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.7</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        density_norm<span class="op">=</span><span class="st">"width"</span>,</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        inner<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        inner_kws<span class="op">=</span>{<span class="st">"box_width"</span>: <span class="dv">4</span>, <span class="st">"color"</span>: <span class="st">"0.2"</span>},</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    ax1.set_xlabel(<span class="st">"Actual turning rate"</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    ax1.set_ylabel(<span class="vs">r"Prediction Difference $P_</span><span class="sc">{pred}</span><span class="vs">-P_</span><span class="sc">{true}</span><span class="vs">$"</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    std <span class="op">=</span> []</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> []</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    overlap <span class="op">=</span> []</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    std_div <span class="op">=</span> []</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    accuracy <span class="op">=</span> <span class="fl">5e-3</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (<span class="st">"Prediction means and standard deviations."</span>)</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        v_mapped <span class="op">=</span> v[np.where(y_val <span class="op">==</span> val)]</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        stdev <span class="op">=</span> np.std(v_mapped)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>        std.append(stdev)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        mean <span class="op">=</span> np.mean(v_mapped)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        overlap.append((val <span class="op">+</span> accuracy <span class="op">&gt;=</span> np.<span class="bu">min</span>(v_mapped)) <span class="op">&amp;</span> (val <span class="op">-</span> accuracy <span class="op">&lt;=</span> np.<span class="bu">max</span>(v_mapped)))</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        within_std <span class="op">=</span> <span class="bu">abs</span>(val<span class="op">-</span>mean)<span class="op">/</span>stdev</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> (<span class="ss">f"Actual value </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">: Average = </span><span class="sc">{</span>mean<span class="sc">:.5f}</span><span class="ss"> +- </span><span class="sc">{</span>stdev<span class="sc">:.5f}</span><span class="ss">; Expected value within </span><span class="sc">{</span>within_std<span class="sc">:.3f}</span><span class="ss"> stdevs of mean"</span>)</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        std_div.append(within_std)</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"With accuracy </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">, overlap ratio:"</span>, np.<span class="bu">sum</span>(overlap)<span class="op">/</span><span class="bu">len</span>(overlap))</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"(Min, Max, Avg) STD:"</span>, np.<span class="bu">min</span>(std), np.<span class="bu">max</span>(std), np.mean(std))</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Pearson's correlation coeff: "</span>, pearsonr(y_val, v).statistic)</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> val <span class="kw">in</span> np.unique(y_val):</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        v_mapped <span class="op">=</span> v[np.where(y_val <span class="op">==</span> val)]</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        means.append(np.mean(v_mapped))</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    ax2.errorbar(np.sort(np.unique(y_val)),np.<span class="bu">abs</span>(means<span class="op">-</span>np.sort(np.unique(y_val))),yerr<span class="op">=</span>(std),ecolor<span class="op">=</span><span class="st">'black'</span>,elinewidth<span class="op">=</span><span class="fl">0.5</span>,capsize<span class="op">=</span><span class="dv">3</span>,color<span class="op">=</span><span class="st">'purple'</span>,label<span class="op">=</span><span class="vs">r'$|\langle P_</span><span class="sc">{pred}</span><span class="vs"> \rangle -P_</span><span class="sc">{true}</span><span class="vs">|$'</span>)</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    ax2.plot(np.sort(np.unique(y_val)),np.zeros(np.unique(y_val).shape[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'red'</span>,label<span class="op">=</span><span class="st">'True value line'</span>,linestyle<span class="op">=</span><span class="st">'dotted'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    ax2.legend(loc<span class="op">=</span>legloc)</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> np.sort(np.unique(y_val)):</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>        ax2.text(i,adjustment,<span class="ss">f"$</span><span class="sc">{</span>std_div[counter]<span class="sc">:.3f}</span><span class="ss"> \sigma$"</span>,ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">=</span> counter <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>    ax2.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>    ax2.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>    ax2.set_xticks(np.unique(y_val))</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>    ax2.set_xlabel(<span class="st">"Actual turning rate"</span>)</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    ax2.set_ylabel(<span class="st">"Absolute mean prediction difference"</span>)</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>    fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="import-and-prepare-data" class="level1">
+<h1>Import and prepare data</h1>
+<p>set model1 to have orientation, model2 to be monochrome, model3 to be scrambled</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#all alphas: [0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500]</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#all densities: [0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95]</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x1,y1,shape1 <span class="op">=</span> data_load(alphas<span class="op">=</span>[<span class="fl">0.016</span>,<span class="fl">0.023</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>,<span class="fl">0.073</span>,<span class="fl">0.1067</span>,<span class="fl">0.157</span>,<span class="fl">0.231</span>,<span class="fl">0.340</span>,<span class="fl">0.500</span>], densities<span class="op">=</span>[<span class="fl">0.25</span>],orientation<span class="op">=</span><span class="va">True</span>,scrambled<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x2,y2,shape2 <span class="op">=</span> data_load(alphas<span class="op">=</span>[<span class="fl">0.016</span>,<span class="fl">0.023</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>,<span class="fl">0.073</span>,<span class="fl">0.1067</span>,<span class="fl">0.157</span>,<span class="fl">0.231</span>,<span class="fl">0.340</span>,<span class="fl">0.500</span>], densities<span class="op">=</span>[<span class="fl">0.25</span>],orientation<span class="op">=</span><span class="va">False</span>,scrambled<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>x3,y3,shape3 <span class="op">=</span> data_load(alphas<span class="op">=</span>[<span class="fl">0.016</span>,<span class="fl">0.023</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>,<span class="fl">0.073</span>,<span class="fl">0.1067</span>,<span class="fl">0.157</span>,<span class="fl">0.231</span>,<span class="fl">0.340</span>,<span class="fl">0.500</span>], densities<span class="op">=</span>[<span class="fl">0.25</span>],orientation<span class="op">=</span><span class="va">False</span>,scrambled<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We have N * number of unique alpha snapshots total, we split them into training set and a validation set with the ratio 80/20:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Orientation model:"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x_train1, y_train1, x_val1, y_val1 <span class="op">=</span> split_dataset(x1,y1,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x1)<span class="op">*</span><span class="dv">1</span>)) <span class="co">#len(x)*1 means no training, only validation!</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>x_train2, y_train2, x_val2, y_val2 <span class="op">=</span> split_dataset(x2,y2,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x1)<span class="op">*</span><span class="dv">1</span>)) <span class="co">#len(x)*1 means no training, only validation!</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x_train3, y_train3, x_val3, y_val3 <span class="op">=</span> split_dataset(x3,y3,last<span class="op">=</span><span class="bu">int</span>(<span class="bu">len</span>(x1)<span class="op">*</span><span class="dv">1</span>)) <span class="co">#len(x)*1 means no training, only validation!</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Orientation model:
+Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)
+Size of training data:  0
+Size of validation data:  10000
+Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)
+Size of training data:  0
+Size of validation data:  10000
+Number of unique alpha:  10
+Shape of x:  (10000, 128, 128, 1)
+Shape of y:  (10000,)
+Size of training data:  0
+Size of validation data:  10000</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1,ax2,ax3) <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ax1.matshow(x_val1[<span class="dv">500</span>],cmap<span class="op">=</span>plt.get_cmap(name<span class="op">=</span><span class="st">"gnuplot"</span>,lut<span class="op">=</span><span class="dv">5</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ax2.matshow(x_val2[<span class="dv">500</span>],cmap<span class="op">=</span>plt.get_cmap(name<span class="op">=</span><span class="st">"gnuplot"</span>,lut<span class="op">=</span><span class="dv">5</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ax3.matshow(x_val3[<span class="dv">500</span>],cmap<span class="op">=</span>plt.get_cmap(name<span class="op">=</span><span class="st">"gnuplot"</span>,lut<span class="op">=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>&lt;matplotlib.image.AxesImage at 0x7f253eff1030&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-multiple-models" class="level1">
+<h1>Predict multiple models</h1>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>models_one <span class="op">=</span> [<span class="st">'orientation0216'</span>,<span class="st">'orientation0226'</span>,<span class="st">'orientation0236'</span>,<span class="st">'orientation0246'</span>,<span class="st">'orientation0256'</span>,<span class="st">'orientation0266'</span>,<span class="st">'orientation0276'</span>,<span class="st">'orientation0286'</span>,<span class="st">'orientation0296'</span>,<span class="st">'orientation0306'</span>] <span class="co">#array of model names</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>models_two <span class="op">=</span> [<span class="st">'monochrome0216'</span>,<span class="st">'monochrome0226'</span>,<span class="st">'monochrome0236'</span>,<span class="st">'monochrome0246'</span>,<span class="st">'monochrome0256'</span>,<span class="st">'monochrome0266'</span>,<span class="st">'monochrome0276'</span>,<span class="st">'monochrome0286'</span>,<span class="st">'monochrome0296'</span>,<span class="st">'monochrome0306'</span>] <span class="co"># array of model names</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>models_three <span class="op">=</span> [<span class="st">'scrambled0216'</span>,<span class="st">'scrambled0226'</span>,<span class="st">'scrambled0236'</span>,<span class="st">'scrambled0246'</span>,<span class="st">'scrambled0256'</span>,<span class="st">'scrambled0266'</span>,<span class="st">'scrambled0276'</span>,<span class="st">'scrambled0286'</span>,<span class="st">'scrambled0296'</span>,<span class="st">'scrambled0306'</span>] <span class="co"># array of model names</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>one_pred_of_one, one_actuals_of_one <span class="op">=</span> predict_multi_by_name(models_one,x_val1,y_val1)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>one_pred_of_two, one_actuals_of_two <span class="op">=</span> predict_multi_by_name(models_one,x_val2,y_val2)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>one_pred_of_three, one_actuals_of_three <span class="op">=</span> predict_multi_by_name(models_one,x_val3,y_val3)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>two_pred_of_two, two_actuals_of_two <span class="op">=</span> predict_multi_by_name(models_two,x_val2,y_val2)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>two_pred_of_one, two_actuals_of_one <span class="op">=</span> predict_multi_by_name(models_two,x_val1,y_val1)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>two_pred_of_three, two_actuals_of_three <span class="op">=</span> predict_multi_by_name(models_two,x_val3,y_val3)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>three_pred_of_three, three_actuals_of_three <span class="op">=</span> predict_multi_by_name(models_three,x_val3,y_val3)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>three_pred_of_one, three_actuals_of_one <span class="op">=</span> predict_multi_by_name(models_three,x_val1,y_val1)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>three_pred_of_two, three_actuals_of_two <span class="op">=</span> predict_multi_by_name(models_three,x_val2,y_val2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-04-15 22:46:33.673278: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:33.673415: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:33.673470: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:33.673546: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:33.673596: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-04-15 22:46:33.673640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1928] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 6187 MB memory:  -&gt; device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1713217594.529131   80228 service.cc:145] XLA service 0x7f223c004550 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+I0000 00:00:1713217594.529189   80228 service.cc:153]   StreamExecutor device (0): NVIDIA GeForce RTX 4060 Laptop GPU, Compute Capability 8.9
+2024-04-15 22:46:34.535575: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2024-04-15 22:46:34.563498: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:465] Loaded cuDNN version 8907
+I0000 00:00:1713217595.037178   80228 device_compiler.h:188] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-one-results" class="level1">
+<h1>Plot one results</h1>
+<section id="predict-one-on-one" class="level2">
+<h2 class="anchored" data-anchor-id="predict-one-on-one">Predict one on one</h2>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(one_pred_of_one,one_actuals_of_one,<span class="op">-</span><span class="fl">0.001</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02456 +- 0.00642; Expected value within 1.332 stdevs of mean
+Actual value 0.023: Average = 0.02843 +- 0.00667; Expected value within 0.814 stdevs of mean
+Actual value 0.034: Average = 0.03458 +- 0.00918; Expected value within 0.063 stdevs of mean
+Actual value 0.05: Average = 0.04871 +- 0.01061; Expected value within 0.122 stdevs of mean
+Actual value 0.073: Average = 0.07470 +- 0.00977; Expected value within 0.174 stdevs of mean
+Actual value 0.107: Average = 0.10643 +- 0.01089; Expected value within 0.053 stdevs of mean
+Actual value 0.157: Average = 0.15763 +- 0.02257; Expected value within 0.028 stdevs of mean
+Actual value 0.231: Average = 0.24722 +- 0.03908; Expected value within 0.415 stdevs of mean
+Actual value 0.34: Average = 0.34435 +- 0.04488; Expected value within 0.097 stdevs of mean
+Actual value 0.5: Average = 0.42931 +- 0.04386; Expected value within 1.612 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.0064237094 0.044880554 0.020391997
+Pearson's correlation coeff:  0.9760410596606366</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-one-on-two" class="level2">
+<h2 class="anchored" data-anchor-id="predict-one-on-two">Predict one on two</h2>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(one_pred_of_two,one_actuals_of_two,<span class="fl">0.04</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.09348 +- 0.07892; Expected value within 0.982 stdevs of mean
+Actual value 0.023: Average = 0.13953 +- 0.09727; Expected value within 1.198 stdevs of mean
+Actual value 0.034: Average = 0.22812 +- 0.13519; Expected value within 1.436 stdevs of mean
+Actual value 0.05: Average = 0.35233 +- 0.18960; Expected value within 1.595 stdevs of mean
+Actual value 0.073: Average = 0.48409 +- 0.25911; Expected value within 1.587 stdevs of mean
+Actual value 0.107: Average = 0.59604 +- 0.33456; Expected value within 1.462 stdevs of mean
+Actual value 0.157: Average = 0.69448 +- 0.39884; Expected value within 1.348 stdevs of mean
+Actual value 0.231: Average = 0.77328 +- 0.44618; Expected value within 1.215 stdevs of mean
+Actual value 0.34: Average = 0.83519 +- 0.47979; Expected value within 1.032 stdevs of mean
+Actual value 0.5: Average = 0.88966 +- 0.50315; Expected value within 0.774 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.07891551 0.50314945 0.29226005
+Pearson's correlation coeff:  0.5594808989243881</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-one-on-three" class="level2">
+<h2 class="anchored" data-anchor-id="predict-one-on-three">Predict one on three</h2>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(one_pred_of_three,one_actuals_of_three,<span class="fl">0.04</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02989 +- 0.00943; Expected value within 1.473 stdevs of mean
+Actual value 0.023: Average = 0.03307 +- 0.01004; Expected value within 1.003 stdevs of mean
+Actual value 0.034: Average = 0.04103 +- 0.01240; Expected value within 0.567 stdevs of mean
+Actual value 0.05: Average = 0.05760 +- 0.01554; Expected value within 0.489 stdevs of mean
+Actual value 0.073: Average = 0.08545 +- 0.01486; Expected value within 0.838 stdevs of mean
+Actual value 0.107: Average = 0.12253 +- 0.02118; Expected value within 0.733 stdevs of mean
+Actual value 0.157: Average = 0.18762 +- 0.03896; Expected value within 0.786 stdevs of mean
+Actual value 0.231: Average = 0.28089 +- 0.05267; Expected value within 0.947 stdevs of mean
+Actual value 0.34: Average = 0.36835 +- 0.05265; Expected value within 0.538 stdevs of mean
+Actual value 0.5: Average = 0.44215 +- 0.04406; Expected value within 1.313 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.009426357 0.052668102 0.027177865
+Pearson's correlation coeff:  0.9618424853347743</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-monochrome-results" class="level1">
+<h1>Plot monochrome results</h1>
+<section id="predict-two-on-two" class="level2">
+<h2 class="anchored" data-anchor-id="predict-two-on-two">Predict two on two</h2>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(two_pred_of_two,two_actuals_of_two,<span class="op">-</span><span class="fl">0.002</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02350 +- 0.00620; Expected value within 1.211 stdevs of mean
+Actual value 0.023: Average = 0.02798 +- 0.00663; Expected value within 0.750 stdevs of mean
+Actual value 0.034: Average = 0.03459 +- 0.00969; Expected value within 0.061 stdevs of mean
+Actual value 0.05: Average = 0.04984 +- 0.01070; Expected value within 0.015 stdevs of mean
+Actual value 0.073: Average = 0.07462 +- 0.00934; Expected value within 0.173 stdevs of mean
+Actual value 0.107: Average = 0.10662 +- 0.00982; Expected value within 0.039 stdevs of mean
+Actual value 0.157: Average = 0.15530 +- 0.02019; Expected value within 0.084 stdevs of mean
+Actual value 0.231: Average = 0.24482 +- 0.03617; Expected value within 0.382 stdevs of mean
+Actual value 0.34: Average = 0.34497 +- 0.04245; Expected value within 0.117 stdevs of mean
+Actual value 0.5: Average = 0.43545 +- 0.04208; Expected value within 1.534 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.0061964267 0.042451724 0.019327132
+Pearson's correlation coeff:  0.979452577025313</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-two-on-one" class="level2">
+<h2 class="anchored" data-anchor-id="predict-two-on-one">Predict two on one</h2>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(two_pred_of_one,two_actuals_of_one,<span class="fl">0.07</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.18009 +- 0.23467; Expected value within 0.699 stdevs of mean
+Actual value 0.023: Average = 0.17961 +- 0.23419; Expected value within 0.669 stdevs of mean
+Actual value 0.034: Average = 0.18227 +- 0.23712; Expected value within 0.625 stdevs of mean
+Actual value 0.05: Average = 0.18925 +- 0.24394; Expected value within 0.571 stdevs of mean
+Actual value 0.073: Average = 0.19958 +- 0.25440; Expected value within 0.498 stdevs of mean
+Actual value 0.107: Average = 0.21311 +- 0.26790; Expected value within 0.396 stdevs of mean
+Actual value 0.157: Average = 0.22679 +- 0.28158; Expected value within 0.248 stdevs of mean
+Actual value 0.231: Average = 0.23869 +- 0.29332; Expected value within 0.026 stdevs of mean
+Actual value 0.34: Average = 0.24777 +- 0.30243; Expected value within 0.305 stdevs of mean
+Actual value 0.5: Average = 0.25426 +- 0.30914; Expected value within 0.795 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.23419179 0.30913684 0.2658687
+Pearson's correlation coeff:  0.09536598963849022</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-two-on-three" class="level2">
+<h2 class="anchored" data-anchor-id="predict-two-on-three">Predict two on three</h2>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(two_pred_of_three,two_actuals_of_three,<span class="fl">0.07</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.18592 +- 0.23755; Expected value within 0.715 stdevs of mean
+Actual value 0.023: Average = 0.18527 +- 0.23711; Expected value within 0.684 stdevs of mean
+Actual value 0.034: Average = 0.18743 +- 0.23925; Expected value within 0.641 stdevs of mean
+Actual value 0.05: Average = 0.19378 +- 0.24587; Expected value within 0.585 stdevs of mean
+Actual value 0.073: Average = 0.20346 +- 0.25603; Expected value within 0.510 stdevs of mean
+Actual value 0.107: Average = 0.21630 +- 0.26914; Expected value within 0.406 stdevs of mean
+Actual value 0.157: Average = 0.22934 +- 0.28279; Expected value within 0.256 stdevs of mean
+Actual value 0.231: Average = 0.24056 +- 0.29453; Expected value within 0.032 stdevs of mean
+Actual value 0.34: Average = 0.24856 +- 0.30292; Expected value within 0.302 stdevs of mean
+Actual value 0.5: Average = 0.25451 +- 0.30930; Expected value within 0.794 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.23710676 0.3092999 0.26744854
+Pearson's correlation coeff:  0.08835328446326232</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-scrambled-results" class="level1">
+<h1>Plot Scrambled Results</h1>
+<section id="predict-three-on-three" class="level2">
+<h2 class="anchored" data-anchor-id="predict-three-on-three">Predict three on three</h2>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(three_pred_of_three,three_actuals_of_three,<span class="fl">0.07</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02384 +- 0.00516; Expected value within 1.519 stdevs of mean
+Actual value 0.023: Average = 0.02754 +- 0.00571; Expected value within 0.794 stdevs of mean
+Actual value 0.034: Average = 0.03396 +- 0.00876; Expected value within 0.004 stdevs of mean
+Actual value 0.05: Average = 0.04881 +- 0.00979; Expected value within 0.122 stdevs of mean
+Actual value 0.073: Average = 0.07388 +- 0.00935; Expected value within 0.094 stdevs of mean
+Actual value 0.107: Average = 0.10586 +- 0.01111; Expected value within 0.103 stdevs of mean
+Actual value 0.157: Average = 0.15874 +- 0.02497; Expected value within 0.070 stdevs of mean
+Actual value 0.231: Average = 0.25025 +- 0.04177; Expected value within 0.461 stdevs of mean
+Actual value 0.34: Average = 0.34369 +- 0.04586; Expected value within 0.080 stdevs of mean
+Actual value 0.5: Average = 0.42774 +- 0.04429; Expected value within 1.632 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.00516255 0.045860507 0.020676006
+Pearson's correlation coeff:  0.9742962386246623</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-three-on-one" class="level2">
+<h2 class="anchored" data-anchor-id="predict-three-on-one">Predict three on one</h2>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(three_pred_of_one,three_actuals_of_one,<span class="fl">0.07</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.02110 +- 0.00533; Expected value within 0.956 stdevs of mean
+Actual value 0.023: Average = 0.02528 +- 0.00529; Expected value within 0.431 stdevs of mean
+Actual value 0.034: Average = 0.03168 +- 0.00781; Expected value within 0.297 stdevs of mean
+Actual value 0.05: Average = 0.04454 +- 0.00996; Expected value within 0.548 stdevs of mean
+Actual value 0.073: Average = 0.06965 +- 0.01017; Expected value within 0.330 stdevs of mean
+Actual value 0.107: Average = 0.10205 +- 0.01315; Expected value within 0.376 stdevs of mean
+Actual value 0.157: Average = 0.15467 +- 0.02632; Expected value within 0.088 stdevs of mean
+Actual value 0.231: Average = 0.24644 +- 0.04115; Expected value within 0.375 stdevs of mean
+Actual value 0.34: Average = 0.34208 +- 0.04514; Expected value within 0.046 stdevs of mean
+Actual value 0.5: Average = 0.42605 +- 0.04390; Expected value within 1.685 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.0052876463 0.04514385 0.020821607
+Pearson's correlation coeff:  0.974669140805848</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="predict-three-on-two" class="level2">
+<h2 class="anchored" data-anchor-id="predict-three-on-two">Predict three on two</h2>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>violin_plotter(three_pred_of_two,three_actuals_of_two,<span class="fl">0.07</span>,<span class="st">'lower left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Prediction means and standard deviations.
+Actual value 0.016: Average = 0.08016 +- 0.08455; Expected value within 0.759 stdevs of mean
+Actual value 0.023: Average = 0.12334 +- 0.10635; Expected value within 0.944 stdevs of mean
+Actual value 0.034: Average = 0.21303 +- 0.14725; Expected value within 1.216 stdevs of mean
+Actual value 0.05: Average = 0.35540 +- 0.22140; Expected value within 1.379 stdevs of mean
+Actual value 0.073: Average = 0.51578 +- 0.31674; Expected value within 1.398 stdevs of mean
+Actual value 0.107: Average = 0.64173 +- 0.41015; Expected value within 1.304 stdevs of mean
+Actual value 0.157: Average = 0.74630 +- 0.48528; Expected value within 1.214 stdevs of mean
+Actual value 0.231: Average = 0.82865 +- 0.53899; Expected value within 1.109 stdevs of mean
+Actual value 0.34: Average = 0.89274 +- 0.57645; Expected value within 0.959 stdevs of mean
+Actual value 0.5: Average = 0.94804 +- 0.60427; Expected value within 0.741 stdevs of mean
+With accuracy 0.005, overlap ratio: 1.0
+(Min, Max, Avg) STD: 0.08455231 0.60426754 0.34914157
+Pearson's correlation coeff:  0.5276387349419068</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="combined-plots" class="level2">
+<h2 class="anchored" data-anchor-id="combined-plots">Combined plots</h2>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predictions on own kind</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#means1,std1,means2,std2,means3,std3=cross_mean_err_calculator(one_pred_of_one,one_actuals_of_one,two_pred_of_two,two_actuals_of_two,three_pred_of_three,three_actuals_of_three,three_cases=True)</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>fig, (ax1,ax2) <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">6</span>),dpi<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#NOTE: I've commented out the previous method of plotting due to its inelegance, but I have kept it for posterity as a way of plotting error bands without seaborn.</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#ONE ON ONE</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.errorbar(np.sort(np.unique(orientation_actuals_of_orientation)),np.abs(means1-np.sort(np.unique(orientation_actuals_of_orientation))),yerr=(std1),ecolor='blue',elinewidth=0.5,capsize=3,color='blue',label="Trained Orientation Predicting Orientation")</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.plot(np.sort(np.unique(one_actuals_of_one)),np.abs(means1-np.sort(np.unique(one_actuals_of_one))),'b-',label="Trained Orientation Predicting Orientation")</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.fill_between(np.sort(np.unique(one_actuals_of_one)),np.abs(means1-np.sort(np.unique(one_actuals_of_one)))-std1,np.abs(means1-np.sort(np.unique(one_actuals_of_one)))+std1,color='b',alpha=0.25)</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co">#TWO ON TWO</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.errorbar(np.sort(np.unique(monochrome_actuals_of_monochrome)),np.abs(means2-np.sort(np.unique(monochrome_actuals_of_monochrome))),yerr=(std2),ecolor='red',elinewidth=0.5,capsize=3,color='red',label="Trained Monochrome Predicting Monochrome")</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.plot(np.sort(np.unique(two_actuals_of_two)),np.abs(means2-np.sort(np.unique(two_actuals_of_two))),'r-',label="Trained Monochrome Predicting Monochrome")</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.fill_between(np.sort(np.unique(two_actuals_of_two)),np.abs(means2-np.sort(np.unique(two_actuals_of_two)))-std2,np.abs(means2-np.sort(np.unique(two_actuals_of_two)))+std2,color='r',alpha=0.25)</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="co">#THREE ON THREE</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.plot(np.sort(np.unique(three_actuals_of_three)),np.abs(means3-np.sort(np.unique(three_actuals_of_three))),'g-',label="Trained Scrambled Predicting Scrambled")</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.fill_between(np.sort(np.unique(three_actuals_of_three)),np.abs(means3-np.sort(np.unique(three_actuals_of_three)))-std3,np.abs(means3-np.sort(np.unique(three_actuals_of_three)))+std3,color='g',alpha=0.25)</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="co">#ZERO LINE, LEGEND, AX1 PLOT CONFIG</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.plot(np.sort(np.unique(one_actuals_of_one)),np.zeros(np.unique(one_actuals_of_one).shape[0]),color='black',label='True value line',linestyle='dotted',alpha=0.5)</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.legend(loc='upper left')</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.set_xscale("log")</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.set_xticks(np.unique(y_val1))</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.set_xlabel("Actual turning rate")</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="co">#ax1.set_ylabel("Absolute mean prediction difference")</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>df_one <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>df_two <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>df_three <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>df_one.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(one_pred_of_one<span class="op">-</span>one_actuals_of_one))</span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>df_one.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,one_actuals_of_one)</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>df_two.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(two_pred_of_two<span class="op">-</span>two_actuals_of_two))</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>df_two.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,np.<span class="bu">abs</span>(two_actuals_of_two))</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>df_three.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(three_pred_of_three<span class="op">-</span>three_actuals_of_three))</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>df_three.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,np.<span class="bu">abs</span>(three_actuals_of_three))</span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>df_one[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Orientation'</span></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>df_two[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Monochrome'</span></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a>df_three[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Scrambled'</span></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> pd.concat([df_one,df_two,df_three])</span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a><span class="co">#print(cdf.head())</span></span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>sns.lineplot(ax<span class="op">=</span>ax1,</span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>             hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>             data<span class="op">=</span>cdf,</span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>             errorbar<span class="op">=</span><span class="st">"sd"</span>,</span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>             palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>sns.boxplot(ax<span class="op">=</span>ax2,</span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>cdf,</span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>            fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a>            gap<span class="op">=</span><span class="fl">.4</span>,</span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>            width<span class="op">=</span><span class="fl">.5</span>,</span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a>            palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Actual turning rate"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Actual turning rate"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Absolute mean prediction difference"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Absolute mean prediction difference"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"IQR Comparison of Self-Prediction"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"STD Comparison of Self-Prediction"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a>ax1.set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a>ax1.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(np.unique(y_val1))</span>
+<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a><span class="co">#handles,labels=ax2.get_legend_handles_labels()</span></span>
+<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.legend(handles=handles[1:],labels=labels[1:]) #this should fix hue title appearing in rightmost figure legend</span></span>
+<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a>ax1.legend(loc<span class="op">=</span><span class="st">"upper left"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a>ax2.legend(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a><span class="co">#predictions on other kind</span></span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a><span class="co">#means1,std1,means2,std2,means3,std3=cross_mean_err_calculator(one_pred_of_two,one_actuals_of_two,two_pred_of_one,two_actuals_of_one,three_cases=False)</span></span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="co">#ONE ON TWO</span></span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.errorbar(np.sort(np.unique(orientation_actuals_of_monochrome)),np.abs(means1-np.sort(np.unique(orientation_actuals_of_monochrome))),yerr=(std1),ecolor='blue',elinewidth=0.5,capsize=3,color='blue',label="Trained Orientation Predicting Monochrome")</span></span>
+<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.plot(np.sort(np.unique(one_actuals_of_two)),np.abs(means1-np.sort(np.unique(one_actuals_of_two))),'b-',label="Trained Orientation Predicting Monochrome")</span></span>
+<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.fill_between(np.sort(np.unique(one_actuals_of_two)),np.abs(means1-np.sort(np.unique(one_actuals_of_two)))-std1,np.abs(means1-np.sort(np.unique(one_actuals_of_two)))+std1,color='b',alpha=0.25)</span></span>
+<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a><span class="co">#TWO ON ONE</span></span>
+<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.errorbar(np.sort(np.unique(monochrome_actuals_of_orientation)),np.abs(means2-np.sort(np.unique(monochrome_actuals_of_orientation))),yerr=(std2),ecolor='red',elinewidth=0.5,capsize=3,color='red',label="Trained Monochrome Predicting Orientation")</span></span>
+<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.plot(np.sort(np.unique(two_actuals_of_one)),np.abs(means2-np.sort(np.unique(two_actuals_of_one))),'r-',label="Trained Monochrome Predicting Orientation")</span></span>
+<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.fill_between(np.sort(np.unique(two_actuals_of_one)),np.abs(means2-np.sort(np.unique(two_actuals_of_one)))-std2,np.abs(means2-np.sort(np.unique(two_actuals_of_one)))+std2,color='r',alpha=0.25)</span></span>
+<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a><span class="co">#ZERO LINE, LEGEND, AX2 PLOT CONFIG</span></span>
+<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.plot(np.sort(np.unique(one_actuals_of_two)),np.zeros(np.unique(one_actuals_of_two).shape[0]),color='black',label='True value line',linestyle='dotted',alpha=0.5)</span></span>
+<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.legend(loc='upper left')</span></span>
+<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.set_xscale("log")</span></span>
+<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span></span>
+<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.set_xticks(np.unique(y_val1))</span></span>
+<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.set_xlabel("Actual turning rate")</span></span>
+<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a><span class="co">#ax2.set_ylabel("Absolute mean prediction difference")</span></span>
+<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-104"><a href="#cb35-104" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df12<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df21<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>df13<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>df31<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>df23<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>df32<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>df12.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(one_pred_of_two<span class="op">-</span>one_actuals_of_two))</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>df12.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,one_actuals_of_two)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>df21.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(two_pred_of_one<span class="op">-</span>two_actuals_of_one))</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>df21.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,two_actuals_of_one)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>df13.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(one_pred_of_three<span class="op">-</span>one_actuals_of_three))</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>df13.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,one_actuals_of_three)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>df31.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(three_pred_of_one<span class="op">-</span>three_actuals_of_one))</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>df31.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,three_actuals_of_one)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>df23.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(two_pred_of_three<span class="op">-</span>two_actuals_of_three))</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>df23.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,two_actuals_of_three)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>df32.insert(<span class="dv">0</span>,<span class="st">"predicted"</span>,np.<span class="bu">abs</span>(three_pred_of_two<span class="op">-</span>three_actuals_of_two))</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>df32.insert(<span class="dv">1</span>,<span class="st">"actuals"</span>,three_actuals_of_two)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">3</span>,ncols<span class="op">=</span><span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">16</span>),dpi<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="co">#PREDICTING ONE</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>df21[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Monochrome'</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>df31[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Scrambled'</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> pd.concat([df_one,df21,df31])</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>sns.lineplot(ax<span class="op">=</span>ax[<span class="dv">0</span>][<span class="dv">0</span>],</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>             hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>             data<span class="op">=</span>cdf,</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>             errorbar<span class="op">=</span><span class="st">"sd"</span>,</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>             palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>sns.boxplot(ax<span class="op">=</span>ax[<span class="dv">0</span>][<span class="dv">1</span>],</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>cdf,</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>            fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>            gap<span class="op">=</span><span class="fl">.4</span>,</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>            width<span class="op">=</span><span class="fl">.5</span>,</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>            palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a><span class="co">#PREDICTING TWO</span></span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>df12[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Orientation'</span></span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>df32[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Scrambled'</span></span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> pd.concat([df12,df_two,df32])</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a>sns.lineplot(ax<span class="op">=</span>ax[<span class="dv">1</span>][<span class="dv">0</span>],</span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a>             hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a>             data<span class="op">=</span>cdf,</span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>             errorbar<span class="op">=</span><span class="st">"sd"</span>,</span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a>             palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>][<span class="dv">0</span>].legend(loc<span class="op">=</span><span class="st">'upper left'</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>][<span class="dv">1</span>].legend(loc<span class="op">=</span><span class="st">'upper right'</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a>sns.boxplot(ax<span class="op">=</span>ax[<span class="dv">1</span>][<span class="dv">1</span>],</span>
+<span id="cb36-67"><a href="#cb36-67" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>cdf,</span>
+<span id="cb36-68"><a href="#cb36-68" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb36-71"><a href="#cb36-71" aria-hidden="true" tabindex="-1"></a>            fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>            gap<span class="op">=</span><span class="fl">.4</span>,</span>
+<span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a>            width<span class="op">=</span><span class="fl">.5</span>,</span>
+<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a>            palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>][<span class="dv">0</span>].legend(loc<span class="op">=</span><span class="st">'upper left'</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-78"><a href="#cb36-78" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>][<span class="dv">1</span>].legend(loc<span class="op">=</span><span class="st">'upper left'</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-79"><a href="#cb36-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-80"><a href="#cb36-80" aria-hidden="true" tabindex="-1"></a><span class="co">#PREDICTING THREE</span></span>
+<span id="cb36-81"><a href="#cb36-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-82"><a href="#cb36-82" aria-hidden="true" tabindex="-1"></a>df13[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Orientation'</span></span>
+<span id="cb36-83"><a href="#cb36-83" aria-hidden="true" tabindex="-1"></a>df23[<span class="st">'Data Type'</span>]<span class="op">=</span><span class="st">'Monochrome'</span></span>
+<span id="cb36-84"><a href="#cb36-84" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> pd.concat([df13,df23,df_three])</span>
+<span id="cb36-85"><a href="#cb36-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-86"><a href="#cb36-86" aria-hidden="true" tabindex="-1"></a>sns.lineplot(ax<span class="op">=</span>ax[<span class="dv">2</span>][<span class="dv">0</span>],</span>
+<span id="cb36-87"><a href="#cb36-87" aria-hidden="true" tabindex="-1"></a>             x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb36-88"><a href="#cb36-88" aria-hidden="true" tabindex="-1"></a>             y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb36-89"><a href="#cb36-89" aria-hidden="true" tabindex="-1"></a>             hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb36-90"><a href="#cb36-90" aria-hidden="true" tabindex="-1"></a>             data<span class="op">=</span>cdf,</span>
+<span id="cb36-91"><a href="#cb36-91" aria-hidden="true" tabindex="-1"></a>             errorbar<span class="op">=</span><span class="st">"sd"</span>,</span>
+<span id="cb36-92"><a href="#cb36-92" aria-hidden="true" tabindex="-1"></a>             palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb36-93"><a href="#cb36-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-94"><a href="#cb36-94" aria-hidden="true" tabindex="-1"></a>sns.boxplot(ax<span class="op">=</span>ax[<span class="dv">2</span>][<span class="dv">1</span>],</span>
+<span id="cb36-95"><a href="#cb36-95" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>cdf,</span>
+<span id="cb36-96"><a href="#cb36-96" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="st">"actuals"</span>,</span>
+<span id="cb36-97"><a href="#cb36-97" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">"predicted"</span>,</span>
+<span id="cb36-98"><a href="#cb36-98" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">"Data Type"</span>,</span>
+<span id="cb36-99"><a href="#cb36-99" aria-hidden="true" tabindex="-1"></a>            fill<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb36-100"><a href="#cb36-100" aria-hidden="true" tabindex="-1"></a>            gap<span class="op">=</span><span class="fl">.4</span>,</span>
+<span id="cb36-101"><a href="#cb36-101" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">100</span>),</span>
+<span id="cb36-102"><a href="#cb36-102" aria-hidden="true" tabindex="-1"></a>            width<span class="op">=</span><span class="fl">.5</span>,</span>
+<span id="cb36-103"><a href="#cb36-103" aria-hidden="true" tabindex="-1"></a>            palette<span class="op">=</span>{<span class="st">"Orientation"</span>: <span class="st">"blue"</span>, <span class="st">"Monochrome"</span>: <span class="st">"red"</span>, <span class="st">"Scrambled"</span>: <span class="st">"green"</span>})</span>
+<span id="cb36-104"><a href="#cb36-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-105"><a href="#cb36-105" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>][<span class="dv">1</span>].legend(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-106"><a href="#cb36-106" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>][<span class="dv">0</span>].legend(loc<span class="op">=</span><span class="st">'upper left'</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-107"><a href="#cb36-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-108"><a href="#cb36-108" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,examiner <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"STD"</span>,<span class="st">"IQR"</span>]):</span>
+<span id="cb36-109"><a href="#cb36-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j,examined <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"Orientation"</span>,<span class="st">"Monochrome"</span>,<span class="st">"Scrambled"</span>]):</span>
+<span id="cb36-110"><a href="#cb36-110" aria-hidden="true" tabindex="-1"></a>        ax[j][i].set_xlabel(<span class="st">"Actual turning rate"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-111"><a href="#cb36-111" aria-hidden="true" tabindex="-1"></a>        ax[j][i].set_ylabel(<span class="st">"Absolute mean prediction difference"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-112"><a href="#cb36-112" aria-hidden="true" tabindex="-1"></a>        ax[j][i].set_title(<span class="ss">f"</span><span class="sc">{</span>examiner<span class="sc">}</span><span class="ss"> Comparison Predicting on </span><span class="sc">{</span>examined<span class="sc">}</span><span class="ss">"</span>,fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb36-113"><a href="#cb36-113" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb36-114"><a href="#cb36-114" aria-hidden="true" tabindex="-1"></a>            ax[j][i].set_xscale(<span class="st">"log"</span>)</span>
+<span id="cb36-115"><a href="#cb36-115" aria-hidden="true" tabindex="-1"></a>            ax[j][i].get_xaxis().set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb36-116"><a href="#cb36-116" aria-hidden="true" tabindex="-1"></a>            ax[j][i].set_xticks(np.unique(y_val1))</span>
+<span id="cb36-117"><a href="#cb36-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-118"><a href="#cb36-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-119"><a href="#cb36-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-120"><a href="#cb36-120" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="cp_multiple_validation_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Made with Quarto (cp branch)</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

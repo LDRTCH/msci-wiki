@@ -331,6 +331,27 @@ ul.task-list li input[type="checkbox"] {
 <li>DO (0.1) (without layout optimiser)</li>
 <li>FC (units=128,activation=‘relu’)</li>
 <li>DO (0.1) (without layout optimiser)</li>
+</ol>
+</section>
+<section id="mn_3-1" class="level3">
+<h3 class="anchored" data-anchor-id="mn_3-1">MN_3*</h3>
+<ol type="1">
+<li>CONV (filters=3,kernel_size=(3,3),padding=‘same’,input_shape=shape)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=4,kernel_size=(5,5),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>CONV (filters=6, kernel_size=(5,5),padding=‘same’)</li>
+<li>MAXPOOL (pool_size=(2,2),padding=‘same’)</li>
+<li>ReLU</li>
+<li>BN</li>
+<li>AVGPOOL</li>
+<li>DO (0.1) (without layout optimiser)</li>
+<li>FC (units=128,activation=‘relu’)</li>
+<li>DO (0.1) (without layout optimiser)</li>
 <li>FC (units=3,activation=‘relu’)</li>
 <li>FLATTEN</li>
 <li>FC (units=1,activation=‘linear’)</li>

@@ -133,7 +133,7 @@ This seems to be a persisting problem for the neural network. As we will see in 
 
 As mentioned at the beginning of this week's log, an exploration of gaps in tumbling rate is essential for understanding the potential shortcomings of architecture MN_3. All models below are trained on **4x rolling**, with 1000 snapshots per $(P_t,\rho)$ combination and only $\rho=0.15$. All models are trained for **30 epochs**.
 
-### balteus3123: $P_t \in \\{0.016,0.023,0.034,0.050,0.073,0.107\\}$
+### balteus3123: $P_t \in \{0.016,0.023,0.034,0.050,0.073,0.107\}$
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -149,7 +149,7 @@ All parameters are within margins.
 - [x] Pearson Coefficient: 0.98338868291357
 
 
-### goose4421: $P_t \in \\{0.016,0.034,0.050,0.107 \\}$
+### goose4421: $P_t \in \{0.016,0.034,0.050,0.107 \}$
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -164,7 +164,7 @@ Most parameters are within margins, but the prediction misses the first point.
 - [ ] Overlap ratio: 0.75
 - [X] Pearson Coefficient: 0.988395863033326
 
-### lyrical2734: $P_t \in \\{ 0.016\\}$
+### lyrical2734: $P_t \in \{ 0.016\}$
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -179,7 +179,7 @@ All parameters are within margins. It's hard to gleam this from the graph, since
 - [X] Overlap ratio: 1.0
 - [X] Pearson Coefficient: nan
 
-### book1634: $P_t \in \\{ 0.016,0.073,0.107,0.157 \\}$
+### book1634: $P_t \in \{ 0.016,0.073,0.107,0.157 \}$
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:

@@ -37,7 +37,7 @@ This week consists of exploring higher range parameters in order to consolidate 
 
 We have finally fixed GPU tensorflow, which greatly accelerates model training.
 
-#### steadfast7653: $P_{t} \in \\{0.016,0.023,0.034,0.050 \\}$, $\rho = 0.25$, 30 epochs ; sardine0022: same, same, 60 epochs
+#### steadfast7653: $P_{t} \in \{0.016,0.023,0.034,0.050 \}$, $\rho = 0.25$, 30 epochs ; sardine0022: same, same, 60 epochs
 
 | steadfast7653 (30 epochs)  | sardine0022 (60 epochs)            
 :---------------------------------:|:-------------------------:
@@ -63,7 +63,7 @@ Actual value 0.05: Average = 0.04516 +- 0.00273; Expected value within 1.776 std
 
 # 3. Higher Number Interpolation
 
-#### outstretched4188 (antenna4149): $P_{val} \in \\{0.023,0.034,0.050  \\}$, $P_{train} \in \\{0.016,0.073,0.107,0.157 \\}$, $\rho = 0.25$, 30 epochs
+#### outstretched4188 (antenna4149): $P_{val} \in \{0.023,0.034,0.050  \}$, $P_{train} \in \{0.016,0.073,0.107,0.157 \}$, $\rho = 0.25$, 30 epochs
 
  outstretched4188 (evaluation)  | antenna4149 (training)       
 :---------------------------------:|:-------------------------:
@@ -109,7 +109,7 @@ img = img.astype(float)/4.0
 
 # 5. Improved Full Tumbling Rate Analysis (more rolling, more epochs)
 
-#### stag0149: $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500 \\}$, $\rho = 0.25$, 60 epochs, 80000 (0.2) snapshots
+#### stag0149: $P_{tumble} \in \{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500 \}$, $\rho = 0.25$, 60 epochs, 80000 (0.2) snapshots
 
  stag0149 Predictions  | stag0149 Loss       
 :---------------------------------:|:-------------------------:

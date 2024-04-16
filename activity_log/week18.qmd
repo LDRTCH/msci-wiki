@@ -84,7 +84,7 @@ And below is a side by side comparison of the last screenshots of an evolution u
 
 
 
-#### reverb3164: $\rho=0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500 \\}$, 30 epochs
+#### reverb3164: $\rho=0.25$, $P_{tumble} \in \{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.500 \}$, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -119,7 +119,7 @@ how does the *mean* of the distribution relate to the expected value? Within how
 
 We begin by mirroring the cases we explored with $\rho = 0.15$. The thought is that we can show the prior results (again, see [Week 17](./week17.qmd)) are somewhat general by doing so, while also exploring how allowing more clusters to be picked up on across the tumbling rate distributions slightly improves our data.
 
-#### salad8110: $\rho = 0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107 \\}$, 30 epochs
+#### salad8110: $\rho = 0.25$, $P_{tumble} \in \{0.016,0.023,0.034,0.050,0.073,0.107 \}$, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -151,7 +151,7 @@ salad8110: $\rho=0.25$             |  balteus3123: $\rho=0.15$
 
 And see that once again, the higher density case yields better results over all. Note, of course, that we are discussing differences of magnitude $10^{-3}$ (for MAE and Max STD) and $10^{-4}$ (for Avg STD).
 
-#### crab8432: $\rho = 0.25, P_{tumble} \in \\{0.016,0.034,0.050,0.107 \\}$, 30 epochs
+#### crab8432: $\rho = 0.25, P_{tumble} \in \{0.016,0.034,0.050,0.107 \}$, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -177,7 +177,7 @@ crab8432: $\rho=0.25$             |  goose4421: $\rho=0.15$
 
 (Note: the overlap ratio for goose4421 was adapted to the new criterion of accuracy 5e-3)
 
-#### summer6911 $\rho = 0.25$, $P_{tumble} \in \\{0.016, 0.073, 0.107, 0.157 \\}$
+#### summer6911 $\rho = 0.25$, $P_{tumble} \in \{0.016, 0.073, 0.107, 0.157 \}$
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -205,7 +205,7 @@ summer6911: $\rho=0.25$             |  book1634: $\rho=0.15$
 
 # 6. Gaps in Higher Tumbling Rates for Higher Densities
 
-#### salmon9100: $\rho = 0.25$, $P_{tumble} \in \\{0.073,0.107,0.157,0.231,0.34,0.5 \\}$, 30 epochs
+#### salmon9100: $\rho = 0.25$, $P_{tumble} \in \{0.073,0.107,0.157,0.231,0.34,0.5 \}$, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -230,7 +230,7 @@ Actual value 0.5: Average = 0.44783 +- 0.03338; Expected value within 1.563 stde
 - [x] Pearson Coefficient: 0.9793251812649026
 
 
-#### tread4399: $\rho=0.25$, $P_{tumble} \in \\{0.073,0.157,0.5 \\}$, 30 epochs
+#### tread4399: $\rho=0.25$, $P_{tumble} \in \{0.073,0.157,0.5 \}$, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -250,7 +250,7 @@ Actual value 0.5: Average = 0.49756 +- 0.00513; Expected value within 0.475 stde
 - [X] Overlap Ratio: 1 (acc 5e-3)
 - [x] Pearson Coefficient: 0.999563884360183
 
-#### revolve8117: $\rho=0.25$, $P_{tumble} \in \\{0.073,0.231,0.340,0.500 \\}$, 30 epochs
+#### revolve8117: $\rho=0.25$, $P_{tumble} \in \{0.073,0.231,0.340,0.500 \}$, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -273,7 +273,7 @@ Actual value 0.5: Average = 0.49567 +- 0.02125; Expected value within 0.204 stde
 
 # 7. Omitting Highest Tumbling Rate
 
-#### flag1899: $\rho=0.25$, $$P_{tumble} \in \\{0.034,0.050,0.073,0.157,0.231 \\}, 30 epochs
+#### flag1899: $\rho=0.25$, $$P_{tumble} \in \{0.034,0.050,0.073,0.157,0.231 \}, 30 epochs
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -296,7 +296,7 @@ Actual value 0.231: Average = 0.22189 +- 0.01270; Expected value within 0.718 st
 - [X] Overlap Ratio: 1 (acc 5e-3)
 - [X] Pearson Coefficient: 0.984593225567436
 
-#### candy8131: $\rho=0.25$, $P_{tumble} \in \\{0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 32000 (0.2) snapshots
+#### candy8131: $\rho=0.25$, $P_{tumble} \in \{0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \}$, 30 epochs, 32000 (0.2) snapshots
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -321,7 +321,7 @@ Actual value 0.34: Average = 0.30826 +- 0.02299; Expected value within 1.381 std
 - [X] Overlap Ratio: 1.0 (acc 5e-3)
 - [X] Pearson Coefficient: 0.985809870908463
 
-#### briar9222: $\rho=0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 36000 (0.2) snapshots
+#### briar9222: $\rho=0.25$, $P_{tumble} \in \{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \}$, 30 epochs, 36000 (0.2) snapshots
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -352,7 +352,7 @@ Actual value 0.34: Average = 0.30098 +- 0.02491; Expected value within 1.566 std
 
 Omitting the regime which exhibits non-clustering behaviour for both $\rho=0.15$ and $\rho=0.25$, we can even better highlight the difference between the two densities in generating predictions. We can better yet contrast both of them to the $\rho=0.35$ case, as was briefly done near the beginning of this Week.
 
-#### stamp5111: $\rho=0.15$, $P_{tumble}\in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 36000 (0.2) snapshots
+#### stamp5111: $\rho=0.15$, $P_{tumble}\in \{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \}$, 30 epochs, 36000 (0.2) snapshots
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -377,7 +377,7 @@ Actual value 0.34: Average = 0.30026 +- 0.02976; Expected value within 1.336 std
 - [ ] Overlap Ratio: 0.89 (acc 5e-3)
 - [X] Pearson Coefficient: 0.976878137376062
 
-#### ripple9010: $\rho=0.35$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \\}$, 30 epochs, 36000 (0.2) snapshots
+#### ripple9010: $\rho=0.35$, $P_{tumble} \in \{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340 \}$, 30 epochs, 36000 (0.2) snapshots
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -450,7 +450,7 @@ Actual value 0.34: Average = 0.29158 +- 0.02782; Expected value within 1.740 std
 
 We have been mostly running 30 epochs for each CNN model. We can see a downward shift in all the MAE evolutions above, with a potential indication that more epochs might decrease it further and thus yield even better results. Below is a model ran for 40 epochs, as it compares to reverb3164, outlined above at the beginning.
 
-#### remnant3992: $\rho=0.25$, $P_{tumble} \in \\{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.5000 \\}$, 40 epochs, 40000 (0.2) snapshots
+#### remnant3992: $\rho=0.25$, $P_{tumble} \in \{0.016,0.023,0.034,0.050,0.073,0.107,0.157,0.231,0.340,0.5000 \}$, 40 epochs, 40000 (0.2) snapshots
 
 Predictions             |  Loss Evolution
 :-------------------------:|:-------------------------:
@@ -474,7 +474,7 @@ Predictions             |  Loss Evolution
 
 # 11. Monochrome Interpolation (Low Tumbling Rates)
 
-#### derive1278 (crab8432) $\rho=0.25$ $P_{val} \in \\{ 0.023, 0.073\\}$, $P_{train} \in \\{0.016,0.034,0.050,0.107 \\}$
+#### derive1278 (crab8432) $\rho=0.25$ $P_{val} \in \{ 0.023, 0.073\}$, $P_{train} \in \{0.016,0.034,0.050,0.107 \}$
 
 derive1278             |  crab8432
 :-------------------------:|:-------------------------:
@@ -500,7 +500,7 @@ Actual value 0.073: Average = 0.07531 +- 0.00863; Expected value within 0.268 st
 | Overlap Ratio | 1.0 | 1.0 |
 | Pearson Coefficient | 0.973815 | 0.991052 |
 
-#### story4919 (summer6911): $\rho=0.25$, $P_{val} \in \\{ 0.023,0.034,0.050 \\}$, $P_{train} \in \\{0.016,0.073,0.107,0.157 \\}$
+#### story4919 (summer6911): $\rho=0.25$, $P_{val} \in \{ 0.023,0.034,0.050 \}$, $P_{train} \in \{0.016,0.073,0.107,0.157 \}$
 
 story4919             |  summer6911
 :-------------------------:|:-------------------------:
@@ -528,7 +528,7 @@ Actual value 0.05: Average = 0.06339 +- 0.00805; Expected value within 1.663 std
 
 # 12. Monochrome Interpolation (High Tumbling Rates)
 
-#### rabbit0196 (tread4399): $\rho=0.25$, $P_{val} \in \\{0.107,0.231,0.340 \\}$, $P_{train} \in \\{0.073,0.157,0.5 \\}$
+#### rabbit0196 (tread4399): $\rho=0.25$, $P_{val} \in \{0.107,0.231,0.340 \}$, $P_{train} \in \{0.073,0.157,0.5 \}$
 
 rabbit0196             |  tread4399
 :-------------------------:|:-------------------------:
@@ -559,7 +559,7 @@ Actual value 0.5: Average = 0.49756 +- 0.00513; Expected value within 0.475 stde
 | Overlap Ratio | 1.0 | 1.0 |
 | Pearson Coefficient | 0.961321 | 0.999564 |
 
-#### door1333 (revolve8117): $\rho=0.25$, $P_{val} \in \\{0.107,0.157 \\}$, $P_{train} \in \\{0.073,0.231,0.340,0.500\\}$
+#### door1333 (revolve8117): $\rho=0.25$, $P_{val} \in \{0.107,0.157 \}$, $P_{train} \in \{0.073,0.231,0.340,0.500\}$
 
 door1333             |  revolve8117
 :-------------------------:|:-------------------------:
@@ -594,7 +594,7 @@ Actual value 0.5: Average = 0.49567 +- 0.02125; Expected value within 0.204 stde
 
 salmon9100: extrapolate downwards
 
-#### tomato6633 (salad8110): $\rho=0.25$, $P_{val} \in \\{ 0.157,0.231,0.340,0.500\\}$, $P_{train} \in \\{0.016,0.023,0.034,0.05,0.073,0.107 \\}$
+#### tomato6633 (salad8110): $\rho=0.25$, $P_{val} \in \{ 0.157,0.231,0.340,0.500\}$, $P_{train} \in \{0.016,0.023,0.034,0.05,0.073,0.107 \}$
 
 Extrapolating upwards.
 
@@ -623,7 +623,7 @@ Actual value 0.5: Average = 0.15471 +- 0.00434; Expected value within 79.595 std
 | Overlap Ratio | 0.0 | 1.0 |
 | Pearson Coefficient | 0.891693 | 0.986550 |
 
-#### bear3250 (salmon9100): $\rho=0.25$, $P_{val} \in \\{ \\}
+#### bear3250 (salmon9100): $\rho=0.25$, $P_{val} \in \{ \}
 
 Extrapolating downwards.
 

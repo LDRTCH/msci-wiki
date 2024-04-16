@@ -79,6 +79,25 @@ This page hosts all of the main model architectures utilised in our project, ind
 14. DO (0.1) (without layout optimiser)
 15. FC (units=128,activation='relu')
 16. DO (0.1) (without layout optimiser)
+
+### MN_3*
+
+1. CONV (filters=3,kernel_size=(3,3),padding='same',input_shape=shape)
+2. MAXPOOL (pool_size=(2,2),padding='same')
+3. ReLU
+4. BN
+5. CONV (filters=4,kernel_size=(5,5),padding='same')
+6. MAXPOOL (pool_size=(2,2),padding='same')
+7. ReLU
+8. BN
+9. CONV (filters=6, kernel_size=(5,5),padding='same')
+10. MAXPOOL (pool_size=(2,2),padding='same')
+11. ReLU
+12. BN
+13. AVGPOOL
+14. DO (0.1) (without layout optimiser)
+15. FC (units=128,activation='relu')
+16. DO (0.1) (without layout optimiser)
 17. FC (units=3,activation='relu')
 18. FLATTEN
 19. FC (units=1,activation='linear')

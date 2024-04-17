@@ -243,9 +243,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#checklist" id="toc-checklist" class="nav-link" data-scroll-target="#checklist">2. Checklist</a></li>
   <li><a href="#model-list-and-storage" id="toc-model-list-and-storage" class="nav-link" data-scroll-target="#model-list-and-storage">3. Model List and Storage</a></li>
   <li><a href="#shorthand-model-list" id="toc-shorthand-model-list" class="nav-link" data-scroll-target="#shorthand-model-list">4. Shorthand Model List</a></li>
-  <li><a href="#new-architecture" id="toc-new-architecture" class="nav-link" data-scroll-target="#new-architecture">3. New Architecture</a></li>
-  <li><a href="#more-tumbling-rates" id="toc-more-tumbling-rates" class="nav-link" data-scroll-target="#more-tumbling-rates">4. More Tumbling Rates</a></li>
-  <li><a href="#bigger-n-values" id="toc-bigger-n-values" class="nav-link" data-scroll-target="#bigger-n-values">4. Bigger N Values</a></li>
+  <li><a href="#new-architecture" id="toc-new-architecture" class="nav-link" data-scroll-target="#new-architecture">5. New Architecture</a></li>
+  <li><a href="#more-tumbling-rates" id="toc-more-tumbling-rates" class="nav-link" data-scroll-target="#more-tumbling-rates">6. More Tumbling Rates</a></li>
+  <li><a href="#bigger-n-values" id="toc-bigger-n-values" class="nav-link" data-scroll-target="#bigger-n-values">7. Bigger N Values</a></li>
   <li><a href="#model-summaries" id="toc-model-summaries" class="nav-link" data-scroll-target="#model-summaries">5. Model Summaries</a></li>
   </ul>
 </nav>
@@ -260,6 +260,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="table-of-contents" class="level1">
 <h1>0. Table of Contents</h1>
+<ol type="1">
+<li>Introduction</li>
+<li>Checklist</li>
+<li>Model List and Storage</li>
+<li>Shorthand Model List</li>
+<li>New Architecture</li>
+<li>More Tumbling Rates</li>
+<li>Bigger N Values</li>
+</ol>
 </section>
 <section id="introduction" class="level1">
 <h1>1. Introduction</h1>
@@ -348,20 +357,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="new-architecture" class="level1">
-<h1>3. New Architecture</h1>
+<h1>5. New Architecture</h1>
 <p>Using the architecture of MN_2, we can try to examine a similar case to which we applied MN_1. Below is the prediction of model atreus1273, applied to a sample size of 70000 iterations spread equally among 5 turning rates (50000 training, 20000 validation), for density 0.15.</p>
 <p><img src="./week-16-files/atreus1273.png" class="img-fluid"></p>
 <p>The fitting overall seems to be worse, but the top middle values are almost perfectly fitted. My lab partner has gotten better results with this model, so I will continue exploring it in parallel with MN_1 for now.</p>
 </section>
 <section id="more-tumbling-rates" class="level1">
-<h1>4. More Tumbling Rates</h1>
+<h1>6. More Tumbling Rates</h1>
 <p>There is an obvious extension in increasing the amount of tumbling rates utilised. This may help the CNN pick up on the clustering/dissipation pattern better by providing more scenarios in which it can be examined.</p>
 <p>Below is an example reprouction of MN_1 trained on the same values as the last example in <a href="../activity_log/week13-15.html">Weeks 13-15</a>, model median4431. It has now been standardised to be easliy referred to in our table.</p>
 <p><img src="./week-16-files/median4431.png" class="img-fluid"></p>
 <p>Note that this is using rolled data, so it is bound to be more accurate than the unrolled variants we will consider below.</p>
 </section>
 <section id="bigger-n-values" class="level1">
-<h1>4. Bigger N Values</h1>
+<h1>7. Bigger N Values</h1>
 <p>Here is a brief attempt to train the CNN on broader N values. This will be investigated more in depth at the end of the project. Model michigan2241 is trained on <span class="math inline">\(N_x=N_y=256\)</span>; an example screenshot can be found below.</p>
 <p><img src="./week-16-files/256.0_0.016.png" class="img-fluid"></p>
 <p>Running MN_2 architecture, the training yields the following predictions:</p>

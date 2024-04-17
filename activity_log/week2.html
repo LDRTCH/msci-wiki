@@ -239,10 +239,10 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#week-2" id="toc-week-2" class="nav-link active" data-scroll-target="#week-2">Week 2</a></li>
   <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
-  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">1. Introduction</a></li>
-  <li><a href="#deadline-schedule-1" id="toc-deadline-schedule-1" class="nav-link" data-scroll-target="#deadline-schedule-1">2. Deadline Schedule</a></li>
-  <li><a href="#text-information-1" id="toc-text-information-1" class="nav-link" data-scroll-target="#text-information-1">3. Text information</a></li>
-  <li><a href="#motivation-report-1" id="toc-motivation-report-1" class="nav-link" data-scroll-target="#motivation-report-1">4. Motivation Report</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#deadline-schedule" id="toc-deadline-schedule" class="nav-link" data-scroll-target="#deadline-schedule">2. Deadline Schedule</a></li>
+  <li><a href="#text-information" id="toc-text-information" class="nav-link" data-scroll-target="#text-information">3. Text information</a></li>
+  <li><a href="#motivation-report" id="toc-motivation-report" class="nav-link" data-scroll-target="#motivation-report">4. Motivation Report</a></li>
   <li><a href="#langevin-equation" id="toc-langevin-equation" class="nav-link" data-scroll-target="#langevin-equation">5. Langevin Equation</a></li>
   </ul>
 </nav>
@@ -274,29 +274,22 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="table-of-contents" class="level1">
 <h1>0. Table of Contents</h1>
-<section id="table-of-contents-1" class="level6">
-<h6 class="anchored" data-anchor-id="table-of-contents-1">0. Table of Contents</h6>
+<ol start="0" type="1">
+<li>Table of Contents</li>
+<li>Introduction</li>
+<li>Deadline Schedule</li>
+<li>Text Information</li>
+<li>Motivation Report</li>
+<li>Langevin Equation</li>
+</ol>
 </section>
-<section id="introduction" class="level6">
-<h6 class="anchored" data-anchor-id="introduction">1. Introduction</h6>
-</section>
-<section id="deadline-schedule" class="level6">
-<h6 class="anchored" data-anchor-id="deadline-schedule">2. Deadline Schedule</h6>
-</section>
-<section id="text-information" class="level6">
-<h6 class="anchored" data-anchor-id="text-information">3. Text Information</h6>
-</section>
-<section id="motivation-report" class="level6">
-<h6 class="anchored" data-anchor-id="motivation-report">4. Motivation Report</h6>
-</section>
-</section>
-<section id="introduction-1" class="level1">
+<section id="introduction" class="level1">
 <h1>1. Introduction</h1>
 <p>The goal of week 2 is to further familiarise ourselves with the literature. We are to write a quick 500-word referenced report detailing motivations for studying active matter. Notes for this week will therefore be slightly sparser, primarily sifting through the goals of various papers (their detailed processes are to be examined at a later date). Some of these tidbits of information will be taken from the texts explored in week 1; as such, overlap with week 1 information is not only possible, but very likely. Repetition was preferred over disorganised and uncatalogued information, as these notes serve both as an activity log (which must document repeats occasionally) and as a catalogue of information as it is found.</p>
 <p>Another essential goal of weeks 1 and 2 was to figure out the general examination schedule of the project. This in turn would influence planning the project out more properly, in anticipation of the deadline for the interrim report (other influences, naturally, are personal academic schedules; I personally anticipate being much busier during the first term, and therefore expect higher activity during the latter half of the project). This schedule was not given out to the 30cp version of the project page until very recently, and has therefore been appended in the activity log for this week.</p>
 <p>Above is a table of contents. Below is a list of a few of the utilised texts, with some key information extracted. The 500-word referenced essay is given afterwards. At the very bottom is a very brief introduction to the Langevin equation. On an informational level, this is meant as a way to ease in into Brownian motion theory; on a technical level, this also gives a brief occasion to experiment with LaTex in markdown.</p>
 </section>
-<section id="deadline-schedule-1" class="level1">
+<section id="deadline-schedule" class="level1">
 <h1>2. Deadline Schedule</h1>
 <ul>
 <li>Week 1: Start of project</li>
@@ -308,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>(This schedule will be added on the website as a separate tab as well.)</p>
 </section>
-<section id="text-information-1" class="level1">
+<section id="text-information" class="level1">
 <h1>3. Text information</h1>
 <section id="the-mechanics-and-statistics-of-active-matter" class="level4">
 <h4 class="anchored" data-anchor-id="the-mechanics-and-statistics-of-active-matter">The Mechanics and Statistics of Active Matter</h4>
@@ -347,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="motivation-report-1" class="level1">
+<section id="motivation-report" class="level1">
 <h1>4. Motivation Report</h1>
 <p>Active matter is, broadly, a subcategory of matter systems distingushed primarily by energy input homogenously distributed across all constituents (agents) of the system, which in turn set their own self-propelled motion across a force-free medium (for instance, the forces between particles and the fluid they move through cancel)[1]. The agents therefore have <em>direct</em> access to energy, and use it to autonomously propel and direct themselves (with different models and situations allowing for various degrees of freedom). The study of active matter is generally grounded in (but not limited to) observed behaviour of biological agents, as they are the primary (though not only) examples of active matter in nature.</p>
 <p>The evident motivation in studying active matter is that it helps understand biological behaviours, and therefore the natural world. Macroscopically, the construction of theoretical models can help explain, and to a limited degree predict, the behaviour of animals (such as locusts) undergoing collectively-emergent swarming behaviours (where each animal can be treated as its own autonomous agent, sharing the same generally stable ‘rules’ of altering speed and orientation while interacting with each other and the environment)[2]. This is not limited to what can be termed ‘simple’ behaviour; human behaviour can be partially mapped and understood within physically-indexed accounts of autonomous choices within (overtly or suggestively) constrained collective action. Interesting examples are swarming behaviours identified in traffic, crowd disasters and concerts[3] (note however that physical models are sometimes challenged in literature due to potential oversimplifications, insofar as, for instance, cognitive heuristics under duress might deal holistically, rather than individually, with other human agents[4]). Microscopically, active matter models offer insight into understanding how hierarchically-organised emergence happens within cell tissues, and how it may be leveraged by medicine[5].</p>

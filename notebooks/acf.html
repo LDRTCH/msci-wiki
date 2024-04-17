@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Dissipation Learning in Active Matter</title>
+<title>Dissipation Learning in Active Matter - Autocorrelation Function Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -68,35 +102,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -109,9 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Dissipation Learning in Active Matter
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../notebooks/acf.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/acf.html">Autocorrelation Function Analysis</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,17 +187,17 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false"><i class="bi bi-archive" role="img">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><i class="bi bi-archive" role="img">
 </i> 
  <span class="menu-text">Python Notebooks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/acf.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/acf.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Autocorrelation Function Analysis</span></a>
   </div>
 </li>
@@ -342,173 +345,158 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#weeks-13-15" id="toc-weeks-13-15" class="nav-link active" data-scroll-target="#weeks-13-15">Weeks 13-15</a></li>
-  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">0. Table of Contents</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
-  <li><a href="#cluster-convergence" id="toc-cluster-convergence" class="nav-link" data-scroll-target="#cluster-convergence">2. Cluster Convergence</a></li>
-  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">3. Machine Learning</a></li>
-  <li><a href="#convolutional-neural-networks-cnns" id="toc-convolutional-neural-networks-cnns" class="nav-link" data-scroll-target="#convolutional-neural-networks-cnns">4. Convolutional Neural Networks (CNNs)</a></li>
-  <li><a href="#dataset-rolling" id="toc-dataset-rolling" class="nav-link" data-scroll-target="#dataset-rolling">5. Dataset Rolling</a></li>
-  <li><a href="#preliminary-cnn-experiment" id="toc-preliminary-cnn-experiment" class="nav-link" data-scroll-target="#preliminary-cnn-experiment">6. Preliminary CNN Experiment</a></li>
-  <li><a href="#cnn-layers" id="toc-cnn-layers" class="nav-link" data-scroll-target="#cnn-layers">7. CNN Layers</a></li>
-  <li><a href="#preliminary-cnn-tests-on-rolled-data" id="toc-preliminary-cnn-tests-on-rolled-data" class="nav-link" data-scroll-target="#preliminary-cnn-tests-on-rolled-data">8. Preliminary CNN Tests on Rolled Data</a></li>
-  <li><a href="#training-and-predicting-on-mixed-densities" id="toc-training-and-predicting-on-mixed-densities" class="nav-link" data-scroll-target="#training-and-predicting-on-mixed-densities">9. Training and Predicting on Mixed Densities</a></li>
-  <li><a href="#current-problems" id="toc-current-problems" class="nav-link" data-scroll-target="#current-problems">10. Current Problems</a></li>
-  <li><a href="#misc-notes" id="toc-misc-notes" class="nav-link" data-scroll-target="#misc-notes">11. Misc Notes</a></li>
+  <li><a href="#import-libraries-and-load-files" id="toc-import-libraries-and-load-files" class="nav-link active" data-scroll-target="#import-libraries-and-load-files">Import Libraries and Load Files</a></li>
+  <li><a href="#define-autocorrelation-function" id="toc-define-autocorrelation-function" class="nav-link" data-scroll-target="#define-autocorrelation-function">Define Autocorrelation Function</a></li>
+  <li><a href="#set-system-parameters" id="toc-set-system-parameters" class="nav-link" data-scroll-target="#set-system-parameters">Set System Parameters</a></li>
+  <li><a href="#print-rolled-autocorrelation-for-all-tumbling-rates-and-comparison-between-rolled-and-unrolled-data" id="toc-print-rolled-autocorrelation-for-all-tumbling-rates-and-comparison-between-rolled-and-unrolled-data" class="nav-link" data-scroll-target="#print-rolled-autocorrelation-for-all-tumbling-rates-and-comparison-between-rolled-and-unrolled-data">Print Rolled Autocorrelation For All Tumbling Rates And Comparison Between Rolled And Unrolled Data</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../notebooks/acf.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/acf.html">Autocorrelation Function Analysis</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Autocorrelation Function Analysis</h1>
+</div>
 
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      processEscapes: true},
-      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
-      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
-      TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
-      equationNumbers: {
-      autoNumber: "AMS"
-      }
-    }
-  });
-</script>
-<section id="weeks-13-15" class="level1">
-<h1>Weeks 13-15</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="import-libraries-and-load-files" class="level2">
+<h2 class="anchored" data-anchor-id="import-libraries-and-load-files">Import Libraries and Load Files</h2>
+<div id="cell-3" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cmcrameri <span class="im">as</span> cmc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h5py</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> natsort</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_import (tumble,density,folder):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> folder <span class="op">==</span> <span class="st">"no-rolling"</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span> <span class="op">=</span> <span class="ss">f'../persistent-exclusion-process/persistent-exclusion-process/data/</span><span class="sc">{</span>folder<span class="sc">}</span><span class="ss">/dataset_tumble_</span><span class="sc">{</span>tumble<span class="sc">:.3f}</span><span class="ss">_density_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5'</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span> <span class="op">=</span> <span class="ss">f'../persistent-exclusion-process/persistent-exclusion-process/data/</span><span class="sc">{</span>folder<span class="sc">}</span><span class="ss">/dataset_tumble_</span><span class="sc">{</span>tumble<span class="sc">:.3f}</span><span class="ss">_</span><span class="sc">{</span>density<span class="sc">}</span><span class="ss">.h5'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> h5py.File(<span class="bu">file</span>) <span class="im">as</span> fin:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># data = fin[[fin.keys()]]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span> [fin [i][:] <span class="cf">for</span> i <span class="kw">in</span> natsort.natsorted(fin.keys())]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="table-of-contents" class="level1">
-<h1>0. Table of Contents</h1>
-<ol type="1">
-<li>Introduction</li>
-<li>Cluster Convergence</li>
-<li>Machine Learning</li>
-<li>Convolutional Neural Networks (CNNs)</li>
-<li>Dataset Rolling</li>
-<li>Preliminary CNN Experiment</li>
-<li>CNN Layers</li>
-<li>Preliminary CNN Tests on Rolled Data</li>
-<li>Training and Predicting on Mixed Densities</li>
-<li>Current Problems</li>
-<li>Misc Notes</li>
-</ol>
+<section id="define-autocorrelation-function" class="level2">
+<h2 class="anchored" data-anchor-id="define-autocorrelation-function">Define Autocorrelation Function</h2>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> overlap(traj,i,j):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#N = traj[i][traj[i]&gt;0].shape[0]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((traj[i]<span class="op">&gt;</span><span class="dv">0</span>)<span class="op">*</span>(traj[j]<span class="op">&gt;</span><span class="dv">0</span>)).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> acf_analysis (tumble,density,lags,data,rolls<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    acf <span class="op">=</span>[]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,rolls<span class="op">*</span><span class="dv">500</span>,rolls<span class="op">*</span><span class="dv">10</span>):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> [overlap(data,i,i<span class="op">+</span>lag) <span class="cf">for</span> lag <span class="kw">in</span> lags]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        acf.append(a)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    acf <span class="op">=</span> np.asarray(acf).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#acf = acf-acf[-1]</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#acf/= acf.ptp()</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> acf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="introduction" class="level1">
-<h1>1. Introduction</h1>
-<p>The main purpose of this week is to begin machine learning tests. The secondary purpose is to flesh out some details a</p>
+<section id="set-system-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="set-system-parameters">Set System Parameters</h2>
+<div id="cell-9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rolls<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> np.arange(<span class="dv">0</span>, rolls<span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.axes_grid1.inset_locator <span class="im">import</span> inset_axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="cluster-convergence" class="level1">
-<h1>2. Cluster Convergence</h1>
-<p>Our cluster analysis code currently outputs various clusters organised by their sizes. In practice, we have analysed them by plotting their distributions within a snapshot using histograms (see, for example, <a href="../activity_log/week5-6.html">Weeks 5-6 Cluster Analysis</a>).</p>
-<p>The initial thought was to maintain the bin distributions and chart how each individual bin varies over time. This would essentially involve a ‘rolling average’, where the bin values of iteration <span class="math inline">\(n\)</span> would be compared with the average of the previous <span class="math inline">\(k\)</span> iterations for <em>every bin</em>. This would mean a constant account of standard deviations for moving averages, and setting an acceptable threshold beyond which the system can be considered to stabilise. This is obviously complicated - firstly, the histogram bins will not always be constant; there are bins which will have zero clusters, or which will fluctuate even within the steady state regime by virtue of clusters slightly evaporating (past a bin threshold) and then growing back. This is also quite difficult to visualise.</p>
-<p>Instead, the simpler method is to plot the mean of these cluster sizes (weighted by virtue of their categorisation into clusters) and chart how this mean evolves in time. The principle of monitoring stabilisation is the same, but it can be done much simply and visually through a two-dimensional image.</p>
-</section>
-<section id="machine-learning" class="level1">
-<h1>3. Machine Learning</h1>
-<p>With tools of analysis developed over the past 12 weeks (and the last few able to be fleshed out in the following weeks), we can move into the machine learning part of the project. This section has some general details about machine learning as a whole and the CNN we are using.</p>
-<p>The principle of layered machine learning is that of receiving an input vector of datapoints (a ‘layer’ of ‘neurons’) which is fitted with a weight matrix and callibrated with a bias in order to generate successive learning layers; the whole process is given an ‘activation function’, which alters the results after a desired rule (which will be explained below). These weights are trained on the input data in order to correspond to some desired output data, with the intent of generalising this process to work on extended environments and cases. A useful way to express this in linear algebraic notation is:</p>
-<p><span class="math display">\[
-\overrightarrow{a}^{(n+1)}=\sigma(\textbf{W}\overrightarrow{a}^{(n)}+\overrightarrow{b})
-\]</span> where we take <span class="math inline">\(\overrightarrow{a}^{(n)}\)</span> to be the n layer of neurons, <span class="math inline">\(\textbf{W}\)</span> to be the weight matrix, <span class="math inline">\(\overrightarrow{b}\)</span> to the associated bias vector, and <span class="math inline">\(\sigma\)</span> to be the activation function. The weight matrix <span class="math inline">\(\textbf{W}\)</span> applies different weights to every neuron of the previous layer for <em>each</em> neuron of the current layer.</p>
-<p>The activation function <span class="math inline">\(\sigma\)</span> is a function which is meant to bind the neuron values within certain restrictions. A common function, for instance, is the sigmoid function, which binds neurons between 0 and 1, flattening very high values in both negative and positive directions towards the former and the latter, respectively. It is illustrated below:</p>
-<p><span class="math display">\[
-\sigma_{sigmoid}=\frac{1}{1+e^{-a}}
-\]</span></p>
-<p>The reasoning behind the sigmoid function is to treat neurons on a continuous gradient between fully activated (1) and fully deactivated (0), in loose analogy with biological neurological systems. The problem with the sigmoid function is precisely the flattening behaviour it displays at high values - a big part of the machine learning process (precisely the ‘learning’ aspect) is the adjustment of weights with the purposes of minimising the cost of deviation from the expected values (which will also be explained below). High weight values will not produce meaningful values which can then be fine-tuned by the system, so the fluctuations in learning improve much less in practice, especially with a lot of inputs and layers involved.</p>
-<p>What is often opted for instead, which is the activation function we are using in this project as well, is the <strong>Rectified Linear Unit</strong> (ReLU) function <span class="math inline">\(\sigma_{ReLU}\)</span>; this function sets any negative number to 0, and any positive number to its own value. Under this function, varying the weights will always yield some feedback, i.e.&nbsp;learning, on how the algorithm can improve to better match expectations.</p>
-<p>How does a machine learning algorithm figure out how to alter its weights? The brief answer is through an analysis of deviation, or cost. The machine is fed training data alongside the expected values, and it generates predicted values in turn based on the final layer of neurons. The algorithm obtains a cost function by summing the squares of differences between the expected output value of a neuron and its actual value. Not only does this function convey how well an algorithm performs on its training data (the bigger the value of the cost function is, the worse the algorithm is), but its principle can be used to compute a cost gradient - essentially, the algorithm can compute a cost function vector across all its weights and biases (which constitute its ‘dimensions’, in a calculus sense) and then take the gradient to determine how much each weight/bias parameter ought to change.</p>
-</section>
-<section id="convolutional-neural-networks-cnns" class="level1">
-<h1>4. Convolutional Neural Networks (CNNs)</h1>
-<p>For our purposes, running a machine learning algorithm for 128x128 lattice sites will get very resource-intensive very quickly. The input layer alone requires more than 16000 neurons, and subsequent layers will require an extremely high number of weights to compile into new neurons, as, per the equation above, each new neuron <span class="math inline">\(a_k^{(n)}\)</span> will depend on all previous neurons <span class="math inline">\(\overrightarrow{a}^{(n-1)}\)</span>. This results in poor scaling with increases in image size.</p>
-<p>For this reason, alongside considerations of accuracy, this project employs a convolutional neural network. From hereon I will be denoting the number of a layer with <span class="math inline">\(l\)</span>. The main difference in principle is that the main successive layer within the network is a <em>convolutional layer</em>, wherein each neuron at layer <span class="math inline">\(l\)</span> is only connected to a given neighbourhood of neurons in layer <span class="math inline">\(l-1\)</span> through a <em>kernel/filter</em> (the entity analogous to the aforementioned weight matrix <span class="math inline">\(\textbf{W}\)</span>). This kernel ‘moves’ across the input map in <em>strides</em>, generating one neuron value by adding the sum of its respective weights.</p>
-<p>In broad strokes, the weight function of a standard machine learning algorithm applies holistically to the entire previous layer map, whereas the kernel of a convolutional neural network applies locally to a region of the previous layer map. Both are subsequently subjected to an activation function before yielding a neuronal value.</p>
-<p>The consequence of a moving kernel is that the (output) feature map of a convolutional layer will be smaller than the input map it analyses. Using many convolutional layers would therefore mean that the edges of the input map would be factored considerably less in the learning algorithm compared to the centre. The feature maps would get smaller and smaller - crucially, the more layers there are, the more focus is shifted towards the central part of the initial map.</p>
-<p>One approach is to introduce <em>padding</em>. Essentially, padding constitutes inserting values at the edges of the output feature map in order to increase its overall size. In most cases, the aim is to preserve the size of the input map across convolution, and the edges are padded with zeroes (“zero-padding”). Note that the amount of padding <span class="math inline">\(P\)</span> must align with a relational formula of the different sizes of the system in order to be able to construct a valid convolutional layer:</p>
-<p><span class="math display">\[
-\frac{V_{i} - F + 2P}{S}-1 \in \mathbb{Z}
-\]</span> where <span class="math inline">\(V_i\)</span> is the input volume size (for square images), F is the receptive field size, and S is the stride.</p>
-<p>The <strong>receptive field size</strong>, in turn, can be calculated generally using the following formula (taken from Araujo et al, 2019):</p>
-<p><span class="math display">\[
-F_0 = \sum_{l=1}^{L}((k_l-1)\prod_{i=1}^{l-1}s_i)+1
-\]</span> where <span class="math inline">\(k_l\)</span> is the kernel size of layer <span class="math inline">\(l\)</span>, <span class="math inline">\(s_l\)</span> is the stride size of layer <span class="math inline">\(l\)</span>, and <span class="math inline">\(L\)</span> is the final layer of the system.</p>
-<p>Or recursively using the following formula:</p>
-<p><span class="math display">\[
-F_{l-1} = S_lF_l + (k_l-s_l)
-\]</span></p>
-<p>Finally, the amount of kernels determines the <strong>depth</strong> of a feature map. Essentially, we can picture each kernel as generating a two-dimensional grid, which can be stacked along the z-axis (the depth-axis, in other words). This is important in order to preserve the depth of the original input map, pertinently stored in our case in <em>colour</em>, through an RGB depth of 3. Therefore, for all CNN algorithms which make use of particle orientation in our PEP system, we will need three filters in our convolutional layers.</p>
-</section>
-<section id="dataset-rolling" class="level1">
-<h1>5. Dataset Rolling</h1>
-<p>One key trait of the in-house code has been a ‘rolling’ of the dataset. Essentially, once the iteration of a dataset is generated by the <code>sampler.py</code> function, it is stored under the header <code>conf_{iteration}</code>. This iteration is then ‘rolled’ (using the <code>np.roll</code> function) 12 times along the x-axis, essentially creating new datasets from the same generative process. So far, we have not been making use of this in-house code property in our data at all - this was intended specifically for the machine learning part of the project, so it was not brought up in our analysis (which was strictly focused on the non-rolled datasets). For reference, the rolled datasets are stored within the h5py file as <code>conf_{iteration}_{roll}</code>.</p>
-<p>But this brings up an interesting point now that we are moving into the machine learning parts. The CNN will be training on all available datasets in order to draw its inferences. To what extent is introducing rolling data favourable to our predictions? On one hand, training the model on recycled data may give it a weighing bias towards the specific conditions of the datasets we present it with. There is the worry of overfitting, or overspecialisation to strictly the circumstances (<span class="math inline">\(P_t\)</span>, <span class="math inline">\(\rho\)</span> and <span class="math inline">\((N_x,N_y)\)</span> combinations) it receives as input. On the other hand, the rolling provides more samples on which the CNN can train, with a much smaller computational cost. The end of this experiment involves large scale data manipulation and generation, and if rolling proves to be a reliable tool to train a model on, it will aid immensely in the generation aspect.</p>
-<p>On this note, I have done some quick analysis on the data. As a rule of thumb, datasets with rolling take approximately 10 extra seconds to generate in comparison to the strictly unrolled datasets. This has been tested on my personal computer - it is possible the time difference is much smaller once a supercomputer is employed.</p>
-<p>The file size contrast is considerable. Datasets which have surplus rolled iterations have approximately 284MB each. Datasets which do not only have about 66MB. Since all the files have been stored on my computer, this is considerable insofar as so far around 215MB per dataset have gone unused (though they will now be employed by the CNN). For example, to obtain the biggest cluster size distribution in <a href="./week10-13.qmd">Weeks 9-12</a> required 100 different datasets, resulting in about 19GB of data that was not called.</p>
-<p>Data analysis aside, we will run the CNN using both options, and contrast the results for different scenarios. I have rewritten <code>sampler.py</code> to accommodate the requirements of unrolled dataset files (as <code>sampler_no_roll.py</code>). This code stores its datasets in a separate folder (<code>data/no-roll</code>).</p>
-</section>
-<section id="preliminary-cnn-experiment" class="level1">
-<h1>6. Preliminary CNN Experiment</h1>
-<p>We can start with a simple case to illustrate the principle. Taking a single density value of <span class="math inline">\(\rho=0.15\)</span>, we can train the model on a few probability distributions. Running for 5 epochs and using only one convolutional layer, with 3 5x5 kernels with 3x3 strides, we get the following predictions:</p>
-<p><img src="./week-13-15-files/prelim-output.png" class="img-fluid"></p>
-<p>where the orange data points are the input turning rates, and the blue data points are the model predicitons.</p>
-<p>The spreads are quite big on most probability values, and for the highest one the model is clearly not fitting properly at all. Nontheless, this is a good start for how simple the layer diagram is:</p>
-<p>INPUT =&gt; CONV =&gt; FLATTEN =&gt; FC (optimiser: adam ; 5 epochs)</p>
-<p>After some experimenting, below are the predictions made on the unrolled data, running for 10 epochs:</p>
-<p><img src="./week-13-15-files/cp-output.png" class="img-fluid"></p>
-<p>With the following layer diagram:</p>
-<p>INPUT =&gt; CONV =&gt; BN =&gt; CONV =&gt; BN =&gt; MAXPOOL =&gt; CONV =&gt; BN =&gt; CONV =&gt; BN =&gt; MAXPOOL =&gt; FC =&gt; DO =&gt; FC =&gt; FLATTEN =&gt; FC (optimiser: adam ; 10 epochs)</p>
-<p>The training size is also important; this model is trained on one dataset for each probability distribution (so 5 datasets total). Each of these datasets has 1000 snapshots, leaving a total of 5000 data. We trained the model on 3000 snapshots, and then applied it to the last 2000.</p>
-<p>The natural question is how the predictions change if we train on longer evolutions. Below is the graphical result of this, with the same (<span class="math inline">\(\rho\)</span>,<span class="math inline">\(P_t\)</span>,(<span class="math inline">\(N_x\)</span>,<span class="math inline">\(N_y\)</span>)) configuration, but with 10 times the generated evolution steps (and therefore snapshots). This means the mode is now trained on 30000 snapshots, and then applied to the last 20000.</p>
-<p><img src="./week-13-15-files/cp-output-more-iterations.png" class="img-fluid"></p>
-<p>We can see the fitting drastically improve for the higher tumbling rates, though it’s clearly still lacking at the extremes of our turning rates.</p>
-<p><strong>To understand the general principle and methodology of our preliminary analysis, see the uploaded <a href="../notebooks/cp_network.html">Preliminary Analysis Notebook</a> example.</strong></p>
-</section>
-<section id="cnn-layers" class="level1">
-<h1>7. CNN Layers</h1>
-<p>Quick definitional list for the most commonly used CNN layers.</p>
-<ul>
-<li><p>Convolutional Layer (CONV): Standard convolution layer, mapping the input map through kernels in strides, and generating a feature map of lower dimensionality as a result.</p></li>
-<li><p>Activation Function Layer (RELU): Applies the activation function to the emergent neurons. Often left implicit after a CONV or FC layer.</p></li>
-<li><p>Batch Normalisation Layer (BN): Normalises layer inputs through re-centring and re-scaling.</p></li>
-<li><p>Pooling Layer (POOL): Separates input into patches; replaces each patch in input with single value in output, which is often either…</p>
-<ul>
-<li><p>MAXPOOL: the maximum value within the pool</p></li>
-<li><p>AVGPOOL: the average value within the pool</p></li>
-</ul></li>
-<li><p>Dense/Fully Connected Layer (FC): Standard neural network layer; maps each neuron of the feature map to every neuron of the input map.</p></li>
-<li><p>Dropout Layer (DO): Nullifies contribution of some neurons towards next layer while keeping the rest intact.</p></li>
-<li><p>Flattening Layer (FLATTEN): Flattens feature map into a one-dimensional column.</p></li>
-</ul>
-</section>
-<section id="preliminary-cnn-tests-on-rolled-data" class="level1">
-<h1>8. Preliminary CNN Tests on Rolled Data</h1>
-<p>So far we have trained the model strictly on non-rolled datasets. Below is an example of the same 1000 iteration per dataset scenario, but used on rolled datasets to facilitate more samples for the model to train on. As a result, there are 70000 samples in the dataset, 50000 of which are training data, and 20000 of which are validation data.</p>
-<div class="quarto-figure quarto-figure-center">
+<section id="print-rolled-autocorrelation-for-all-tumbling-rates-and-comparison-between-rolled-and-unrolled-data" class="level2">
+<h2 class="anchored" data-anchor-id="print-rolled-autocorrelation-for-all-tumbling-rates-and-comparison-between-rolled-and-unrolled-data">Print Rolled Autocorrelation For All Tumbling Rates And Comparison Between Rolled And Unrolled Data</h2>
+<div id="cell-12" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig,(ax1,ax2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>),dpi<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tumbles <span class="op">=</span> [<span class="fl">0.016</span>,<span class="fl">0.023</span>,<span class="fl">0.034</span>,<span class="fl">0.050</span>,<span class="fl">0.073</span>,<span class="fl">0.107</span>,<span class="fl">0.157</span>,<span class="fl">0.231</span>,<span class="fl">0.340</span>,<span class="fl">0.500</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#subax1 = inset_axes(ax1,width="60%",height="60%",loc="upper right")</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,tumble <span class="kw">in</span> <span class="bu">enumerate</span>(tumbles):</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> np.array(data_import(tumble,density,folder<span class="op">=</span><span class="st">"four-rolling"</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    acf <span class="op">=</span> acf_analysis(tumble,density,lags,data,rolls<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    ax1.plot(lags,acf,label<span class="op">=</span><span class="ss">f"$P_t=</span><span class="sc">{</span>tumble<span class="sc">:.3f}</span><span class="ss">$"</span>,linewidth<span class="op">=</span><span class="dv">1</span>,color<span class="op">=</span>plt.cm.gnuplot(i<span class="op">/</span><span class="bu">len</span>(tumbles)))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#subax1.plot(lags,acf,label=f"$P_t={tumble:.3f}$",linewidth=1,color=plt.cm.gnuplot(i/len(tumbles)))</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ax1.plot(lags,np.ones_like(lags)<span class="op">*</span>density<span class="op">**</span><span class="dv">2</span>,color<span class="op">=</span><span class="st">'green'</span>,label<span class="op">=</span><span class="vs">r"$\rho^2$ value"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#subax1.plot(lags,np.ones_like(lags)*density**2,color='green',label=r"$\rho^2$ value")</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#subax1.set_ylim([0.02,0.06])</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Autocorrelation Function Value"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Overlap Lag Value"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_ylim([0.02,0.06])</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_xlim([0,400])</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_xscale("log")</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="vs">r"Autocorrelation Comparison for all Turning Rates ($\rho=</span><span class="sc">%0.2f</span><span class="vs">$)"</span> <span class="op">%</span> (density))</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>ax1.legend(loc<span class="op">=</span><span class="st">"upper right"</span>,ncols<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#FIRST SUBGRAPH</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#SECOND GRAPH</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#subax2 = inset_axes(ax2,width="60%",height="60%",loc="upper right")</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>density <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>tumble <span class="op">=</span> <span class="fl">0.016</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>folders <span class="op">=</span> [<span class="st">"no-rolling"</span>,<span class="st">"four-rolling"</span>,<span class="st">"less-rolling"</span>]</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>lags2 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span><span class="op">*</span><span class="dv">100</span><span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,folder <span class="kw">in</span> <span class="bu">enumerate</span>(folders):</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> np.array(data_import(tumble,density,folder))</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        acf <span class="op">=</span> acf_analysis(tumble,density,lags,data)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        ax2.plot(lags,acf,label<span class="op">=</span>folder,linewidth<span class="op">=</span><span class="dv">1</span>,color<span class="op">=</span>plt.cm.gnuplot(i<span class="op">/</span><span class="bu">len</span>(folders)))</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">==</span><span class="dv">1</span>:</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        acf <span class="op">=</span> acf_analysis(tumble,density,lags2,data)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        ax2.plot(lags2<span class="op">/</span><span class="fl">4.0</span>,acf,label<span class="op">=</span>folder,linewidth<span class="op">=</span><span class="dv">1</span>,color<span class="op">=</span>plt.cm.gnuplot(i<span class="op">/</span><span class="bu">len</span>(folders)))</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>ax2.plot(lags,np.ones_like(lags)<span class="op">*</span>density<span class="op">**</span><span class="dv">2</span>,color<span class="op">=</span><span class="st">'green'</span>,label<span class="op">=</span><span class="vs">r"$\rho^2$ value"</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#subax2.plot(lags,np.ones_like(lags)*density**2,color='green',label=r"$\rho^2$ value")</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_ylim([0.02,0.03])</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="vs">r"Autocorrelation Comparison for Different Rolling ($\rho = </span><span class="sc">%0.2f</span><span class="vs">$, $P_t = </span><span class="sc">%0.3f</span><span class="vs">$)"</span> <span class="op">%</span> (density, tumble))</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>ticks <span class="op">=</span> []</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">101</span>,<span class="dv">8</span>):</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    ticks.append(x)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>ax2.set_xticks(ticks)</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>ax2.grid(visible<span class="op">=</span><span class="va">None</span>,which<span class="op">=</span><span class="st">'major'</span>,axis<span class="op">=</span><span class="st">'x'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#subax2.grid(visible=None,which='major',axis='x',alpha=0.2)</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#subax2.set_ylim([0.02,0.03])</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Autocorrelation Function Value"</span>)</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Overlap Lag Value"</span>)</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>ax2.legend(loc<span class="op">=</span><span class="st">"upper right"</span>)</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="./week-13-15-files/cp-output-rolled.png" class="img-fluid figure-img"></p>
-<figcaption>Pearson’s correlation coeff: 0.98276</figcaption>
+<p><img src="acf_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>We can see that the fitting is even better in the low iteration rolling case than in the high iteration no-rolling case. However, the <span class="math inline">\(P_t=0.34\)</span> values are consistently predicted incorrectly across these two examples, which might suggest an underlying problem with the system.</p>
-</section>
-<section id="training-and-predicting-on-mixed-densities" class="level1">
-<h1>9. Training and Predicting on Mixed Densities</h1>
-<p>The next evident question is how the model holds up when we apply the above principles to a broad range of densities. In the figure below, the CNN runs the same framework on 100 different densities. Unfortunately, I have not been able to construct predictions for such a model yet, as the CUDA memory storage overwhelms my current machine and crashes. As a result, this will be done once the supercomputer system is fully set up.</p>
-</section>
-<section id="current-problems" class="level1">
-<h1>10. Current Problems</h1>
-<p>We are currently training on every snapshot of a lattice’s evolution. This means that our model trains on both steady state and non-steady state segments of a system. In the following weeks it will be worth separating these segments for the purposes of analysing how training the CNN system only on steady state postively or negatively affects its ability to derive tumbling rates.</p>
-</section>
-<section id="misc-notes" class="level1">
-<h1>11. Misc Notes</h1>
-<p>J. Chodera - Equilibration in Monte Carlo and molecular dynamics</p>
+</div>
+</div>
 
 
 </section>

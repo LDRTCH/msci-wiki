@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../notebooks/cp_cluster_analysis.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/cp_cluster_number_size_analysis.html">Cluster Number and Size Examination</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../notebooks/acf.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/cp_cluster_number_size_analysis.html">Cluster Number and Size Examination</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -197,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/acf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Autocorrelation Function Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_cluster_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster Analysis</span></a>
   </div>
@@ -221,18 +227,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_double_training.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_extrapolation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
   </div>
@@ -240,25 +234,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis_monochrome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_interpolation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Feature Map Analysis (Monochrome Data Type)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_multiple_validation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Multiple Validation Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+ <span class="menu-text">Preliminary CNN Training and Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -287,6 +275,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deadline information</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/gitinfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful Commands and Information for Shared Github Activity</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
@@ -355,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../notebooks/cp_cluster_analysis.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/cp_cluster_number_size_analysis.html">Cluster Number and Size Examination</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activity_log/landing.html">Personal</a></li><li class="breadcrumb-item"><a href="../notebooks/acf.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/cp_cluster_number_size_analysis.html">Cluster Number and Size Examination</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Cluster Number and Size Examination</h1>
 </div>

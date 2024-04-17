@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -223,6 +223,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/acf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Autocorrelation Function Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_cluster_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster Analysis</span></a>
   </div>
@@ -247,18 +253,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_double_training.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_extrapolation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
   </div>
@@ -266,25 +260,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis_monochrome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_interpolation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Feature Map Analysis (Monochrome Data Type)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_multiple_validation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Multiple Validation Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+ <span class="menu-text">Preliminary CNN Training and Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -313,6 +301,18 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deadline information</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/gitinfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful Commands and Information for Shared Github Activity</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
@@ -395,152 +395,289 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="5" data-listing-word-count-sort="885">
+<a href="../activity_log/week1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 1
+</h5>
+<div class="card-text listing-description">
+The main goal of week 1 is to get an introductory grasp of the literature regarding active matter.
 </div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="5" data-listing-word-count-sort="885" data-listing-title-sort="Week 1" data-listing-filename-sort="week1.qmd">
-<td>
-<a href="../activity_log/week1.html" class="title listing-title">Week 1</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="14" data-listing-word-count-sort="2666" data-listing-title-sort="Weeks 13-15" data-listing-filename-sort="week13-15.qmd">
-<td>
-<a href="../activity_log/week13-15.html" class="title listing-title">Weeks 13-15</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="13" data-listing-word-count-sort="2582" data-listing-title-sort="Week 16" data-listing-filename-sort="week16.qmd">
-<td>
-<a href="../activity_log/week16.html" class="title listing-title">Week 16</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="13" data-listing-word-count-sort="2513" data-listing-title-sort="Week 17" data-listing-filename-sort="week17.qmd">
-<td>
-<a href="../activity_log/week17.html" class="title listing-title">Week 17</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="25" data-listing-word-count-sort="4832" data-listing-title-sort="Week 18" data-listing-filename-sort="week18.qmd">
-<td>
-<a href="../activity_log/week18.html" class="title listing-title">Week 18</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="5" data-listing-word-count-sort="942" data-listing-title-sort="Week 19" data-listing-filename-sort="week19.qmd">
-<td>
-<a href="../activity_log/week19.html" class="title listing-title">Week 19</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="6" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="8" data-listing-word-count-sort="1570" data-listing-title-sort="Week 2" data-listing-filename-sort="week2.qmd">
-<td>
-<a href="../activity_log/week2.html" class="title listing-title">Week 2</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="7" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="52" data-listing-word-count-sort="10213" data-listing-title-sort="Weeks 20-22" data-listing-filename-sort="week20-22.qmd">
-<td>
-<a href="../activity_log/week20-22.html" class="title listing-title">Weeks 20-22</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="8" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="6" data-listing-word-count-sort="1200" data-listing-title-sort="Week 3" data-listing-filename-sort="week3.qmd">
-<td>
-<a href="../activity_log/week3.html" class="title listing-title">Week 3</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="9" data-listing-file-modified-sort="1713341584684" data-listing-reading-time-sort="10" data-listing-word-count-sort="1951" data-listing-title-sort="Week 4" data-listing-filename-sort="week4.qmd">
-<td>
-<a href="../activity_log/week4.html" class="title listing-title">Week 4</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="10" data-listing-file-modified-sort="1713341584684" data-listing-reading-time-sort="12" data-listing-word-count-sort="2377" data-listing-title-sort="Weeks 5-6" data-listing-filename-sort="week5-6.qmd">
-<td>
-<a href="../activity_log/week5-6.html" class="title listing-title">Weeks 5-6</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="11" data-listing-file-modified-sort="1713341584684" data-listing-reading-time-sort="4" data-listing-word-count-sort="667" data-listing-title-sort="Week 7" data-listing-filename-sort="week7.qmd">
-<td>
-<a href="../activity_log/week7.html" class="title listing-title">Week 7</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="12" data-listing-file-modified-sort="1713363811001" data-listing-reading-time-sort="4" data-listing-word-count-sort="678" data-listing-title-sort="Week 8" data-listing-filename-sort="week8.qmd">
-<td>
-<a href="../activity_log/week8.html" class="title listing-title">Week 8</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="13" data-listing-file-modified-sort="1713341584684" data-listing-reading-time-sort="2" data-listing-word-count-sort="387" data-listing-title-sort="Weeks 9-12" data-listing-filename-sort="week9-12.qmd">
-<td>
-<a href="../activity_log/week9-12.html" class="title listing-title">Weeks 9-12</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="8" data-listing-word-count-sort="1570">
+<a href="../activity_log/week2.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 2
+</h5>
+<div class="card-text listing-description">
+The goal of week 2 is to further familiarise ourselves with the literature. We are to write a quick 500-word referenced report detailing motivations for studying active…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="6" data-listing-word-count-sort="1200">
+<a href="../activity_log/week3.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-3-files/persistent-exclusion-process-anims/Anim1_tumble0.0005.gif" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 3
+</h5>
+<div class="card-text listing-description">
+The main aim of this week is to begin reproducing a simple active matter system in code. To this end, a suitable environment to work in must be found and utilised. For now…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1713391562122" data-listing-reading-time-sort="10" data-listing-word-count-sort="1951">
+<a href="../activity_log/week4.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 4
+</h5>
+<div class="card-text listing-description">
+The aim of this week is to consolidate the work of previous weeks and to build up qualitative understanding from it. The tasks for the following few weeks are:
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1713391610822" data-listing-reading-time-sort="12" data-listing-word-count-sort="2377">
+<a href="../activity_log/week5-6.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-5-6-files/t_0.05.gif" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Weeks 5-6
+</h5>
+<div class="card-text listing-description">
+These two weeks broadly overlapped with reading week in the arts department; I used a significant portion of this time to catch up on other projects. As such, I have elected…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1713391688135" data-listing-reading-time-sort="3" data-listing-word-count-sort="578">
+<a href="../activity_log/week7.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-7-files/log-scale-clustering_p_0.157_rho_0.3.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 7
+</h5>
+<div class="card-text listing-description">
+The aim of this week is mostly to work on the upcoming interim report. As such, most of this week’s activity constitutes in gathering data from various papers. A further…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1713363811001" data-listing-reading-time-sort="4" data-listing-word-count-sort="678">
+<a href="../activity_log/week8.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 8
+</h5>
+<div class="card-text listing-description">
+The main aim of this week is to finish the Interim Report. As this is not summative for us, the deadline has proven to not be strict - nonetheless I aim to finish it in time.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1713341584684" data-listing-reading-time-sort="2" data-listing-word-count-sort="387">
+<a href="../activity_log/week9-12.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-9-12-files/biggest-cluster-sizes.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Weeks 9-12
+</h5>
+<div class="card-text listing-description">
+These weeks were mostly occupied by other assessments. Some percolation progress was made.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="14" data-listing-word-count-sort="2666">
+<a href="../activity_log/week13-15.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-13-15-files/prelim-output.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Weeks 13-15
+</h5>
+<div class="card-text listing-description">
+The main purpose of this week is to begin machine learning tests. The secondary purpose is to flesh out some details a
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1713391150122" data-listing-reading-time-sort="13" data-listing-word-count-sort="2579">
+<a href="../activity_log/week16.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-16-files/table.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 16
+</h5>
+<div class="card-text listing-description">
+Now that we have set up the machine learning system and begun familiarising ourselves with its architecture, the aim of the next few weeks (this one included) is to begin…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1713391245799" data-listing-reading-time-sort="13" data-listing-word-count-sort="2517">
+<a href="../activity_log/week17.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-17-files/stage4124-pred.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 17
+</h5>
+<div class="card-text listing-description">
+The main purpose of this week is to bring out a concrete direction in the numerical research done so far, as well as continue carrying it out.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="25" data-listing-word-count-sort="4832">
+<a href="../activity_log/week18.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-18-files/density-0.25-example.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 18
+</h5>
+<div class="card-text listing-description">
+The main purpose of this week is to further explore gaps in tumbling rates for our CNN predictions, alongside discussions of densities and clusters. The auxiliary purpose of…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1713341584680" data-listing-reading-time-sort="5" data-listing-word-count-sort="942">
+<a href="../activity_log/week19.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-19-files/steadfast7653-pred.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Week 19
+</h5>
+<div class="card-text listing-description">
+This week consists of exploring higher range parameters in order to consolidate the results in previous weeks.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1713394471026" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
+<a href="../activity_log/week20-22.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="week-20-22-files/cp_cluster_analysis_files/cp_cluster_analysis_6_1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Weeks 20-22
+</h5>
+<div class="card-text listing-description">
+The aims of these last few weeks is to finish up experimental analysis, revise some mistakes in previous weeks, as well as prepare figures for the final report. These Weeks…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

@@ -221,12 +221,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_double_training.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_extrapolation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Import packages</span></a>
   </div>
@@ -240,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis_monochrome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
+ <span class="menu-text">Feature Map Analysis (Monochrome Data Type)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -252,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_multiple_validation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Multiple Validation Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -287,6 +281,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deadline information</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/gitinfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful Commands and Information for Shared Github Activity</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
@@ -1519,7 +1525,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ldrtch\.github\.io\/msci-wiki\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

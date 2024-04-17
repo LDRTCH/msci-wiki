@@ -194,6 +194,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../notebooks/acf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Autocorrelation Function Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_cluster_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cluster Analysis</span></a>
   </div>
@@ -218,18 +224,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_double_training.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_extrapolation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
   </div>
@@ -237,25 +231,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_feature_map_analysis_monochrome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Feature Map Analysis (Orientation Data Type)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../notebooks/cp_interpolation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Feature Map Analysis (Monochrome Data Type)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_multiple_validation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Import packages</span></a>
+ <span class="menu-text">Multiple Validation Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/cp_network.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><strong>Preliminary CNN Training and Analysis</strong></span></a>
+ <span class="menu-text">Preliminary CNN Training and Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -284,6 +272,18 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/deadlines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deadline information</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../shared/gitinfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful Commands and Information for Shared Github Activity</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://github.com/LDRTCH/msci-wiki" class="sidebar-item-text sidebar-link"><i class="bi bi-git" role="img">
@@ -428,7 +428,7 @@ window.Quarto = {
 <h1>3. Varying Sample Size and Tumble Probability</h1>
 <p>There are two independent ways of generating graphical results. The first is to generate frames and animate them into a GIF file, which is done through the script <code>video.py</code> (see <a href="../activity_log/week3.html">Week 3</a>). The other way is what is explored this week: generate a data set with <code>sampler.py</code> and then use <code>view.py</code> to obtain snapshots.</p>
 <p>The benefits of this are that datasets are stored for reference alongside the images, unlike the gif computation (which only stored the animation). This is useful for record keeping, as well as for understanding the way file storage is organised. The datasets are stored in h5py formats, a way to store huge amounts of data in a compressed manner - the downside is that the understanding process of how data is stored is les straightforward. So far, we have elected to keep a quite unoptimised version of the code for our purposes until we get a firmer grasp of the way the datasets work.</p>
-<p>We have modified the code slightly to fit our purposes - made a view variables more explicit and standardised some parts. Furthermore, we’ve made the sampler vary with density and tumble probability - our aim is for each of us to generate 50 datasets, with 10 shared density values varied over 5 individual tumble probability values. The end goal, as stated in point 3 in the <a href="#1.-introduction">Introduction</a>, to combine these into a 100 dataset grid.</p>
+<p>We have modified the code slightly to fit our purposes - made a view variables more explicit and standardised some parts. Furthermore, we’ve made the sampler vary with density and tumble probability - our aim is for each of us to generate 50 datasets, with 10 shared density values varied over 5 individual tumble probability values. The end goal, as stated in point 3 in the Introduction, to combine these into a 100 dataset grid.</p>
 <p>Each combination of data is stored in its own .h5 file. They are all indexed by a pandas dataframe, which keeps track of their ascribed particle density, tumble probability, particle speed and iteration count.</p>
 <p>The particle density <span class="math inline">\(\rho_{p}\)</span> is defined as a percentage, such that the total number of particles <span class="math inline">\(n_{p}\)</span> is defined by:</p>
 <p><span class="math display">\[n_{p}=\rho_{p}n_{x}n_{y}\]</span> where <span class="math inline">\(n_{x}\)</span> and <span class="math inline">\(n_{y}\)</span> are the dimensions of the lattice sites: the number of lattice sites along the x and y directions, respectively.</p>

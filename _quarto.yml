@@ -20,7 +20,7 @@ website:
           - section: "Python Notebooks"
             icon: archive
             contents:
-              - notebooks/cp_network.ipynb
+              - notebooks/*.ipynb
       - section: "Shared"
         icon: diagram-3-fill
         contents:

@@ -26,8 +26,8 @@
 2. Project Plan
 3. Tumbling Rate Clarifications
 4. Dissipation and Structure
-5. Further Information
-6. Interim Report
+5. Bin Count Grid
+
 
 # 1. Introduction
 
@@ -102,7 +102,7 @@ where $\tau$ is the persistence time, $P_e$ is the Peclet number and $v_{active}
 
 There are specific relations we can use to infer dissipation; these will be analysed in subsequent weeks.
 
-# 6. Bin Count Grid
+# 5. Bin Count Grid
 
 Using the cluster analysis shown in [Weeks 5-6](./week5-6.qmd), we can obtain cluster distribution relations as we vary the tumbling rate and the density. For the following grid of particle distributions:
 
@@ -116,17 +116,6 @@ we get the following cluster grid:
 
 <object data="./week-8-files/histogrid.pdf" type="application/pdf" width="1000px" height="1000px">
      <embed src="./week-7-files/histogrid.pdf">
-         <p>Could not load PDF.</a>.</p>
-     </embed>
- </object>
-
-
-
-# 7. Interim Report
-
-This is an almost finished version of the interim report, after applying some preliminary supervisor feedback. The finalised version will be done next week. There are some points that should be elaborated regarding CNN functionality, MIPS, percolation, pair correlation function as well as slightly revising the Discussion.
-<object data="./week-8-files/Interim_Report-5.pdf" type="application/pdf" width="1000px" height="1000px">
-     <embed src="./week-7-files/Interim_Report-5.pdf">
          <p>Could not load PDF.</a>.</p>
      </embed>
  </object>

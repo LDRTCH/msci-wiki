@@ -2,6 +2,14 @@
 
 # 0. Table of Contents
 
+1. Introduction
+2. Checklist
+3. Model List and Storage
+4. Shorthand Model List
+5. New Architecture
+6. More Tumbling Rates
+7. Bigger N Values
+
 # 1. Introduction
 
 Now that we have set up the machine learning system and begun familiarising ourselves with its architecture, the aim of the next few weeks (this one included) is to begin experimenting on different training and validation data, as well as tuning the architecture.
@@ -80,7 +88,7 @@ While each model is referred to by the aforementioned standardisation, it is als
 
 As more architectures are employed, the full list will be updated [here](./../models.qmd).
 
-# 3. New Architecture
+# 5. New Architecture
 
 Using the architecture of MN_2, we can try to examine a similar case to which we applied MN_1. Below is the prediction of model atreus1273, applied to a sample size of 70000 iterations spread equally among 5 turning rates (50000 training, 20000 validation), for density 0.15. 
 
@@ -88,7 +96,7 @@ Using the architecture of MN_2, we can try to examine a similar case to which we
 
 The fitting overall seems to be worse, but the top middle values are almost perfectly fitted. My lab partner has gotten better results with this model, so I will continue exploring it in parallel with MN_1 for now.
 
-# 4. More Tumbling Rates
+# 6. More Tumbling Rates
 
 There is an obvious extension in increasing the amount of tumbling rates utilised. This may help the CNN pick up on the clustering/dissipation pattern better by providing more scenarios in which it can be examined.
 
@@ -98,7 +106,7 @@ Below is an example reprouction of MN_1 trained on the same values as the last e
 
 Note that this is using rolled data, so it is bound to be more accurate than the unrolled variants we will consider below.
 
-# 4. Bigger N Values
+# 7. Bigger N Values
 
 Here is a brief attempt to train the CNN on broader N values. This will be investigated more in depth at the end of the project. Model michigan2241 is trained on $N_x=N_y=256$; an example screenshot can be found below.
 

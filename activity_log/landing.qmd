@@ -1,7 +1,7 @@
 ---
 title: "Activity log"
 listing:
-    contents: "*.qmd"
-    type: table
-    sort: "date"
+    contents: ["week1.qmd", "week2.qmd", week3.qmd, week4.qmd, week5-6.qmd, week7.qmd, week8.qmd, week9-12.qmd, week13-15.qmd, week16.qmd, week17.qmd, week18.qmd, week19.qmd, week20-22.qmd]
+    type: grid
+    sort: "false"
 ---

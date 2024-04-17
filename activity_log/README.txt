@@ -6,4 +6,4 @@ There are also standard markdown files, going by the syntax "week*.md". They sho
 
 TL;DR: Read the .qmd versions if you need direct access to the text! Treat the .md versions as rough backups.
 
--cp
+EDIT: after some post-project revising in preparation for one-pdf rendering, having the Markdown files in the same folders proved disastrous for rendering tthe final documents. This, alongside format changes making the Markdown files outdated resulted in the decision to delete the markdown files altogether. No information was lost since all the edits are stored in the github page anyway.

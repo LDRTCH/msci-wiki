@@ -22,17 +22,11 @@
 # 0. Table of Contents
 
 0. Table of Contents
-
 1. Introduction
-
 2. Persistent Exclusion Process Visualisation
-
 3. Utility Functions
-
 4. Total Orientation Against Time
-
 5. Cluster Analysis
-
 6. Updated Motivational Report
 
 # 1. Introduction

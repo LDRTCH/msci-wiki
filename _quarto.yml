@@ -15,15 +15,15 @@ website:
         contents:
           - activity_log/landing.qmd
           - motivational-report/motivational-report.qmd
-          - structured_information/landing.qmd
           - models.qmd
           - section: "Python Notebooks"
             icon: archive
-            contents:
-              - notebooks/*.ipynb
+            contents: "notebooks/*.ipynb"
       - section: "Shared"
         icon: diagram-3-fill
         contents:
+          - shared/deadlines.qmd
+          - shared/gitinfo.qmd
           - text: "GitHub Repository (cp fork)"
             icon: git
             href: "https://github.com/LDRTCH/msci-wiki"

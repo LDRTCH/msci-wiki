@@ -164,4 +164,3 @@ Trainable params: 1613 (6.30 KB)
 Non-trainable params: 18 (72.00 Byte)
 _________________________________________________________________
 ```
-# 5. Model Summaries

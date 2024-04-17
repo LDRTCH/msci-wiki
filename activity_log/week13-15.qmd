@@ -107,7 +107,7 @@ But this brings up an interesting point now that we are moving into the machine 
 
 On this note, I have done some quick analysis on the data. As a rule of thumb, datasets with rolling take approximately 10 extra seconds to generate in comparison to the strictly unrolled datasets. This has been tested on my personal computer - it is possible the time difference is much smaller once a supercomputer is employed.
 
-The file size contrast is considerable. Datasets which have surplus rolled iterations have approximately 284MB each. Datasets which do not only have about 66MB. Since all the files have been stored on my computer, this is considerable insofar as so far around 215MB per dataset have gone unused (though they will now be employed by the CNN). For example, to obtain the biggest cluster size distribution in [Weeks 9-12](./week10-13.qmd) required 100 different datasets, resulting in about 19GB of data that was not called.
+The file size contrast is considerable. Datasets which have surplus rolled iterations have approximately 284MB each. Datasets which do not only have about 66MB. Since all the files have been stored on my computer, this is considerable insofar as so far around 215MB per dataset have gone unused (though they will now be employed by the CNN). For example, to obtain the biggest cluster size distribution in [Weeks 9-12](./week9-12.qmd) required 100 different datasets, resulting in about 19GB of data that was not called.
 
 Data analysis aside, we will run the CNN using both options, and contrast the results for different scenarios. I have rewritten `sampler.py` to accommodate the requirements of unrolled dataset files (as `sampler_no_roll.py`). This code stores its datasets in a separate folder (`data/no-roll`).
 

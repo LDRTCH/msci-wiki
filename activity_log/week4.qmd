@@ -75,7 +75,7 @@ There are two independent ways of generating graphical results. The first is to 
 
 The benefits of this are that datasets are stored for reference alongside the images, unlike the gif computation (which only stored the animation). This is useful for record keeping, as well as for understanding the way file storage is organised. The datasets are stored in h5py formats, a way to store huge amounts of data in a compressed manner - the downside is that the understanding process of how data is stored is les straightforward. So far, we have elected to keep a quite unoptimised version of the code for our purposes until we get a firmer grasp of the way the datasets work.
 
-We have modified the code slightly to fit our purposes - made a view variables more explicit and standardised some parts. Furthermore, we've made the sampler vary with density and tumble probability - our aim is for each of us to generate 50 datasets, with 10 shared density values varied over 5 individual tumble probability values. The end goal, as stated in point 3 in the [Introduction](#1.-introduction), to combine these into a 100 dataset grid.
+We have modified the code slightly to fit our purposes - made a view variables more explicit and standardised some parts. Furthermore, we've made the sampler vary with density and tumble probability - our aim is for each of us to generate 50 datasets, with 10 shared density values varied over 5 individual tumble probability values. The end goal, as stated in point 3 in the Introduction, to combine these into a 100 dataset grid.
 
 Each combination of data is stored in its own .h5 file. They are all indexed by a pandas dataframe, which keeps track of their ascribed particle density, tumble probability, particle speed and iteration count.
 

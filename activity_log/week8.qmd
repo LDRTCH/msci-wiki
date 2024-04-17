@@ -107,7 +107,7 @@ There are specific relations we can use to infer dissipation; these will be anal
 Using the cluster analysis shown in [Weeks 5-6](./week5-6.qmd), we can obtain cluster distribution relations as we vary the tumbling rate and the density. For the following grid of particle distributions:
 
 <object data="./week-8-files/gridcorrect2.pdf" type="application/pdf" width="1000px" height="1000px">
-     <embed src="./week-7-files/gridcorrect2.pdf">
+     <embed src="./week-8-files/gridcorrect2.pdf">
          <p>Could not load PDF.</a>.</p>
      </embed>
  </object>
@@ -115,7 +115,7 @@ Using the cluster analysis shown in [Weeks 5-6](./week5-6.qmd), we can obtain cl
 we get the following cluster grid:
 
 <object data="./week-8-files/histogrid.pdf" type="application/pdf" width="1000px" height="1000px">
-     <embed src="./week-7-files/histogrid.pdf">
+     <embed src="./week-8-files/histogrid.pdf">
          <p>Could not load PDF.</a>.</p>
      </embed>
  </object>

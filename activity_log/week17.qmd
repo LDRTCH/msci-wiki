@@ -26,6 +26,7 @@
 4. MN_3 Discussion
 6. Example MN_3 Application
 6. Gaps in $P_{tumble}$ (monochrome)
+7. Preliminary Tumbling Rate Extrapolation
 
 # 1. Introduction
 

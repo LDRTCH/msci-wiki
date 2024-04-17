@@ -565,17 +565,6 @@
     "text": "Welcome to the home page (or landing spot) for the Dissipative Learning in Active Matter project! This page links to a few useful pages for the project as a whole. For weekly lab notes, see the activity log, also available on the sidebar.\nSome generally useful links for day to day sharing and work:\n\nDeadlines : A quick list of deadlines for this project.\nRepository information : Info on how to set up the repository.\nCommands Information : Useful commands for navigating the repository and publishing pages.\n\nMost important links can be found on the sidebar. However, of particular note are the following:\n\nGithub Notes Repository : Contains all of the notes and scripts referenced throughout this page.\nPersistent Exclusion Process Github Repository : Contains all the relevant code for this project. Note that some of the scripts in this notebook reference slightly different functions due to differences between my and my lab partner’s functions. For the few exact functions that I used in this project and which misalign, consult my uploaded file."
   },
   {
-    "objectID": "structured_information/landing.html",
-    "href": "structured_information/landing.html",
-    "title": "Information Glossary",
-    "section": "",
-    "text": "This is the landing page for a standardised collection of information regarding active matter. A lot of it will consist of information taken from the activity log (which should still serve as the main documentation of progress) and restructuring it in a more accessible way for ease of use.",
-    "crumbs": [
-      "Personal",
-      "Information Glossary"
-    ]
-  },
-  {
     "objectID": "models.html",
     "href": "models.html",
     "title": "CNN Models",
